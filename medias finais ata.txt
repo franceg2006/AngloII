@@ -1,0 +1,221 @@
+CREATE PROCEDURE MEDIAS_FINAIS_ATA (
+    serie smallint,
+    turma char(1))
+returns (
+    alu_cod integer,
+    alu_chamada smallint,
+    alu_nome varchar(60),
+    alu_status char(1),
+    m_01 numeric(5,1),
+    m_02 numeric(5,1),
+    m_03 numeric(5,1),
+    m_04 numeric(5,1),
+    m_05 numeric(5,1),
+    m_06 numeric(5,1),
+    m_07 numeric(5,1),
+    m_08 numeric(5,1),
+    m_09 numeric(5,1),
+    m_10 numeric(5,1),
+    m_11 numeric(5,1),
+    m_12 numeric(5,1),
+    m_13 numeric(5,1),
+    m_14 numeric(5,1),
+    m_15 numeric(5,1),
+    m_16 numeric(5,1),
+    m_17 numeric(5,1),
+    m_18 numeric(5,1),
+    modalidade char(3),
+    resultado varchar(15))
+as
+declare variable alu_sexo char(1);
+declare variable bim_inicial smallint;
+declare variable seq_cod integer;
+declare variable dis_cod integer;
+declare variable nbim smallint;
+declare variable nnota numeric(5,2);
+declare variable nrecup numeric(5,2);
+declare variable n1 numeric(5,1);
+declare variable n2 numeric(5,1);
+declare variable n3 numeric(5,1);
+declare variable n4 numeric(5,1);
+declare variable r1 numeric(5,1);
+declare variable r2 numeric(5,1);
+declare variable r3 numeric(5,1);
+declare variable r4 numeric(5,1);
+declare variable m1 numeric(5,1);
+declare variable m2 numeric(5,1);
+declare variable m3 numeric(5,1);
+declare variable m4 numeric(5,1);
+declare variable exame numeric(5,1);
+declare variable cursando char(1);
+declare variable reprovado char(1);
+declare variable media numeric(4,1);
+declare variable media_exame numeric(4,1);
+declare variable media_final numeric(4,1);
+declare variable mediatrunc smallint;
+declare variable partedec integer;
+declare variable mediabruta numeric(5,2);
+declare variable arredonda numeric(4,1);
+declare variable situacao char(1);
+begin
+  select MEDIA,MEDIA_EXAME from PARAMETROS
+    into :Media,:Media_Exame;
+  for select CODIGO,CHAMADA,NOME,STATUS,SEXO,BIMESTRE, SITUACAO, MOD_ESPORTIVA from ALUNOS
+    where SERIE = :Serie and TURMA = :Turma and STATUS<>'O'
+    order by CHAMADA into :Alu_Cod,:Alu_Chamada,:Alu_Nome,:Alu_Status,:Alu_Sexo,
+    :Bim_Inicial, :situacao, :modalidade
+    do begin
+    M_01 = -1; M_02 = -1; M_03 = -1; M_04 = -1;
+    M_05 = -1; M_06 = -1; M_07 = -1; M_08 = -1;
+    M_09 = -1; M_10 = -1; M_11 = -1; M_12 = -1;
+    M_13 = -1; M_14 = -1; M_15 = -1; M_16 = -1;
+    M_17 = -1; M_18 = -1; Seq_Cod = 0;
+    Cursando = 'N';    Reprovado = 'N';
+    while (Seq_Cod < 18) do begin
+      Seq_Cod = Seq_Cod + 1;
+      for select DISCIPLINA from GRADE
+        where SERIE = :Serie and TIPO <> 'NO'
+        and SEQUENCIA = :Seq_Cod
+        into :Dis_Cod   do begin
+        Nnota = null; Nrecup = 0;
+        N1 = null; N2 = null; N3 = null; N4 = null;
+        R1 = null; R2 = null; R3 = null; R4 = null;
+        Exame = null;
+        for select BIMESTRE, NOTA, RECUPBIM from NOTAS
+          where ALUNO = :Alu_Cod and DISCIPLINA = :Dis_Cod
+          into :Nbim, :Nnota, :Nrecup
+          do begin
+          if (Nbim = 1) then begin N1 = Nnota; R1 = Nrecup; end
+          if (Nbim = 2) then begin N2 = Nnota; R2 = Nrecup; end
+          if (Nbim = 3) then begin N3 = Nnota; R3 = Nrecup; end
+          if (Nbim = 4) then begin N4 = Nnota; R4 = Nrecup; end
+          if (Nbim = 5) then Exame = Nnota;
+        end    /* do for - NOTAS */
+        M1 = null; M2 = null; M3 = null; M4 = null;
+        if (R1 is null) then M1 = N1; else
+          if (N1 > R1) then M1 = N1; else M1 = R1;
+        if (R2 is null) then M2 = N2; else
+          if (N2 > R2) then M2 = N2; else M2 = R2;
+        if (R3 is null) then M3 = N3; else
+          if (N3 > R3) then M3 = N3; else M3 = R3;
+        if (R4 is null) then M4 = N4; else
+          if (N4 > R4) then M4 = N4; else M4 = R4;
+        Nnota = 0;
+        Nbim = 0;
+        if (M1 is not null) then begin
+          Nnota = Nnota + (M1*1);
+          Nbim = Nbim + 1;
+        end
+        if (M2 is not null) then begin
+          Nnota = Nnota + (M2*2);
+          Nbim = Nbim + 2;
+          N2 = N2 * 2;  R2 = R2 * 2;  M2 = M2 * 2;
+        end
+        if (M3 is not null) then begin
+          Nnota = Nnota + (M3*3);
+          Nbim = Nbim + 3;
+          N3 = N3 * 3;  R3 = R3 * 3;  M3 = M3 * 3;
+        end
+        if (M4 is not null) then begin
+          Nnota = Nnota + (M4*4);
+          Nbim = Nbim + 4;
+          N4 = N4 * 4;  R4 = R4 * 4;  M4 = M4 * 4;
+        end
+        if ((M1 is null) and (Bim_Inicial<=1)) then Cursando = 'S';
+        if ((M2 is null) and (Bim_Inicial<=2)) then Cursando = 'S';
+        if ((M3 is null) and (Bim_Inicial<=3)) then Cursando = 'S';
+        if ((M4 is null) and (Bim_Inicial<=4)) then Cursando = 'S';
+        Media_Final = null;
+        MediaBruta = null;
+        if (Nbim <> 0) then MediaBruta = Nnota / Nbim;
+        MediaTrunc = MediaBruta;
+        ParteDec = (MediaBruta - MediaTrunc) * 100;
+        if (ParteDec > -25 and ParteDec <= 25) then Arredonda = 0;
+        if (ParteDec = 50) then Arredonda = 0;
+        if (ParteDec > 25 and ParteDec < 50) then Arredonda = 0.5;
+        if (ParteDec >= -50 and ParteDec <= -25) then Arredonda = -0.5;
+        Media_Final = MediaTrunc + Arredonda;
+        if (Alu_Status <> 'A') then Media_Final = null;
+        /* Quando o Aluno tem nota de Exame */
+        if (EXAME is not null) then begin
+           MediaBruta = Media_final + EXAME;
+           if ((MediaBruta >= 9.5))  then
+           MediaBruta = MediaBruta / 2;
+           MediaTrunc = MediaBruta;
+           ParteDec = (MediaBruta - MediaTrunc) * 100;
+           /***********Tinha tirado mas teve que retornar*****************/
+          MediaBruta = ((Media_Final*3) + (EXAME*2)); /*Da qui*/
+          MediaBruta = MediaBruta / 5;
+          MediaTrunc = MediaBruta;
+          ParteDec = (MediaBruta - MediaTrunc) * 100;/*Até aqui*/
+          /****************Até aqui para os alunos que tem recuperação********/
+          if (ParteDec > -25 and ParteDec <= 25) then Arredonda = 0;
+          if (ParteDec = 50) then Arredonda = 0;
+          if (ParteDec > 25 and ParteDec < 50) then Arredonda = 0.5;
+          if (ParteDec >= -50 and ParteDec <= -25) then Arredonda = -0.5;
+          Media_Final = MediaTrunc + Arredonda;
+         end
+
+         /* -------------------------------------- */
+
+        if (Media_Final is null) then Media_Final = -1;
+         if (Seq_Cod = 01) then M_01 = Media_Final;
+         if (Seq_Cod = 02) then M_02 = Media_Final;
+         if (Seq_Cod = 03) then M_03 = Media_Final;
+         if (Seq_Cod = 04) then M_04 = Media_Final;
+         if (Seq_Cod = 05) then M_05 = Media_Final;
+         if (Seq_Cod = 06) then M_06 = Media_Final;
+         if (Seq_Cod = 07) then M_07 = Media_Final;
+         if (Seq_Cod = 08) then M_08 = Media_Final;
+         if (Seq_Cod = 09) then M_09 = Media_Final;
+         if (Seq_Cod = 10) then M_10 = Media_Final;
+         if (Seq_Cod = 11) then M_11 = Media_Final;
+         if (Seq_Cod = 12) then M_12 = Media_Final;
+         if (Seq_Cod = 13) then M_13 = Media_Final;
+         if (Seq_Cod = 14) then M_14 = Media_Final;
+         if (Seq_Cod = 15) then M_15 = Media_Final;
+         if (Seq_Cod = 16) then M_16 = Media_Final;
+         if (Seq_Cod = 17) then M_17 = Media_Final;
+
+     end
+    end       /* do while (Seq_Cod < 18) do begin */
+    if (Alu_Status = 'A') then begin
+       if (Cursando = 'S') then RESULTADO = 'Cursando';
+       if ((Cursando = 'S') and  (alu_sexo = 'M')) then  RESULTADO = 'Aprovado';
+       if ((Cursando = 'S') and  (alu_sexo = 'F')) then  RESULTADO = 'Aprovada';
+
+       if ((Cursando = 'S')  and (alu_sexo = 'F') and (modalidade='DME')) then  RESULTADO = 'Aprovada';
+       if ((Cursando = 'S')  and (alu_sexo = 'M') and (modalidade='DME')) then  RESULTADO = 'Aprovado';
+
+
+       if (Cursando = 'N') then begin
+          if (Reprovado = 'N') then begin
+             if (Alu_Sexo = 'M') then RESULTADO = 'Aprovado';
+             if (Alu_Sexo = 'F') then RESULTADO = 'Aprovada';
+          end
+          if (Reprovado = 'S') then begin
+             if (Alu_Sexo = 'M') then RESULTADO = 'Reprovado';
+             if (Alu_Sexo = 'F') then RESULTADO = 'Reprovada';
+          end
+       end
+    end
+    if (Alu_Status = 'T') then begin
+       if (Alu_Sexo = 'M') then RESULTADO = 'Transferido';
+       if (Alu_Sexo = 'F') then RESULTADO = 'Transferida';
+    end
+      if (Alu_Status = 'R') then begin
+      if (Alu_Sexo = 'M') then RESULTADO = 'Reclassificado';
+      if (Alu_Sexo = 'F') then RESULTADO = 'Reclassificada';
+    end
+    if (Alu_Status = 'D') then RESULTADO = 'Desistente';
+    if (Alu_Status = 'O') then RESULTADO = 'Outros';
+
+    if (Seq_Cod = 18) then M_18 = Media_Final;
+        if (EXAME is null) then
+    if (Media_Final < Media) then Reprovado = 'S';
+       if (EXAME is not null) then
+          if (Media_Final < Media_Exame) then Reprovado = 'S';
+
+    suspend;
+  end     /* do for select ... from ALUNOS */
+end
