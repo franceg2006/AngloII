@@ -506,6 +506,8 @@ type
     AlunosAntFORMATURA: TIBStringField;
     MesFinal: TDBEdit;
     aviso: TLabel;
+    RxDBGrid4: TRxDBGrid;
+    Label96: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
@@ -586,6 +588,8 @@ type
     procedure RxDBGrid1DblClick(Sender: TObject);
     procedure BitBtn6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure BitBtn7Click(Sender: TObject);
+    procedure RxDBGrid4Enter(Sender: TObject);
   private
     procedure AtualizaSitFin;
     procedure AtualizaSitFin2;
@@ -623,7 +627,8 @@ uses UDM, URel_QRFicha_Ocorrencia, UDoc_ContratoQR, UDoc_RequerimentoQR,
   UDoc_CertificadoQR, ULst_EstatisticaQR, UDoc_IRDeclQR,
   ULst_EstatisticaTurQR, UCad_AlunosFoto, Ucores, UDM2, Uend_cob,
   UEtiq_SPQR, Urelacaosenhapais, UDoc_ContratoSemiQR, UDoc_TermoCompromisso,
-  UDoc_ContratoCursinho, Ufescola, Uprematricula, UDoc_ContratoCurso;
+  UDoc_ContratoCursinho, Ufescola, Uprematricula, UDoc_ContratoCurso,
+  Ufparametrosbloqueto;
 
 {$R *.DFM}
 
@@ -933,6 +938,7 @@ begin
   DM.qMunicipio.Open;
   dm.estado.Open;
   dm.tiposanguineo.Open;
+  dm.Autorizacao.Open;
   AtualizaFoto;
   if (principal.Ano.Caption<>'2014') then
      Button1.Enabled:=False;
@@ -1400,6 +1406,9 @@ end;
 procedure TCad_Alunos.Tab2Show(Sender: TObject);
 begin
   DataDoc.Date := now;
+  dm.Autorizacao.Close;
+  dm.Autorizacao.ParamByName('codigo').value := dm.AlunosCODIGO.Value;
+  dm.Autorizacao.Open;
 end;
 
 procedure TCad_Alunos.Turma2Change(Sender: TObject);
@@ -2116,5 +2125,20 @@ begin
 end;
 
 
+
+procedure TCad_Alunos.BitBtn7Click(Sender: TObject);
+begin
+  Application.CreateForm(Tfparametrosbloqueto, fparametrosbloqueto);
+  Try
+   fparametrosbloqueto.ShowModal;
+  Finally
+   fparametrosbloqueto.Free;
+  End;
+end;
+
+procedure TCad_Alunos.RxDBGrid4Enter(Sender: TObject);
+begin
+   dm.Autorizacao.Open;
+end;
 
 end.

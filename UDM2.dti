@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM2\ibNaopagantes\ibNaopagantes.Params,DM2\IqEscola,DM2\Iqconta,DM2\DBUsuario\TSUsuario\qy_usuario,DM2\DBUsuario\TSUsuario\iqParametros_B,DM2\DBUsuario\TSUsuario\sql_gen,DM2\iqpresenca,DM2\Alu_3_Rec,DM2\etiqueta
+ExpandedItems=DM2\TSUsuario,DM2\iqpresenca
 
 [DataDiagrams]
 Version=1

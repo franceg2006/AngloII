@@ -5,7 +5,7 @@ object Cad_Alunos: TCad_Alunos
   BorderStyle = bsSingle
   Caption = 'ALUNOS'
   ClientHeight = 665
-  ClientWidth = 998
+  ClientWidth = 1012
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27,9 +27,9 @@ object Cad_Alunos: TCad_Alunos
   object PageControl1: TPageControl
     Left = 7
     Top = 0
-    Width = 946
+    Width = 970
     Height = 657
-    ActivePage = Tab3
+    ActivePage = Tab2
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
     TabOrder = 1
@@ -240,7 +240,7 @@ object Cad_Alunos: TCad_Alunos
       object DBText11: TDBText
         Left = 701
         Top = 383
-        Width = 4
+        Width = 62
         Height = 13
         AutoSize = True
         DataField = 'TOTAL'
@@ -895,13 +895,13 @@ object Cad_Alunos: TCad_Alunos
       ImageIndex = 1
       OnShow = Tab2Show
       object bvl2: TBevel
-        Left = 230
+        Left = 261
         Top = 104
         Width = 169
         Height = 101
       end
       object Label7: TLabel
-        Left = 32
+        Left = 63
         Top = 16
         Width = 91
         Height = 13
@@ -910,7 +910,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit21
       end
       object Label12: TLabel
-        Left = 63
+        Left = 94
         Top = 40
         Width = 60
         Height = 13
@@ -919,7 +919,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit22
       end
       object Label22: TLabel
-        Left = 84
+        Left = 115
         Top = 64
         Width = 39
         Height = 13
@@ -928,7 +928,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBESerie
       end
       object Label24: TLabel
-        Left = 59
+        Left = 90
         Top = 112
         Width = 64
         Height = 13
@@ -937,7 +937,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit26
       end
       object Label25: TLabel
-        Left = 78
+        Left = 109
         Top = 136
         Width = 45
         Height = 13
@@ -945,7 +945,7 @@ object Cad_Alunos: TCad_Alunos
         Caption = 'Status :'
       end
       object Label26: TLabel
-        Left = 51
+        Left = 82
         Top = 160
         Width = 72
         Height = 13
@@ -954,7 +954,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit28
       end
       object Label27: TLabel
-        Left = 83
+        Left = 114
         Top = 184
         Width = 40
         Height = 13
@@ -963,7 +963,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit29
       end
       object Label29: TLabel
-        Left = 72
+        Left = 103
         Top = 263
         Width = 51
         Height = 13
@@ -972,7 +972,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit30
       end
       object Label31: TLabel
-        Left = 69
+        Left = 100
         Top = 239
         Width = 54
         Height = 13
@@ -980,7 +980,7 @@ object Cad_Alunos: TCad_Alunos
         Caption = 'Material :'
       end
       object Label32: TLabel
-        Left = 169
+        Left = 200
         Top = 333
         Width = 98
         Height = 13
@@ -989,7 +989,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit33
       end
       object Label33: TLabel
-        Left = 92
+        Left = 123
         Top = 361
         Width = 31
         Height = 13
@@ -998,7 +998,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit34
       end
       object Label40: TLabel
-        Left = 45
+        Left = 76
         Top = 335
         Width = 78
         Height = 13
@@ -1007,7 +1007,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit21
       end
       object Label39: TLabel
-        Left = 151
+        Left = 182
         Top = 36
         Width = 6
         Height = 13
@@ -1015,7 +1015,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit22
       end
       object Label42: TLabel
-        Left = 172
+        Left = 203
         Top = 184
         Width = 12
         Height = 13
@@ -1024,7 +1024,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit29
       end
       object Label44: TLabel
-        Left = 214
+        Left = 245
         Top = 31
         Width = 65
         Height = 13
@@ -1033,7 +1033,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit1
       end
       object DBText4: TDBText
-        Left = 280
+        Left = 311
         Top = 33
         Width = 54
         Height = 13
@@ -1048,7 +1048,7 @@ object Cad_Alunos: TCad_Alunos
         ParentFont = False
       end
       object Label45: TLabel
-        Left = 214
+        Left = 245
         Top = 47
         Width = 66
         Height = 13
@@ -1057,7 +1057,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit2
       end
       object DBText5: TDBText
-        Left = 280
+        Left = 311
         Top = 49
         Width = 54
         Height = 13
@@ -1105,7 +1105,7 @@ object Cad_Alunos: TCad_Alunos
         Visible = False
       end
       object Label21: TLabel
-        Left = 78
+        Left = 109
         Top = 87
         Width = 45
         Height = 13
@@ -1114,7 +1114,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBESerie
       end
       object Label41: TLabel
-        Left = 92
+        Left = 123
         Top = 286
         Width = 31
         Height = 13
@@ -1123,7 +1123,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit30
       end
       object Label49: TLabel
-        Left = 259
+        Left = 290
         Top = 281
         Width = 26
         Height = 13
@@ -1132,7 +1132,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit30
       end
       object Label51: TLabel
-        Left = 151
+        Left = 182
         Top = 60
         Width = 6
         Height = 13
@@ -1162,7 +1162,7 @@ object Cad_Alunos: TCad_Alunos
         OnClick = TrocaSenhaClick
       end
       object Pai: TSpeedButton
-        Left = 448
+        Left = 479
         Top = 255
         Width = 22
         Height = 12
@@ -1176,7 +1176,7 @@ object Cad_Alunos: TCad_Alunos
         OnClick = PaiClick
       end
       object Mae: TSpeedButton
-        Left = 448
+        Left = 479
         Top = 267
         Width = 22
         Height = 12
@@ -1190,7 +1190,7 @@ object Cad_Alunos: TCad_Alunos
         OnClick = MaeClick
       end
       object Label58: TLabel
-        Left = 30
+        Left = 61
         Top = 310
         Width = 93
         Height = 13
@@ -1198,7 +1198,7 @@ object Cad_Alunos: TCad_Alunos
         Caption = 'Mod. Esportiva :'
       end
       object Label70: TLabel
-        Left = 11
+        Left = 42
         Top = 213
         Width = 112
         Height = 13
@@ -1207,7 +1207,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit29
       end
       object Label71: TLabel
-        Left = 215
+        Left = 246
         Top = 63
         Width = 64
         Height = 13
@@ -1216,7 +1216,7 @@ object Cad_Alunos: TCad_Alunos
         FocusControl = DBEdit2
       end
       object DBText13: TDBText
-        Left = 280
+        Left = 311
         Top = 63
         Width = 62
         Height = 13
@@ -1231,56 +1231,56 @@ object Cad_Alunos: TCad_Alunos
         ParentFont = False
       end
       object Label75: TLabel
-        Left = 194
+        Left = 225
         Top = 87
         Width = 26
         Height = 13
         Caption = 'Cor:'
       end
       object Label77: TLabel
-        Left = 213
+        Left = 244
         Top = 16
         Width = 102
         Height = 13
         Caption = 'Data de ingresso:'
       end
       object Label84: TLabel
-        Left = 478
+        Left = 562
         Top = 130
         Width = 101
         Height = 13
         Caption = 'Número do termo'
       end
       object Label87: TLabel
-        Left = 478
+        Left = 562
         Top = 171
         Width = 30
         Height = 13
         Caption = 'Folha'
       end
       object Label88: TLabel
-        Left = 478
+        Left = 562
         Top = 209
         Width = 28
         Height = 13
         Caption = 'Livro'
       end
       object Label89: TLabel
-        Left = 478
+        Left = 562
         Top = 243
         Width = 144
         Height = 13
         Caption = 'Data da emissão da cert.'
       end
       object Label90: TLabel
-        Left = 478
+        Left = 562
         Top = 279
         Width = 65
         Height = 13
         Caption = 'UF Cartório'
       end
       object Label91: TLabel
-        Left = 478
+        Left = 562
         Top = 315
         Width = 99
         Height = 13
@@ -1308,7 +1308,7 @@ object Cad_Alunos: TCad_Alunos
         ParentFont = False
       end
       object Label93: TLabel
-        Left = 352
+        Left = 383
         Top = 64
         Width = 92
         Height = 13
@@ -1338,7 +1338,7 @@ object Cad_Alunos: TCad_Alunos
         OnClick = SpeedButton2Click
       end
       object lbl3: TLabel
-        Left = 233
+        Left = 264
         Top = 106
         Width = 155
         Height = 65
@@ -1360,7 +1360,7 @@ object Cad_Alunos: TCad_Alunos
         Caption = 'Alteração de senhas:'
       end
       object lbl5: TLabel
-        Left = 430
+        Left = 514
         Top = 362
         Width = 157
         Height = 39
@@ -1370,21 +1370,28 @@ object Cad_Alunos: TCad_Alunos
         Visible = False
       end
       object lbl1: TLabel
-        Left = 176
+        Left = 207
         Top = 361
         Width = 112
         Height = 13
         Caption = 'Quant. de parcelas.'
       end
       object Label30: TLabel
-        Left = 24
-        Top = 472
+        Left = 51
+        Top = 520
         Width = 103
         Height = 13
         Caption = 'Escola de origem:'
       end
+      object Label96: TLabel
+        Left = 16
+        Top = 416
+        Width = 138
+        Height = 13
+        Caption = 'Número da autorização:'
+      end
       object DBRadioGroup1: TDBRadioGroup
-        Left = 128
+        Left = 159
         Top = 227
         Width = 105
         Height = 29
@@ -1400,7 +1407,7 @@ object Cad_Alunos: TCad_Alunos
           '0')
       end
       object DBEdit21: TDBEdit
-        Left = 128
+        Left = 159
         Top = 11
         Width = 74
         Height = 21
@@ -1409,7 +1416,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 0
       end
       object DBEdit22: TDBEdit
-        Left = 128
+        Left = 159
         Top = 35
         Width = 20
         Height = 21
@@ -1419,7 +1426,7 @@ object Cad_Alunos: TCad_Alunos
         OnExit = DBEdit22Exit
       end
       object DBESerie: TDBEdit
-        Left = 128
+        Left = 159
         Top = 59
         Width = 20
         Height = 21
@@ -1429,7 +1436,7 @@ object Cad_Alunos: TCad_Alunos
         OnExit = DBESerieExit
       end
       object DBETurma: TDBEdit
-        Left = 128
+        Left = 159
         Top = 82
         Width = 20
         Height = 21
@@ -1440,7 +1447,7 @@ object Cad_Alunos: TCad_Alunos
         OnExit = DBETurmaExit
       end
       object DBEdit26: TDBEdit
-        Left = 128
+        Left = 159
         Top = 107
         Width = 33
         Height = 21
@@ -1449,7 +1456,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 7
       end
       object DBEdit28: TDBEdit
-        Left = 128
+        Left = 159
         Top = 155
         Width = 74
         Height = 21
@@ -1458,7 +1465,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 10
       end
       object DBEdit29: TDBEdit
-        Left = 128
+        Left = 159
         Top = 179
         Width = 41
         Height = 21
@@ -1468,7 +1475,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 11
       end
       object DBEdit30: TDBEdit
-        Left = 128
+        Left = 159
         Top = 258
         Width = 308
         Height = 21
@@ -1478,7 +1485,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 13
       end
       object DBEdit33: TDBEdit
-        Left = 272
+        Left = 303
         Top = 328
         Width = 36
         Height = 21
@@ -1487,7 +1494,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 18
       end
       object DBEdit34: TDBEdit
-        Left = 128
+        Left = 159
         Top = 354
         Width = 41
         Height = 21
@@ -1497,7 +1504,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 19
       end
       object DBEdit36: TDBEdit
-        Left = 128
+        Left = 159
         Top = 330
         Width = 25
         Height = 21
@@ -1507,7 +1514,7 @@ object Cad_Alunos: TCad_Alunos
         OnExit = DBEdit36Exit
       end
       object ComboStatus: TRxDBComboBox
-        Left = 128
+        Left = 159
         Top = 131
         Width = 97
         Height = 21
@@ -1764,7 +1771,7 @@ object Cad_Alunos: TCad_Alunos
         end
       end
       object DBEdit23: TDBEdit
-        Left = 290
+        Left = 321
         Top = 281
         Width = 149
         Height = 21
@@ -1773,7 +1780,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 15
       end
       object ModEspCombo: TRxDBComboBox
-        Left = 128
+        Left = 159
         Top = 305
         Width = 153
         Height = 21
@@ -1809,7 +1816,7 @@ object Cad_Alunos: TCad_Alunos
           'DME')
       end
       object DBEdit13: TDBEdit
-        Left = 128
+        Left = 159
         Top = 207
         Width = 284
         Height = 21
@@ -1819,7 +1826,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 12
       end
       object RxDBLookupCombo1: TRxDBLookupCombo
-        Left = 226
+        Left = 257
         Top = 82
         Width = 78
         Height = 21
@@ -1833,7 +1840,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 5
       end
       object Bcores: TBitBtn
-        Left = 309
+        Left = 340
         Top = 82
         Width = 34
         Height = 19
@@ -1850,7 +1857,7 @@ object Cad_Alunos: TCad_Alunos
           88808888888888888880}
       end
       object DBRadioGroup2: TDBRadioGroup
-        Left = 235
+        Left = 266
         Top = 170
         Width = 156
         Height = 32
@@ -1866,7 +1873,7 @@ object Cad_Alunos: TCad_Alunos
           'N')
       end
       object DBDateEdit1: TDBDateEdit
-        Left = 317
+        Left = 348
         Top = 8
         Width = 97
         Height = 21
@@ -1876,7 +1883,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 1
       end
       object DBRadioGroup3: TDBRadioGroup
-        Left = 478
+        Left = 562
         Top = 76
         Width = 113
         Height = 49
@@ -1892,7 +1899,7 @@ object Cad_Alunos: TCad_Alunos
           '2')
       end
       object DBEdit46: TDBEdit
-        Left = 478
+        Left = 562
         Top = 147
         Width = 121
         Height = 21
@@ -1901,7 +1908,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 23
       end
       object DBEdit47: TDBEdit
-        Left = 479
+        Left = 563
         Top = 186
         Width = 121
         Height = 21
@@ -1910,7 +1917,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 24
       end
       object DBEdit48: TDBEdit
-        Left = 479
+        Left = 563
         Top = 223
         Width = 121
         Height = 21
@@ -1919,7 +1926,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 25
       end
       object DBDateEdit3: TDBDateEdit
-        Left = 478
+        Left = 562
         Top = 256
         Width = 121
         Height = 21
@@ -1929,7 +1936,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 26
       end
       object DBEdit49: TDBEdit
-        Left = 480
+        Left = 564
         Top = 330
         Width = 145
         Height = 21
@@ -1938,7 +1945,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 28
       end
       object UFCartorio: TRxDBLookupCombo
-        Left = 478
+        Left = 562
         Top = 293
         Width = 40
         Height = 21
@@ -1968,7 +1975,7 @@ object Cad_Alunos: TCad_Alunos
         OnClick = Button2Click
       end
       object tiposanguineo: TRxDBLookupCombo
-        Left = 352
+        Left = 383
         Top = 81
         Width = 49
         Height = 21
@@ -1981,7 +1988,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 6
       end
       object situacao: TDBRadioGroup
-        Left = 124
+        Left = 155
         Top = 375
         Width = 185
         Height = 33
@@ -1996,10 +2003,9 @@ object Cad_Alunos: TCad_Alunos
         Values.Strings = (
           'B'
           'A')
-        Visible = False
       end
       object DBRadioGroup4: TDBRadioGroup
-        Left = 435
+        Left = 519
         Top = 402
         Width = 159
         Height = 32
@@ -2016,7 +2022,7 @@ object Cad_Alunos: TCad_Alunos
         Visible = False
       end
       object dbedtCPF: TDBEdit
-        Left = 128
+        Left = 159
         Top = 281
         Width = 121
         Height = 21
@@ -2025,7 +2031,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 14
       end
       object dbedtPAR_FINAL: TDBEdit
-        Left = 289
+        Left = 320
         Top = 354
         Width = 31
         Height = 21
@@ -2034,8 +2040,8 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 20
       end
       object RxDBLookupCombo5: TRxDBLookupCombo
-        Left = 136
-        Top = 464
+        Left = 156
+        Top = 512
         Width = 321
         Height = 21
         DropDownCount = 10
@@ -2048,7 +2054,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 34
       end
       object Button3: TButton
-        Left = 460
+        Left = 544
         Top = 460
         Width = 75
         Height = 25
@@ -2056,6 +2062,26 @@ object Cad_Alunos: TCad_Alunos
         Caption = 'Escola'
         TabOrder = 35
         OnClick = Button3Click
+      end
+      object RxDBGrid4: TRxDBGrid
+        Left = 156
+        Top = 415
+        Width = 252
+        Height = 89
+        DataSource = DM.DsAutorizacao
+        TabOrder = 36
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Verdana'
+        TitleFont.Style = []
+        OnEnter = RxDBGrid4Enter
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'AUTORIZACAO'
+            Visible = True
+          end>
       end
     end
     object Tab3: TTabSheet
@@ -2314,6 +2340,7 @@ object Cad_Alunos: TCad_Alunos
         Cursor = crHandPoint
         Caption = 'Reprocessa Bloqueto(Parcela)'
         TabOrder = 7
+        OnClick = BitBtn7Click
       end
     end
     object Tab4: TTabSheet

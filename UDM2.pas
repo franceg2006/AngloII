@@ -442,7 +442,6 @@ type
     iqdatasnotasFIM: TDateField;
     iqdatasnotasINICIO_NOTA: TDateField;
     iqdatasnotasFIM_NOTA: TDateField;
-    DBUsuario: TIBDatabase;
     TSUsuario: TIBTransaction;
     qy_usuario: TIBQuery;
     up_usuario: TIBUpdateSQL;
@@ -476,6 +475,7 @@ type
     dsgen: TDataSource;
     sql_gen: TIBQuery;
     sql_genCONTADOR: TLargeintField;
+    DBUsuario: TIBDatabase;
     procedure DBUsuarioAfterConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -510,7 +510,7 @@ procedure TDM2.DataModuleCreate(Sender: TObject);
 begin
 //***********************Para conexão com o servidor****************************
 
- { DBUsuario.Close;
+  DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
   DBUsuario.Params.Add('lc_ctype=WIN1252');
@@ -518,10 +518,10 @@ begin
   DBUsuario.DatabaseName := ('anglo:/bds/Anglo/Usuarios.gdb');
   DBUsuario.Open;
   DBUsuario.Connected := True;
-  TSUsuario.Active := True;}
+  TSUsuario.Active := True;
 
 //***************************Para conexão com o banco de dados LOCAL************
-
+ {
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
@@ -531,6 +531,6 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-  
+  }
 end;
 end.

@@ -2082,25 +2082,8 @@ object DM2: TDM2
       Origin = '"BIMESTRES"."FIM_NOTA"'
     end
   end
-  object DBUsuario: TIBDatabase
-    Connected = True
-    DatabaseName = 'anglo:/bds/Anglo/Usuarios.gdb'
-    Params.Strings = (
-      'lc_ctype=WIN1252'
-      'user_name=SYSDBA'
-      'password=plkh%321')
-    LoginPrompt = False
-    DefaultTransaction = TSUsuario
-    IdleTimer = 0
-    SQLDialect = 3
-    TraceFlags = []
-    AfterConnect = DBUsuarioAfterConnect
-    Left = 16
-    Top = 16
-  end
   object TSUsuario: TIBTransaction
     Active = True
-    DefaultDatabase = DBUsuario
     Params.Strings = (
       'read_committed'
       'rec_version'
@@ -2167,7 +2150,7 @@ object DM2: TDM2
       'delete from USUARIOS'
       'where'
       '  CODIGO = :OLD_CODIGO')
-    Left = 196
+    Left = 220
     Top = 430
   end
   object ds_usuario: TDataSource
@@ -2279,7 +2262,6 @@ object DM2: TDM2
     Top = 368
   end
   object iqParametros_B: TIBQuery
-    Database = DBUsuario
     Transaction = TSUsuario
     BufferChunks = 1000
     CachedUpdates = False
@@ -2465,7 +2447,6 @@ object DM2: TDM2
     Top = 192
   end
   object sql_gen: TIBQuery
-    Database = DBUsuario
     Transaction = TSUsuario
     BufferChunks = 1000
     CachedUpdates = False
@@ -2478,5 +2459,21 @@ object DM2: TDM2
       FieldName = 'CONTADOR'
       Required = True
     end
+  end
+  object DBUsuario: TIBDatabase
+    Connected = True
+    DatabaseName = 'anglo:/bds/Anglo/Usuarios.gdb'
+    Params.Strings = (
+      'lc_ctype=WIN1252'
+      'user_name=SYSDBA'
+      'password=plkh%321')
+    LoginPrompt = False
+    DefaultTransaction = TSUsuario
+    IdleTimer = 0
+    SQLDialect = 3
+    TraceFlags = []
+    AfterConnect = DBUsuarioAfterConnect
+    Left = 16
+    Top = 16
   end
 end

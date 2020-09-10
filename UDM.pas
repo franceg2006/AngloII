@@ -1154,6 +1154,10 @@ type
     AlunosMESINICIAL: TIntegerField;
     AlunosMESFINAL: TIntegerField;
     AlunosVALORPARCELAMAT: TIBBCDField;
+    DsAutorizacao: TDataSource;
+    Autorizacao: TIBDataSet;
+    AutorizacaoALUNOS: TIntegerField;
+    AutorizacaoAUTORIZACAO: TIBStringField;
     procedure BloquetosQCalcFields(DataSet: TDataSet);
     procedure TurmasNewRecord(DataSet: TDataSet);
     procedure GradeNewRecord(DataSet: TDataSet);
@@ -1195,6 +1199,7 @@ type
     procedure ibGradeprofessorNewRecord(DataSet: TDataSet);
     procedure qManutencaoFrentesCalcFields(DataSet: TDataSet);
     procedure DataModuleCreate(Sender: TObject);
+    procedure AutorizacaoNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     function Arredonda(Valor : Real) : Real;
@@ -1878,7 +1883,7 @@ begin
 //home/francebd/Anglo/Anglo_2007.gdb
 //servidor
 //***********************Para conexão com o servidor****************************
-  {
+
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');
@@ -1888,9 +1893,9 @@ begin
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-   }
-//***************************Para conexão com o banco de dados LOCAL************
 
+//***************************Para conexão com o banco de dados LOCAL************
+  {
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');
@@ -1900,7 +1905,12 @@ begin
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-  
+   }
+end;
+
+procedure TDM.AutorizacaoNewRecord(DataSet: TDataSet);
+begin
+  dm.AutorizacaoALUNOS.Value := dm.AlunosCODIGO.Value;
 end;
 
 end.

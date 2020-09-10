@@ -506,6 +506,8 @@ type
     AlunosAntFORMATURA: TIBStringField;
     MesFinal: TDBEdit;
     aviso: TLabel;
+    RxDBGrid4: TRxDBGrid;
+    Label96: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
@@ -587,6 +589,7 @@ type
     procedure BitBtn6Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure BitBtn7Click(Sender: TObject);
+    procedure RxDBGrid4Enter(Sender: TObject);
   private
     procedure AtualizaSitFin;
     procedure AtualizaSitFin2;
@@ -935,6 +938,7 @@ begin
   DM.qMunicipio.Open;
   dm.estado.Open;
   dm.tiposanguineo.Open;
+  dm.Autorizacao.Open;
   AtualizaFoto;
   if (principal.Ano.Caption<>'2014') then
      Button1.Enabled:=False;
@@ -1402,6 +1406,9 @@ end;
 procedure TCad_Alunos.Tab2Show(Sender: TObject);
 begin
   DataDoc.Date := now;
+  dm.Autorizacao.Close;
+  dm.Autorizacao.ParamByName('codigo').value := dm.AlunosCODIGO.Value;
+  dm.Autorizacao.Open;
 end;
 
 procedure TCad_Alunos.Turma2Change(Sender: TObject);
@@ -2127,6 +2134,11 @@ begin
   Finally
    fparametrosbloqueto.Free;
   End;
+end;
+
+procedure TCad_Alunos.RxDBGrid4Enter(Sender: TObject);
+begin
+   dm.Autorizacao.Open;
 end;
 
 end.

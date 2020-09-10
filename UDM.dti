@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Turmas
+ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Turmas,DM\DB_ANGLO\IBTr_ANGLO\Autorizacao
 
 [DataDiagrams]
 Version=1

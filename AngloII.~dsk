@@ -9,18 +9,19 @@ File_6=SourceModule,'C:\AngloII\ULst_Alunos2QR.pas',0,1,1,1,1,1,0
 File_7=SourceModule,'C:\AngloII\ULst_Alunos1QR.pas',0,1,1,62,12,1,0
 
 [Modules]
-Module0=C:\AngloII\UCad_Alunos.pas
+Module0=C:\AngloII\UDM2.pas
 Module1=C:\AngloII\Ufparametrosbloqueto.pas
 Module2=C:\AngloII\Ufremessa.pas
-Module3=C:\AngloII\UMenu.pas
-Module4=C:\AngloII\UDM.pas
-Module5=C:\AngloII\UDM2.pas
-Module6=C:\AngloII\ULst_Alunos.pas
-Module7=C:\AngloII\AngloII.dpr
-Count=8
+Module3=C:\AngloII\ULst_Alunos.pas
+Module4=C:\AngloII\UMenu.pas
+Module5=C:\AngloII\Uflogin.pas
+Module6=C:\AngloII\UDM.pas
+Module7=C:\AngloII\UCad_Alunos.pas
+Module8=C:\AngloII\AngloII.dpr
+Count=9
 EditWindowCount=1
 
-[C:\AngloII\UCad_Alunos.pas]
+[C:\AngloII\UDM2.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -35,7 +36,17 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
+[C:\AngloII\ULst_Alunos.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
 [C:\AngloII\UMenu.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\AngloII\Uflogin.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -45,12 +56,7 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[C:\AngloII\UDM2.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
-
-[C:\AngloII\ULst_Alunos.pas]
+[C:\AngloII\UCad_Alunos.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -69,8 +75,8 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=8
-CurrentView=2
+ViewCount=9
+CurrentView=8
 View0=0
 View1=1
 View2=2
@@ -79,13 +85,14 @@ View4=4
 View5=5
 View6=6
 View7=7
+View8=8
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
 State=0
-Left=286
-Top=123
+Left=147
+Top=118
 Width=1309
 Height=730
 MaxLeft=-8
@@ -103,57 +110,64 @@ BottomPanelData=00000400010000000B0000004D65737361676556696577000000000000000000
 [View0]
 Module=C:\AngloII\AngloII.dpr
 CursorX=1
-CursorY=158
-TopLine=93
+CursorY=151
+TopLine=132
 LeftCol=1
 
 [View1]
 Module=C:\AngloII\UMenu.pas
-CursorX=18
-CursorY=429
-TopLine=412
+CursorX=1
+CursorY=359
+TopLine=342
 LeftCol=1
 
 [View2]
-Module=C:\AngloII\UCad_Alunos.pas
-CursorX=2
-CursorY=2120
-TopLine=2120
+Module=C:\AngloII\Uflogin.pas
+CursorX=3
+CursorY=90
+TopLine=87
 LeftCol=1
 
 [View3]
-Module=C:\AngloII\Ufparametrosbloqueto.pas
-CursorX=13
-CursorY=287
-TopLine=269
+Module=C:\AngloII\UCad_Alunos.pas
+CursorX=15
+CursorY=1408
+TopLine=1405
 LeftCol=1
 
 [View4]
+Module=C:\AngloII\Ufparametrosbloqueto.pas
+CursorX=13
+CursorY=286
+TopLine=268
+LeftCol=1
+
+[View5]
 Module=C:\AngloII\Ufremessa.pas
 CursorX=22
 CursorY=193
 TopLine=174
 LeftCol=1
 
-[View5]
+[View6]
 Module=C:\AngloII\ULst_Alunos.pas
 CursorX=1
 CursorY=134
 TopLine=131
 LeftCol=1
 
-[View6]
+[View7]
 Module=C:\AngloII\UDM.pas
-CursorX=3
-CursorY=1903
-TopLine=1868
+CursorX=1
+CursorY=1913
+TopLine=1911
 LeftCol=1
 
-[View7]
+[View8]
 Module=C:\AngloII\UDM2.pas
-CursorX=3
-CursorY=534
-TopLine=503
+CursorX=34
+CursorY=517
+TopLine=509
 LeftCol=1
 
 [Watches]
@@ -176,7 +190,7 @@ Watch12='dm.AlunosVENCIMENTO',256,0,18,1,0
 Count=3
 Breakpoint0='C:\Anglo\UMenu.pas',647,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint1='C:\Anglo\Ufremessa.pas',195,'',0,1,'',1,0,0,'',1,'','',''
-Breakpoint2='C:\AngloII\UCad_Alunos.pas',741,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint2='C:\AngloII\UCad_Alunos.pas',746,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -259,7 +273,7 @@ LRDockWidth=292
 Dockable=1
 SplitPos=84
 ArrangeBy=Name
-SelectedItem=Caption
+SelectedItem=Name
 ExpandedItems=Brush,Options,PrinterSettings,Title
 HiddenCategories=Legacy
 ShowStatusBar=1

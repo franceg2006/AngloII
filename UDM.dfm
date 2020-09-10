@@ -4671,7 +4671,6 @@ object DM: TDM
   object TotAl: TIBQuery
     Database = DB_ANGLO
     Transaction = IBTr_ANGLO
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     SQL.Strings = (
@@ -9164,5 +9163,61 @@ object DM: TDM
     DataSet = Negociacao
     Left = 648
     Top = 600
+  end
+  object DsAutorizacao: TDataSource
+    DataSet = Autorizacao
+    Left = 160
+    Top = 480
+  end
+  object Autorizacao: TIBDataSet
+    Database = DB_ANGLO
+    Transaction = IBTr_ANGLO
+    OnNewRecord = AutorizacaoNewRecord
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from AUTO_CARTAO'
+      'where'
+      '  ALUNOS = :OLD_ALUNOS and'
+      '  AUTORIZACAO = :OLD_AUTORIZACAO')
+    InsertSQL.Strings = (
+      'insert into AUTO_CARTAO'
+      '  (ALUNOS, AUTORIZACAO)'
+      'values'
+      '  (:ALUNOS, :AUTORIZACAO)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  ALUNOS,'
+      '  AUTORIZACAO'
+      'from AUTO_CARTAO '
+      'where'
+      '  ALUNOS = :ALUNOS and'
+      '  AUTORIZACAO = :AUTORIZACAO')
+    SelectSQL.Strings = (
+      'select  *'
+      'from AUTO_CARTAO'
+      'where alunos = :codigo')
+    ModifySQL.Strings = (
+      'update AUTO_CARTAO'
+      'set'
+      '  ALUNOS = :ALUNOS,'
+      '  AUTORIZACAO = :AUTORIZACAO'
+      'where'
+      '  ALUNOS = :OLD_ALUNOS and'
+      '  AUTORIZACAO = :OLD_AUTORIZACAO')
+    Active = True
+    Left = 240
+    Top = 488
+    object AutorizacaoALUNOS: TIntegerField
+      FieldName = 'ALUNOS'
+      Origin = '"AUTO_CARTAO"."ALUNOS"'
+      Required = True
+    end
+    object AutorizacaoAUTORIZACAO: TIBStringField
+      FieldName = 'AUTORIZACAO'
+      Origin = '"AUTO_CARTAO"."AUTORIZACAO"'
+      Required = True
+      Size = 25
+    end
   end
 end

@@ -5,7 +5,7 @@ object flogin: Tflogin
   BorderStyle = bsSingle
   Caption = 'Login'
   ClientHeight = 181
-  ClientWidth = 194
+  ClientWidth = 199
   Color = 4791320
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -100,6 +100,6 @@ object flogin: Tflogin
   end
   object FormPlacement1: TFormPlacement
     Left = 144
-    Top = 32
+    Top = 8
   end
 end
