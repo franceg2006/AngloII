@@ -142,7 +142,8 @@ uses
   Ufescola in 'Ufescola.pas' {fescola},
   Uprematricula in 'Uprematricula.pas' {fprematricula},
   Ufextratomensal in 'Ufextratomensal.pas' {fextratomensal},
-  UDoc_ContratoCurso in 'UDoc_ContratoCurso.pas' {Doc_ContratoCurso: TQuickRep};
+  UDoc_ContratoCurso in 'UDoc_ContratoCurso.pas' {Doc_ContratoCurso: TQuickRep},
+  Ufparametrosbloqueto in 'Ufparametrosbloqueto.pas' {fparametrosbloqueto};
 
 {$R *.RES}
 

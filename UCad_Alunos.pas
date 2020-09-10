@@ -624,7 +624,8 @@ uses UDM, URel_QRFicha_Ocorrencia, UDoc_ContratoQR, UDoc_RequerimentoQR,
   UDoc_CertificadoQR, ULst_EstatisticaQR, UDoc_IRDeclQR,
   ULst_EstatisticaTurQR, UCad_AlunosFoto, Ucores, UDM2, Uend_cob,
   UEtiq_SPQR, Urelacaosenhapais, UDoc_ContratoSemiQR, UDoc_TermoCompromisso,
-  UDoc_ContratoCursinho, Ufescola, Uprematricula, UDoc_ContratoCurso;
+  UDoc_ContratoCursinho, Ufescola, Uprematricula, UDoc_ContratoCurso,
+  Ufparametrosbloqueto;
 
 {$R *.DFM}
 
@@ -2116,54 +2117,16 @@ begin
    Button7.Enabled := False;
 end;
 
+
+
 procedure TCad_Alunos.BitBtn7Click(Sender: TObject);
-var w_sql1, w_sql2, w_sql3, w_aluno :string;
 begin
-  sit := 'R';
-  if InputQuery('Título', 'Digite o número da parcela.', parc) and (parc <> '') then
-   Begin
-    w_aluno := dm.AlunosCODIGO.AsString;
-    w_sql1 := 'update bloquetos ';
-    w_sql2 := 'set st = ''R''';
-    w_sql3 := ' where aluno = ' +w_aluno+ ' and pagamento is null and parcela = '+parc;
-
-  if MessageDlg('Reprocessar Bloqueto do Aluno ?' + #13 + dm.AlunosNome.asstring, mtConfirmation, mbOKCancel, 0) = mrOK then begin
-    if (DM.AlunosBLOQUETO_1SEM.Value <> 1) then
-    begin
-    DM.Alunos.Edit;
-    DM.AlunosBLOQUETO_1SEM.Value := 1;
-    DM.Alunos.Post;
-    end;
-    up_st.SQL.Clear;
-    up_st.SQL.Text := w_sql1 + w_sql2 + w_sql3;
-    up_st.ExecQuery;
-    QBuscaBoleto.Close;
-    QBuscaBoleto.SQL.Strings[2] := 'where aluno = :baluno and PAGAMENTO is null and parcela = :bparc';
-    QBuscaBoleto.Params[0].Value := w_aluno;
-    QBuscaBoleto.Params[1].Value := parc;
-    QBuscaBoleto.Open;
-    CopiaBoleto;
-    Delete_Boleto.Close;
-    Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL and PARCELA = :bparc';
-    Delete_Boleto.Params[0].Value := w_aluno;
-    Delete_Boleto.Params[1].Value := parc;
-    Delete_Boleto.Open;
-    Delete_Boleto.Close;
-    dm.Alunos.edit;
-    DM.Alunosbloqueto_1sem.value := 10;
-    dm.Alunos.Post;
-    GeraBoletoMatricula;
-   end
-   else
-   ShowMessage('Caro usuário, você deve digitar a parcela/bloleto que deseja reprocessar.');
-
-
-  if dm.AlunosBLOQUETO_1SEM.Value = 0 then
-     ShowMessage('Esse boleto ainda não existe ele não pode ser reprocessado!!!');
-  end;
+  Application.CreateForm(Tfparametrosbloqueto, fparametrosbloqueto);
+  Try
+   fparametrosbloqueto.ShowModal;
+  Finally
+   fparametrosbloqueto.Free;
+  End;
 end;
+
 end.
-
-
-
-
