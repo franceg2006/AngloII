@@ -1,11 +1,11 @@
 object fparametrosbloqueto: Tfparametrosbloqueto
-  Left = 726
+  Left = 736
   Top = 336
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Parametros o boleto'
   ClientHeight = 170
-  ClientWidth = 249
+  ClientWidth = 155
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,14 +16,14 @@ object fparametrosbloqueto: Tfparametrosbloqueto
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
-    Left = 87
+    Left = 43
     Top = 48
     Width = 56
     Height = 13
     Caption = 'Data Limite:'
   end
   object Label2: TLabel
-    Left = 88
+    Left = 44
     Top = 88
     Width = 76
     Height = 13
@@ -43,7 +43,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
     Height = 3
   end
   object limite: TDateEdit
-    Left = 88
+    Left = 44
     Top = 64
     Width = 89
     Height = 21
@@ -52,7 +52,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
     OnExit = limiteExit
   end
   object BitBtn1: TBitBtn
-    Left = 96
+    Left = 49
     Top = 133
     Width = 75
     Height = 25
@@ -62,7 +62,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
     OnClick = BitBtn1Click
   end
   object parcela: TEdit
-    Left = 88
+    Left = 44
     Top = 104
     Width = 84
     Height = 21
@@ -86,7 +86,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
       'from bloquetos'
       'where aluno = :baluno and PAGAMENTO is null')
     Left = 328
-    Top = 88
+    Top = 56
     ParamData = <
       item
         DataType = ftUnknown
@@ -209,7 +209,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
   object DsBuscaBoleto: TDataSource
     DataSet = QBuscaBoleto
     Left = 248
-    Top = 88
+    Top = 56
   end
   object Delete_Boleto: TIBQuery
     Database = DM.DB_ANGLO
@@ -221,7 +221,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
       'from Bloquetos'
       'where Aluno = :baluno and PAGAMENTO IS NULL and ST = :bst')
     Left = 328
-    Top = 40
+    Top = 8
     ParamData = <
       item
         DataType = ftUnknown
@@ -237,6 +237,35 @@ object fparametrosbloqueto: Tfparametrosbloqueto
   object Ds_DeleteBoleto: TDataSource
     DataSet = Delete_Boleto
     Left = 248
-    Top = 40
+    Top = 8
+  end
+  object DsCursinho: TDataSource
+    DataSet = Bcursinho
+    Left = 248
+    Top = 112
+  end
+  object Bcursinho: TIBQuery
+    Database = DM.DB_ANGLO
+    Transaction = DM.IBTr_ANGLO
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select  t.cursinho'
+      
+        'from (alunos a join turmas t on a.turma=t.turma and a.serie = t.' +
+        'serie)'
+      'where a.codigo = :rgm')
+    Left = 336
+    Top = 112
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'rgm'
+        ParamType = ptUnknown
+      end>
+    object BcursinhoCURSINHO: TSmallintField
+      FieldName = 'CURSINHO'
+      Origin = '"TURMAS"."CURSINHO"'
+    end
   end
 end

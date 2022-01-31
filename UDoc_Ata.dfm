@@ -1,11 +1,11 @@
 object Doc_Ata: TDoc_Ata
-  Left = 458
-  Top = 192
+  Left = 499
+  Top = 267
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Ata de Resultados Finais'
   ClientHeight = 164
-  ClientWidth = 411
+  ClientWidth = 431
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,9 +19,9 @@ object Doc_Ata: TDoc_Ata
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
-    Left = 6
+    Left = 7
     Top = 16
-    Width = 89
+    Width = 88
     Height = 13
     Alignment = taRightJustify
     Caption = 'Série / Turma :'
@@ -61,6 +61,7 @@ object Doc_Ata: TDoc_Ata
     Top = 130
     Width = 89
     Height = 25
+    Cursor = crHandPoint
     Caption = '&Fecha'
     TabOrder = 0
     Kind = bkClose
@@ -71,6 +72,7 @@ object Doc_Ata: TDoc_Ata
     Top = 130
     Width = 89
     Height = 25
+    Cursor = crHandPoint
     Caption = '&Imprime'
     Enabled = False
     TabOrder = 4

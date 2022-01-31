@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, Placemnt, RXShell, RXCtrls, ToolEdit, Mask, Db,
   IBCustomDataSet, IBTable, DBCtrls, Halcn6DB, Gauges, Grids, DBGrids,
-  IBSQL, IBQuery, IBStoredProc, ComCtrls, RxCombos, ExtCtrls, TSong, RXSpin,
+  IBSQL, IBQuery, IBStoredProc, ComCtrls, RxCombos, ExtCtrls, RXSpin,
   RxMemDS, RXDBCtrl, IBDatabaseInfo, IBExtract;
 
 type
@@ -204,6 +204,7 @@ type
     procedure Reorg2Click(Sender: TObject);
     procedure Reorg3Click(Sender: TObject);
     procedure edtarquivoExit(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
   private
     procedure Distribui_Alunos(Serie : Integer);
     procedure Reorganiza_Numeros(Serie : Integer);
@@ -653,6 +654,11 @@ begin
   dm.Parametros.Edit;
   dm.ParametrosCAMINHO.Value := edtarquivo.Text;
   dm.Parametros.Post;
+end;
+
+procedure TCadParametros.BitBtn1Click(Sender: TObject);
+begin
+  dm2.TSUsuario.CommitRetaining;
 end;
 
 end.

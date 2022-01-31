@@ -112,7 +112,7 @@ object Mov_Frequencia: TMov_Frequencia
       object Turma: TRxLabel
         Left = 16
         Top = 138
-        Width = 67
+        Width = 65
         Height = 25
         Caption = 'Turma'
         Font.Charset = DEFAULT_CHARSET
@@ -204,9 +204,9 @@ object Mov_Frequencia: TMov_Frequencia
         Caption = 'Cancelar Faltas Geradas'
         TabOrder = 2
         object Label6: TLabel
-          Left = 9
+          Left = 10
           Top = 21
-          Width = 89
+          Width = 88
           Height = 13
           Alignment = taRightJustify
           Caption = 'Série / Turma :'
@@ -277,7 +277,7 @@ object Mov_Frequencia: TMov_Frequencia
       object TurmaF: TRxLabel
         Left = 16
         Top = 97
-        Width = 67
+        Width = 65
         Height = 25
         Caption = 'Turma'
         Font.Charset = DEFAULT_CHARSET

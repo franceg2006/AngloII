@@ -52,6 +52,8 @@ begin
   Bases.Items.Add ('Anglo_2017II.gdb');
   Bases.Items.Add ('Anglo_2018II.gdb');
   Bases.Items.Add ('Anglo_2019II.gdb');
+  Bases.Items.Add ('Anglo_2020II.gdb');
+  Bases.Items.Add ('Anglo_2021II.gdb');
  for i := 0 to Bases.Items.Count-1 do begin
     Anos.Append;
     AnosANO.Value := StrToInt(Copy(Bases.Items.Strings[i],7,4));

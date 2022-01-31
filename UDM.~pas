@@ -24,8 +24,6 @@ type
     ParametrosMENSAGEMSACADO: TIBStringField;
     ParametrosCEDENTE: TIBStringField;
     ParametrosCAD_ALU_ORIG: TIBStringField;
-    ContaAlunosQ: TIBQuery;
-    ContaAlunosQTOTALALUNOS: TIntegerField;
     dsBloquetos: TDataSource;
     Bloquetos: TIBDataSet;
     BloquetosNOSSO_NUMERO: TIntegerField;
@@ -1034,7 +1032,6 @@ type
     AlunosENDERECO: TIBStringField;
     AlunosCIDADE: TIBStringField;
     AlunosUF: TIBStringField;
-    AlunosCEP: TIBStringField;
     AlunosRG: TIBStringField;
     AlunosCOMPLEMENTO_RG: TSmallintField;
     AlunosDATA_EXP_IDENT: TDateField;
@@ -1048,7 +1045,6 @@ type
     AlunosCERTIDAO_CIVIL: TSmallintField;
     AlunosDATA_EMI_CERT: TDateField;
     AlunosNOME_CART_EXP: TIBStringField;
-    AlunosCPF: TSmallintField;
     AlunosSEXO: TIBStringField;
     AlunosPAI_NOME: TIBStringField;
     AlunosPAI_PROFISSAO: TIBStringField;
@@ -1158,6 +1154,18 @@ type
     Autorizacao: TIBDataSet;
     AutorizacaoALUNOS: TIntegerField;
     AutorizacaoAUTORIZACAO: TIBStringField;
+    AlunosCPF: TIBStringField;
+    AutorizacaoNOME_TITULAR: TIBStringField;
+    AutorizacaoPARCELAS: TIntegerField;
+    AutorizacaoDATA_PAGAMENTO: TDateField;
+    ContaAlunosQ: TIBQuery;
+    ContaAlunosQTOTALALUNOS: TIntegerField;
+    AutorizacaoFORMAP: TIBStringField;
+    AutorizacaoVALORP: TIBBCDField;
+    AutorizacaoMEMOBS: TIBStringField;
+    AlunosOBS_TEL: TIBStringField;
+    AlunosINTINERARIO: TIntegerField;
+    AlunosCEP: TIBStringField;
     procedure BloquetosQCalcFields(DataSet: TDataSet);
     procedure TurmasNewRecord(DataSet: TDataSet);
     procedure GradeNewRecord(DataSet: TDataSet);
@@ -1471,7 +1479,7 @@ begin
                 ' - '+TurmasPeriodoX.Value;
   TurmasSerieX.Value := IntToStr(TurmasSERIE.Value)+'ª Série '+TurmasTURMA.Value;
   if TurmasCURSINHO.Value = 0 then TurmasCursinhoSN.Value := 'N';
-  if TurmasCURSINHO.Value = 1 then TurmasCursinhoSN.Value := 'S';
+  if TurmasCURSINHO.Value = 1 then TurmasCursinhoSN.Value := 'G';
 end;
 
 procedure TDM.GradeNewRecord(DataSet: TDataSet);
@@ -1889,7 +1897,7 @@ begin
   DB_ANGLO.Params.Add('user_name=SYSDBA');
   DB_ANGLO.Params.Add('lc_ctype=WIN1252');
   DB_ANGLO.Params.Add('password=plkh%321');
-  DB_ANGLO.DatabaseName := ('anglo:/bds/Anglo/Anglo_2015II.gdb');
+  DB_ANGLO.DatabaseName := ('anglo:/bds/Anglo/Anglo_2020II.gdb');
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
@@ -1901,16 +1909,16 @@ begin
   DB_ANGLO.Params.Add('user_name=SYSDBA');
   DB_ANGLO.Params.Add('lc_ctype=WIN1252');
   DB_ANGLO.Params.Add('password=masterkey');
-  DB_ANGLO.DatabaseName := ('C:/AngloII/Anglo_2020II.gdb');
+  DB_ANGLO.DatabaseName := ('C:/AngloII/Anglo_2021II.gdb');
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-   }
+  }
 end;
 
 procedure TDM.AutorizacaoNewRecord(DataSet: TDataSet);
 begin
-  dm.AutorizacaoALUNOS.Value := dm.AlunosCODIGO.Value;
+   dm.AutorizacaoALUNOS.Value := dm.AlunosCODIGO.Value;
 end;
 
 end.

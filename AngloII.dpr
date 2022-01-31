@@ -143,7 +143,10 @@ uses
   Uprematricula in 'Uprematricula.pas' {fprematricula},
   Ufextratomensal in 'Ufextratomensal.pas' {fextratomensal},
   UDoc_ContratoCurso in 'UDoc_ContratoCurso.pas' {Doc_ContratoCurso: TQuickRep},
-  Ufparametrosbloqueto in 'Ufparametrosbloqueto.pas' {fparametrosbloqueto};
+  Ufparametrosbloqueto in 'Ufparametrosbloqueto.pas' {fparametrosbloqueto},
+  Ufautorizacao in 'Ufautorizacao.pas' {fautorizacao},
+  URel_Autoriza in 'URel_Autoriza.pas' {Rel_autoriza},
+  UTermo_Resp in 'UTermo_Resp.pas' {Rel_TermoResp};
 
 {$R *.RES}
 
@@ -170,7 +173,6 @@ begin
   Application.CreateForm(Tfextratomensal, fextratomensal);
   FrmSplash.GSplash.Progress := FrmSplash.GSplash.Progress + 1;
   FrmSplash.GSplash.Progress := FrmSplash.GSplash.Progress + 1;
-//  Application.CreateForm(TPrincipal, Principal);
   FrmSplash.GSplash.Progress := FrmSplash.GSplash.Progress + 1; 
   FrmSplash.GSplash.Progress := FrmSplash.GSplash.Progress + 1;
   Application.CreateForm(TLst_NotasQR, Lst_NotasQR);

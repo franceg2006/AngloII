@@ -1,8 +1,9 @@
 object Doc_TermoCompromisso: TDoc_TermoCompromisso
-  Left = 336
-  Top = 193
+  Left = 339
+  Top = 98
   Width = 851
-  Height = 563
+  Height = 660
+  VertScrollBar.Position = 393
   Caption = 'Termo de Compromisso'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +16,7 @@ object Doc_TermoCompromisso: TDoc_TermoCompromisso
   TextHeight = 13
   object rlCompromisso: TRLReport
     Left = 0
-    Top = 0
+    Top = -393
     Width = 794
     Height = 1123
     Font.Charset = DEFAULT_CHARSET
@@ -27,7 +28,7 @@ object Doc_TermoCompromisso: TDoc_TermoCompromisso
       Left = 38
       Top = 38
       Width = 718
-      Height = 1029
+      Height = 869
       BandType = btTitle
       Borders.Sides = sdCustom
       Borders.DrawLeft = True
@@ -524,53 +525,49 @@ object Doc_TermoCompromisso: TDoc_TermoCompromisso
             'to vinculado às seguintes normas:')
       end
       object rlm2: TRLMemo
-        Left = 40
-        Top = 324
+        Left = 48
+        Top = 343
         Width = 641
-        Height = 208
+        Height = 160
         Lines.Strings = (
-          '1. Manter a média exigida pela escola;'
-          ''
-          '2. Não faltar em dias de prova e simulados;'
+          '1. Não faltar em dias de prova e simulados;'
           ''
           
-            '3. Não possuir problemas disciplinares (comportamento inadequado' +
+            '2. Não possuir problemas disciplinares (comportamento inadequado' +
             ' em sala e no recinto escolar, cabular aulas, uso do uniforme);'
           ''
-          
-            '4. Cumprir com as atividades propostas pelo professor (Tarefas, ' +
-            'trabalhos, etc.);'
-          ''
-          '5. Frequentar assiduamente as aulas;'
+          '3. Frequentar assiduamente as aulas;'
           ''
           
             '    O descumprimento dessas normas causará a perda gradativa do ' +
-            'desconto, em casos graves a perda total do desconto.')
+            'desconto, em casos graves a perda total do desconto.'
+          ' ')
+        Visible = False
       end
       object rlbl2: TRLLabel
         Left = 288
-        Top = 820
+        Top = 590
         Width = 45
         Height = 16
         Caption = 'Ciente:'
       end
       object rldrw1: TRLDraw
         Left = 336
-        Top = 834
+        Top = 604
         Width = 297
         Height = 5
         DrawKind = dkLine
       end
       object rlbl3: TRLLabel
-        Left = 432
-        Top = 852
-        Width = 77
+        Left = 352
+        Top = 607
+        Width = 259
         Height = 16
-        Caption = 'Responsável'
+        Caption = 'Responsável Colégio UNIGRAN -  Unidade II'
       end
       object rlsystmnf1: TRLSystemInfo
-        Left = 296
-        Top = 954
+        Left = 288
+        Top = 802
         Width = 122
         Height = 16
         Text = 'Dourados-MS,'
@@ -610,6 +607,105 @@ object Doc_TermoCompromisso: TDoc_TermoCompromisso
         Angle = 90
         DrawKind = dkLine
       end
+      object rlm3: TRLMemo
+        Left = 48
+        Top = 342
+        Width = 641
+        Height = 224
+        Lines.Strings = (
+          '1. Manter a média exigida pela escola;'
+          ''
+          '2. Não faltar em dias de prova e simulados;'
+          ''
+          
+            '3. Não possuir problemas disciplinares (comportamento inadequado' +
+            ' em sala e no recinto escolar, cabular aulas, uso do uniforme);'
+          ''
+          
+            '4. Cumprir com as atividades propostas pelo professor (Tarefas, ' +
+            'trabalhos, etc.);'
+          ''
+          '5. Frequentar assiduamente as aulas;'
+          ''
+          
+            '    O descumprimento dessas normas causará a perda gradativa do ' +
+            'desconto, em casos graves a perda total do desconto.'
+          ' ')
+        Visible = False
+      end
+      object RLLabel1: TRLLabel
+        Left = 288
+        Top = 665
+        Width = 45
+        Height = 16
+        Caption = 'Ciente:'
+      end
+      object RLDraw1: TRLDraw
+        Left = 336
+        Top = 679
+        Width = 297
+        Height = 5
+        DrawKind = dkLine
+      end
+      object RLLabel2: TRLLabel
+        Left = 424
+        Top = 682
+        Width = 114
+        Height = 16
+        Caption = 'Responsável/Aluno'
+      end
+      object RLLabel3: TRLLabel
+        Left = 288
+        Top = 733
+        Width = 45
+        Height = 16
+        Caption = 'Ciente:'
+      end
+      object RLDraw2: TRLDraw
+        Left = 336
+        Top = 747
+        Width = 297
+        Height = 5
+        DrawKind = dkLine
+      end
+      object RLLabel4: TRLLabel
+        Left = 467
+        Top = 750
+        Width = 37
+        Height = 16
+        Caption = 'Aluno'
+      end
+    end
+  end
+  object Consulta: TIBQuery
+    Database = DM.DB_ANGLO
+    Transaction = DM.IBTr_ANGLO
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select CURSINHO,PERIODO'
+      'from TURMAS'
+      'where SERIE = :serie and TURMA = :turma')
+    Left = 630
+    Top = 271
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'serie'
+        ParamType = ptUnknown
+      end
+      item
+        DataType = ftUnknown
+        Name = 'turma'
+        ParamType = ptUnknown
+      end>
+    object ConsultaCURSINHO: TSmallintField
+      FieldName = 'CURSINHO'
+      Origin = '"TURMAS"."CURSINHO"'
+    end
+    object ConsultaPERIODO: TSmallintField
+      FieldName = 'PERIODO'
+      Origin = '"TURMAS"."PERIODO"'
     end
   end
 end

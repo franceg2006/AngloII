@@ -62,12 +62,6 @@ type
     QRLabel12: TQRLabel;
     QRDBText9: TQRDBText;
     QRLabel13: TQRLabel;
-    QRAngledLabel7: TQRAngledLabel;
-    QRAngledLabel1: TQRAngledLabel;
-    QRAngledLabel2: TQRAngledLabel;
-    QRAngledLabel3: TQRAngledLabel;
-    QRAngledLabel4: TQRAngledLabel;
-    QRAngledLabel5: TQRAngledLabel;
     QRShape14: TQRShape;
     QRShape15: TQRShape;
     QRShape16: TQRShape;

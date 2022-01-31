@@ -174,8 +174,6 @@ uses UDM, UMenu;
 
 procedure TfPrintBloqueto.RLBand3BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
-  Var ano, mes, dia, a_ano, a_mes, a_dia, l_ano, l_mes, l_dia :word;
-  mzero, nzero  :string;
 begin
   MENSAGEM2.Visible := True;
   MENSAGEM3.Visible := True;
@@ -185,44 +183,46 @@ begin
   RLLabel24.Visible := True;
   porcentagem.Visible := True;
   RLLabel27.Visible := True;
-  if (((principal.Ano.Caption = '2012') or (principal.Ano.Caption = '2013') or (Principal.Ano.Caption = '2014') or (Principal.Ano.Caption = '2015') or (Principal.Ano.Caption = '2016') or (Principal.Ano.Caption = '2017') or (Principal.Ano.Caption = '2018') or (Principal.Ano.Caption = '2019') or (Principal.Ano.Caption = '2020'))) then
+  if (((principal.Ano.Caption = '2012') or (principal.Ano.Caption = '2013') or
+       (Principal.Ano.Caption = '2014') or (Principal.Ano.Caption = '2015') or
+       (Principal.Ano.Caption = '2016') or (Principal.Ano.Caption = '2017') or
+       (Principal.Ano.Caption = '2018') or (Principal.Ano.Caption = '2019') or
+       (Principal.Ano.Caption = '2020') or (Principal.Ano.Caption = '2021')))
+  then
    Begin
-    Decodedate(dm.BloquetosQVENCIMENTO.Value, ano, mes, dia);
-    DecodeDate(dm.BloquetosQDATA_LIMITE.Value, l_ano, l_mes, l_dia);
-    Decodedate(now, a_ano, a_mes, a_dia);
-    if l_mes < 10 then
-       mzero := '0' + InttoStr(l_mes)
-       else
-       mzero := IntToStr(l_mes);
-
-      if l_dia < 10 then
-       nzero := '0' + InttoStr(l_dia)
-       else
-       nzero := IntToStr(l_dia);
-
-    {if a_mes = 2 then
-     Begin
-          MENSAGEM1.Caption := DM.ParametrosMENSAGEM1.Value +' '+ dm.ParametrosVCTOFEVEREIRO.AsString + '/'+ mzero + '/' + IntToStr(ano) + '     R$ ' +  FormatFloat('#,,0.00',DM.BloquetosQVALOR_ANT.Value);
-          MENSAGEM2.Caption := DM.ParametrosMENSAGEM2.Value + '  ' + FormatDateTime('dd/mm/yyyy',DM.BloquetosQVENCIMENTO.Value) + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value);
-          MENSAGEM3.Caption := DM.ParametrosMENSAGEM3.Value + ' ' + FormatDateTime('dd/mm/yyyy',DM.BloquetosQVENCIMENTO.Value) + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value) + ' + MULTA DE 2% +';
-     End
-    Else}
     if (dm.AlunosVENCIMENTO.IsNull) then
       Begin
-        MENSAGEM1.Caption := DM.ParametrosMENSAGEM1.Value + nzero +'/'+ mzero + '/' + IntToStr(ano) + '    R$ ' +  FormatFloat('#,,0.00',DM.BloquetosQVALOR_ANT.Value);
-        MENSAGEM2.Caption := DM.ParametrosMENSAGEM2.Value + '  ' + FormatDateTime('dd/mm/yyyy',DM.BloquetosQVENCIMENTO.Value) + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value);
-        MENSAGEM3.Caption := DM.ParametrosMENSAGEM3.Value + ' ' + FormatDateTime('dd/mm/yyyy', DM.BloquetosQVENCIMENTO.Value) + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value) + ' + MULTA DE 2% +';
+        MENSAGEM1.Caption := DM.ParametrosMENSAGEM1.Value + dm.BloquetosQDATA_LIMITE.AsString + '    R$ ' +  FormatFloat('#,,0.00',DM.BloquetosQVALOR_ANT.Value);
+        MENSAGEM2.Caption := DM.ParametrosMENSAGEM2.Value + '  ' + DM.BloquetosQVENCIMENTO.AsString + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value);
+        MENSAGEM3.Caption := DM.ParametrosMENSAGEM3.Value + ' ' + DM.BloquetosQVENCIMENTO.AsString + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value) + ' + MULTA DE 2% +';
       end else
       Begin
-        MENSAGEM1.Caption := DM.ParametrosMENSAGEM1.Value + dm.AlunosVencimento.asString + '/'+ mzero + '/' + IntToStr(ano) + '    R$ ' +  FormatFloat('#,,0.00',DM.BloquetosQVALOR_ANT.Value);
-        MENSAGEM2.Caption := DM.ParametrosMENSAGEM2.Value + '  ' + FormatDateTime('dd/mm/yyyy',DM.BloquetosQVENCIMENTO.Value) + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value);
-        MENSAGEM3.Caption := DM.ParametrosMENSAGEM3.Value + ' ' + FormatDateTime('dd/mm/yyyy', DM.BloquetosQVENCIMENTO.Value) + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value) + ' + MULTA DE 2% +';
+        MENSAGEM1.Caption := DM.ParametrosMENSAGEM1.Value + dm.AlunosVencimento.asString  + '    R$ ' +  FormatFloat('#,,0.00',DM.BloquetosQVALOR_ANT.Value);
+        MENSAGEM2.Caption := DM.ParametrosMENSAGEM2.Value + '  ' + DM.BloquetosQVENCIMENTO.AsString + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value);
+        MENSAGEM3.Caption := DM.ParametrosMENSAGEM3.Value + ' ' + DM.BloquetosQVENCIMENTO.AsString + '     R$ ' + FormatFloat('#,,0.00',dm.BloquetosQVALOR.Value) + ' + MULTA DE 2% +';
       end;
    end;
 
-      if ((principal.Ano.Caption = '2019') and (dm.BloquetosQPARCELA.Value = 1))  then
+   if ((dm.BloquetosQBOLSA.Value = 0) or (dm.BloquetosQBOLSA.IsNull)) then
+    Begin
+       RLLabel24.Caption := 'Desc. 5%';
+       RLDBText27.Visible := False;
+       porcentagem.Visible := False;
+    end
+       else     Begin
+         RLLabel24.Caption := 'Desc.';
+         RLDBText27.Visible := True;
+         porcentagem.Visible := True;
+         end;
+
+
+
+
+
+
+{      if (dm.BloquetosQPARCELA.Value = 1)  then
        Begin
-        MENSAGEM1.Caption := '  PAGAMENTO REFERENTE A MATRICULA-2019';
+        MENSAGEM1.Caption := '  PAGAMENTO REFERENTE A MATRICULA-2021';
         MENSAGEM2.Visible := False;
         MENSAGEM3.Visible := False;
         RLDBText27.Visible := False;
@@ -231,9 +231,8 @@ begin
         RLLabel24.Visible := False;
         porcentagem.Visible := False;
         RLLabel27.Visible := False;
+        RLDBText28.Visible := False;
         RLLabel18.Caption := 'Matricula';
-       End;
-
-
+       End;}
    end;
 end.

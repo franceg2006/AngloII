@@ -476,6 +476,29 @@ type
     sql_gen: TIBQuery;
     sql_genCONTADOR: TLargeintField;
     DBUsuario: TIBDatabase;
+    DsRequerimento: TDataSource;
+    iqRequerimento: TIBQuery;
+    iqRequerimentoCODIGO: TIntegerField;
+    iqRequerimentoNOME: TIBStringField;
+    iqRequerimentoPAI_NOME: TIBStringField;
+    iqRequerimentoPAI_PROFISSAO: TIBStringField;
+    iqRequerimentoMAE_NOME: TIBStringField;
+    iqRequerimentoMAE_PROFISSAO: TIBStringField;
+    iqRequerimentoNASC_DATA: TDateField;
+    iqRequerimentoNASC_CIDADE: TIBStringField;
+    iqRequerimentoNASC_UF: TIBStringField;
+    iqRequerimentoCIDADE: TIBStringField;
+    iqRequerimentoENDERECO: TIBStringField;
+    iqRequerimentoNUMERO: TSmallintField;
+    iqRequerimentoBAIRRO: TIBStringField;
+    iqRequerimentoUF: TIBStringField;
+    iqRequerimentoCEP: TIBStringField;
+    iqRequerimentoFONE: TIBStringField;
+    iqRequerimentoCELULAR: TIBStringField;
+    iqRequerimentoTEL_RESIDENCIAL: TIBStringField;
+    iqRequerimentoRG: TIBStringField;
+    iqRequerimentoSERIE: TSmallintField;
+    iqRequerimentoNOME_LOGADOURO: TIBStringField;
     procedure DBUsuarioAfterConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -519,9 +542,9 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-
+  
 //***************************Para conexão com o banco de dados LOCAL************
- {
+  {
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');

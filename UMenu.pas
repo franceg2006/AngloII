@@ -5,7 +5,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Menus, RxMenus, ComCtrls, Placemnt, RxGIF, ExtCtrls, RxGrdCpt, StdCtrls,
   RXShell, jpeg, RxLogin, RXCtrls, FileCtrl, Buttons, RXDBCtrl, AppEvnts,
-  WinSkinData,RxLookup, IniFiles, DB, IBQuery, RzLabel;
+  RxLookup, IniFiles, DB, IBQuery, RzLabel;
 
 
 
@@ -330,7 +330,7 @@ begin
  if ((dm.DB_ANGLO.DatabaseName = '/AngloII/Anglo_2017II.gdb') or (dm.DB_ANGLO.DatabaseName = 'servidor:c:/AngloII/Anglo_'+y_anos+'II.gdb'))  then
       config := TIniFile.Create('C:/ini/AngloII.ini')
   else
-  config := TIniFile.Create('c:/ini/AngloII.ini');
+  config := TIniFile.Create('C:/ini/AngloII.ini');
   params := config.ReadString('Database settings','database','');
   Ano.Caption := config.ReadString('TPrincipal','Ano_Caption','');
   DM.DB_ANGLO.Close;
@@ -640,7 +640,7 @@ end;
 
 procedure TPrincipal.AtadeResultadosFinais1Click(Sender: TObject);
 begin
-   Application.CreateForm(TDoc_Ata, Doc_Ata);
+  Application.CreateForm(TDoc_Ata, Doc_Ata);
   Try
    Doc_Ata.ShowModal;
   Finally

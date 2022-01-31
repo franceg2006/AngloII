@@ -1,6 +1,6 @@
 object Cad_Alunos: TCad_Alunos
-  Left = 301
-  Top = 96
+  Left = 246
+  Top = 133
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'ALUNOS'
@@ -29,7 +29,7 @@ object Cad_Alunos: TCad_Alunos
     Top = 0
     Width = 970
     Height = 657
-    ActivePage = Tab1
+    ActivePage = Tab2
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
     TabOrder = 1
@@ -110,7 +110,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label10: TLabel
         Left = 27
-        Top = 200
+        Top = 238
         Width = 71
         Height = 13
         Alignment = taRightJustify
@@ -119,7 +119,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label11: TLabel
         Left = 16
-        Top = 225
+        Top = 263
         Width = 84
         Height = 13
         Alignment = taRightJustify
@@ -128,7 +128,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label13: TLabel
         Left = 185
-        Top = 200
+        Top = 238
         Width = 38
         Height = 13
         Alignment = taRightJustify
@@ -136,7 +136,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label19: TLabel
         Left = 343
-        Top = 318
+        Top = 379
         Width = 67
         Height = 13
         Alignment = taRightJustify
@@ -146,7 +146,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label18: TLabel
         Left = 10
-        Top = 321
+        Top = 382
         Width = 88
         Height = 13
         Alignment = taRightJustify
@@ -155,7 +155,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label17: TLabel
         Left = 29
-        Top = 296
+        Top = 334
         Width = 69
         Height = 13
         Alignment = taRightJustify
@@ -164,7 +164,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label16: TLabel
         Left = 317
-        Top = 272
+        Top = 310
         Width = 61
         Height = 13
         Alignment = taRightJustify
@@ -174,7 +174,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label15: TLabel
         Left = 16
-        Top = 272
+        Top = 310
         Width = 82
         Height = 13
         Alignment = taRightJustify
@@ -183,7 +183,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label14: TLabel
         Left = 35
-        Top = 248
+        Top = 286
         Width = 63
         Height = 13
         Alignment = taRightJustify
@@ -206,7 +206,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object DBText8: TDBText
         Left = 104
-        Top = 417
+        Top = 478
         Width = 54
         Height = 13
         AutoSize = True
@@ -221,7 +221,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label53: TLabel
         Left = 10
-        Top = 417
+        Top = 478
         Width = 88
         Height = 13
         Alignment = taRightJustify
@@ -230,7 +230,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label56: TLabel
         Left = 600
-        Top = 383
+        Top = 422
         Width = 95
         Height = 13
         Alignment = taRightJustify
@@ -239,7 +239,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object DBText11: TDBText
         Left = 701
-        Top = 383
+        Top = 422
         Width = 62
         Height = 13
         AutoSize = True
@@ -254,7 +254,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label72: TLabel
         Left = 217
-        Top = 417
+        Top = 478
         Width = 64
         Height = 13
         Alignment = taRightJustify
@@ -263,7 +263,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object DBText14: TDBText
         Left = 288
-        Top = 417
+        Top = 478
         Width = 62
         Height = 13
         AutoSize = True
@@ -278,7 +278,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label73: TLabel
         Left = 645
-        Top = 353
+        Top = 392
         Width = 72
         Height = 24
         Alignment = taCenter
@@ -341,14 +341,14 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label86: TLabel
         Left = 320
-        Top = 224
+        Top = 262
         Width = 23
         Height = 13
         Caption = 'UF :'
       end
       object RxLabel1: TRxLabel
-        Left = 269
-        Top = 388
+        Left = 413
+        Top = 449
         Width = 189
         Height = 18
         Cursor = crHandPoint
@@ -383,45 +383,24 @@ object Cad_Alunos: TCad_Alunos
       end
       object Label76: TLabel
         Left = 52
-        Top = 349
+        Top = 410
         Width = 46
         Height = 13
         Caption = 'Celular:'
       end
       object Label94: TLabel
         Left = 48
-        Top = 373
+        Top = 434
         Width = 49
         Height = 13
         Caption = 'Tel. Res.'
       end
       object Label95: TLabel
         Left = 23
-        Top = 393
+        Top = 454
         Width = 74
         Height = 13
         Caption = 'Tel. Contato:'
-      end
-      object DBText15: TDBText
-        Left = 268
-        Top = 369
-        Width = 281
-        Height = 17
-        DataField = 'FONE'
-        DataSource = DM.dsAlunos
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Verdana'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label20: TLabel
-        Left = 264
-        Top = 352
-        Width = 103
-        Height = 13
-        Caption = 'Telefone Anterior:'
       end
       object lb1: TLabel
         Left = 536
@@ -429,6 +408,27 @@ object Cad_Alunos: TCad_Alunos
         Width = 27
         Height = 13
         Caption = 'ID  :'
+      end
+      object Label98: TLabel
+        Left = 71
+        Top = 209
+        Width = 24
+        Height = 13
+        Caption = 'CPF.'
+      end
+      object Label97: TLabel
+        Left = 50
+        Top = 356
+        Width = 47
+        Height = 13
+        Caption = 'E-Mail  :'
+      end
+      object Label20: TLabel
+        Left = 242
+        Top = 432
+        Width = 51
+        Height = 13
+        Caption = 'Obs. Tel:'
       end
       object DBEdit1: TDBEdit
         Left = 104
@@ -521,91 +521,91 @@ object Cad_Alunos: TCad_Alunos
       end
       object DBEdit10: TDBEdit
         Left = 104
-        Top = 195
+        Top = 233
         Width = 74
         Height = 21
         DataField = 'NASC_DATA'
         DataSource = DM.dsAlunos
-        TabOrder = 18
+        TabOrder = 19
       end
       object DBEdit11: TDBEdit
         Left = 104
-        Top = 220
+        Top = 258
         Width = 202
         Height = 21
         CharCase = ecUpperCase
         DataField = 'NASC_CIDADE'
         DataSource = DM.dsAlunos
-        TabOrder = 20
+        TabOrder = 21
       end
       object DBEdit12: TDBEdit
         Left = 344
-        Top = 219
+        Top = 257
         Width = 25
         Height = 21
         DataField = 'NASC_UF'
         DataSource = DM.dsAlunos
-        TabOrder = 21
+        TabOrder = 22
       end
       object DBEdit19: TDBEdit
         Left = 416
-        Top = 314
+        Top = 375
         Width = 74
         Height = 21
         DataField = 'MAE_NASCIMENTO'
         DataSource = DM.dsAlunos
-        TabOrder = 27
+        TabOrder = 29
         Visible = False
       end
       object DBEdit18: TDBEdit
         Left = 104
-        Top = 316
+        Top = 377
         Width = 144
         Height = 21
         CharCase = ecUpperCase
         DataField = 'MAE_PROFISSAO'
         DataSource = DM.dsAlunos
-        TabOrder = 26
+        TabOrder = 28
       end
       object DBEdit17: TDBEdit
         Left = 104
-        Top = 291
+        Top = 329
         Width = 354
         Height = 21
         CharCase = ecUpperCase
         DataField = 'MAE_NOME'
         DataSource = DM.dsAlunos
-        TabOrder = 25
+        TabOrder = 26
       end
       object DBEdit16: TDBEdit
         Left = 384
-        Top = 267
+        Top = 305
         Width = 74
         Height = 21
         DataField = 'PAI_NASCIMENTO'
         DataSource = DM.dsAlunos
-        TabOrder = 24
+        TabOrder = 25
         Visible = False
       end
       object DBEdit15: TDBEdit
         Left = 104
-        Top = 267
+        Top = 305
         Width = 161
         Height = 21
         CharCase = ecUpperCase
         DataField = 'PAI_PROFISSAO'
         DataSource = DM.dsAlunos
-        TabOrder = 23
+        TabOrder = 24
       end
       object DBEdit14: TDBEdit
         Left = 104
-        Top = 243
+        Top = 281
         Width = 354
         Height = 21
         CharCase = ecUpperCase
         DataField = 'PAI_NOME'
         DataSource = DM.dsAlunos
-        TabOrder = 22
+        TabOrder = 23
       end
       object PesqAluno: TRxDBLookupCombo
         Left = 188
@@ -630,7 +630,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 33
         BevelOuter = bvNone
         Color = clGray
-        TabOrder = 32
+        TabOrder = 34
         object Label47: TLabel
           Left = 13
           Top = 8
@@ -653,7 +653,7 @@ object Cad_Alunos: TCad_Alunos
       end
       object RxDBComboBox2: TRxDBComboBox
         Left = 229
-        Top = 195
+        Top = 233
         Width = 105
         Height = 21
         Style = csDropDownList
@@ -664,7 +664,7 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Feminino'
           'Masculino')
-        TabOrder = 19
+        TabOrder = 20
         Values.Strings = (
           'F'
           'M')
@@ -675,7 +675,7 @@ object Cad_Alunos: TCad_Alunos
         Width = 134
         Height = 27
         Caption = '&Puxa dados'
-        TabOrder = 31
+        TabOrder = 33
         OnClick = PuxaDadosClick
         Glyph.Data = {
           76010000424D7601000000000000760000002800000020000000100000000100
@@ -698,7 +698,7 @@ object Cad_Alunos: TCad_Alunos
         Width = 134
         Height = 27
         Caption = '&Estatística'
-        TabOrder = 33
+        TabOrder = 35
         OnClick = EstatisticaClick
         Glyph.Data = {
           76010000424D7601000000000000760000002800000020000000100000000100
@@ -717,11 +717,11 @@ object Cad_Alunos: TCad_Alunos
       end
       object EstatTur: TBitBtn
         Left = 613
-        Top = 194
+        Top = 232
         Width = 134
         Height = 27
         Caption = 'E&stat.p/Turma'
-        TabOrder = 34
+        TabOrder = 36
         OnClick = EstatTurClick
         Glyph.Data = {
           76010000424D7601000000000000760000002800000020000000100000000100
@@ -740,11 +740,11 @@ object Cad_Alunos: TCad_Alunos
       end
       object Panel3: TPanel
         Left = 635
-        Top = 233
+        Top = 272
         Width = 90
         Height = 120
         BevelWidth = 5
-        TabOrder = 35
+        TabOrder = 37
         object Foto: TImage
           Left = 5
           Top = 5
@@ -838,34 +838,34 @@ object Cad_Alunos: TCad_Alunos
       end
       object DBEdit50: TDBEdit
         Left = 104
-        Top = 341
+        Top = 402
         Width = 121
         Height = 21
         DataField = 'CELULAR'
         DataSource = DM.dsAlunos
-        TabOrder = 28
+        TabOrder = 30
       end
       object DBEdit51: TDBEdit
         Left = 104
-        Top = 365
+        Top = 426
         Width = 121
         Height = 21
         DataField = 'TEL_RESIDENCIAL'
         DataSource = DM.dsAlunos
-        TabOrder = 29
+        TabOrder = 31
       end
       object DBEdit52: TDBEdit
         Left = 105
-        Top = 387
+        Top = 448
         Width = 121
         Height = 21
         DataField = 'TEL_CONTATO'
         DataSource = DM.dsAlunos
-        TabOrder = 30
+        TabOrder = 32
       end
       object DBRadioGroup5: TDBRadioGroup
         Left = 416
-        Top = 336
+        Top = 397
         Width = 185
         Height = 33
         Caption = 'Participante da formatura?'
@@ -875,7 +875,7 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Sim'
           'Não')
-        TabOrder = 36
+        TabOrder = 38
         Values.Strings = (
           'P'
           'N')
@@ -888,6 +888,33 @@ object Cad_Alunos: TCad_Alunos
         DataField = 'ID'
         DataSource = DM.dsAlunos
         TabOrder = 2
+      end
+      object DBEdit20: TDBEdit
+        Left = 104
+        Top = 202
+        Width = 297
+        Height = 21
+        DataField = 'CPF'
+        DataSource = DM.dsAlunos
+        TabOrder = 18
+      end
+      object DBEdit55: TDBEdit
+        Left = 104
+        Top = 352
+        Width = 354
+        Height = 21
+        DataField = 'E_MAIL'
+        DataSource = DM.dsAlunos
+        TabOrder = 27
+      end
+      object DBEdit56: TDBEdit
+        Left = 240
+        Top = 448
+        Width = 137
+        Height = 21
+        DataField = 'OBS_TEL'
+        DataSource = DM.dsAlunos
+        TabOrder = 39
       end
     end
     object Tab2: TTabSheet
@@ -1525,6 +1552,7 @@ object Cad_Alunos: TCad_Alunos
         ItemHeight = 13
         Items.Strings = (
           'Ativo'
+          'Pré matricula'
           'Desistente'
           'Transferido'
           'Reclassificados'
@@ -1532,6 +1560,7 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 8
         Values.Strings = (
           'A'
+          'P'
           'D'
           'T'
           'R'
@@ -1732,7 +1761,7 @@ object Cad_Alunos: TCad_Alunos
         end
         object btn1: TBitBtn
           Left = 8
-          Top = 212
+          Top = 260
           Width = 124
           Height = 25
           Caption = 'Conectar'
@@ -1742,7 +1771,7 @@ object Cad_Alunos: TCad_Alunos
         end
         object btn2: TBitBtn
           Left = 8
-          Top = 243
+          Top = 291
           Width = 121
           Height = 25
           Caption = 'Desconectar'
@@ -1752,7 +1781,7 @@ object Cad_Alunos: TCad_Alunos
         end
         object btn3: TBitBtn
           Left = 8
-          Top = 273
+          Top = 321
           Width = 121
           Height = 25
           Caption = 'Cadastra aluno'
@@ -1762,12 +1791,36 @@ object Cad_Alunos: TCad_Alunos
         end
         object btn4: TBitBtn
           Left = 8
-          Top = 302
+          Top = 350
           Width = 121
           Height = 25
-          Caption = 'Cadatrar Digital'
+          Caption = 'Cadastrar Digital'
           TabOrder = 11
           OnClick = btn4Click
+        end
+        object BtermoResp: TBitBtn
+          Left = 8
+          Top = 216
+          Width = 126
+          Height = 25
+          Cursor = crHandPoint
+          Caption = 'Term. Resp.'
+          TabOrder = 12
+          OnClick = BtermoRespClick
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            0400000000000001000000000000000000001000000000000000000000000000
+            8000008000000080800080000000800080008080000080808000C0C0C0000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00300000000000
+            00033FFFFFFFFFFFFFFF0888888888888880777777777777777F088888888888
+            8880777777777777777F0000000000000000FFFFFFFFFFFFFFFF0F8F8F8F8F8F
+            8F80777777777777777F08F8F8F8F8F8F9F0777777777777777F0F8F8F8F8F8F
+            8F807777777777777F7F0000000000000000777777777777777F3330FFFFFFFF
+            03333337F3FFFF3F7F333330F0000F0F03333337F77773737F333330FFFFFFFF
+            03333337F3FF3FFF7F333330F00F000003333337F773777773333330FFFF0FF0
+            33333337F3FF7F3733333330F08F0F0333333337F7737F7333333330FFFF0033
+            33333337FFFF7733333333300000033333333337777773333333}
+          NumGlyphs = 2
         end
       end
       object DBEdit23: TDBEdit
@@ -2063,25 +2116,31 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 35
         OnClick = Button3Click
       end
-      object RxDBGrid4: TRxDBGrid
+      object BitBtn8: TBitBtn
         Left = 156
-        Top = 415
-        Width = 252
-        Height = 89
-        DataSource = DM.DsAutorizacao
+        Top = 413
+        Width = 181
+        Height = 25
+        Cursor = crHandPoint
+        Caption = 'Dados do cartão'
         TabOrder = 36
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Verdana'
-        TitleFont.Style = []
-        OnEnter = RxDBGrid4Enter
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'AUTORIZACAO'
-            Visible = True
-          end>
+        OnClick = BitBtn8Click
+      end
+      object DBRadioGroup6: TDBRadioGroup
+        Left = 157
+        Top = 443
+        Width = 180
+        Height = 63
+        Caption = 'Intinerário:'
+        DataField = 'INTINERARIO'
+        DataSource = DM.dsAlunos
+        Items.Strings = (
+          'Núcleo 1'
+          'Núcleo 2')
+        TabOrder = 37
+        Values.Strings = (
+          '1'
+          '2')
       end
     end
     object Tab3: TTabSheet
@@ -2198,8 +2257,7 @@ object Cad_Alunos: TCad_Alunos
         Width = 217
         Height = 19
         Cursor = crHandPoint
-        Caption = 'Reprocessar Bloqueto'
-        Enabled = False
+        Caption = 'Reprocessar Bloquetos'
         TabOrder = 2
         OnClick = BitBtn3Click
       end
@@ -3277,44 +3335,15 @@ object Cad_Alunos: TCad_Alunos
           'Matriculado')
       end
     end
-    object Tab7: TTabSheet
-      Caption = 'Parametros cobrança'
-      ImageIndex = 6
-      object Label97: TLabel
-        Left = 8
-        Top = 56
-        Width = 93
-        Height = 13
-        Caption = 'Mês Final.........:'
-      end
-      object aviso: TLabel
-        Left = 8
-        Top = 24
-        Width = 437
-        Height = 13
-        Caption = 
-          'Esses parametros são utilizados para boletos com mês final difer' +
-          'ente de 12.'
-      end
-      object MesFinal: TDBEdit
-        Left = 105
-        Top = 47
-        Width = 32
-        Height = 21
-        DataField = 'MESFINAL'
-        DataSource = DM.dsAlunos
-        TabOrder = 0
-      end
-    end
     object Tab8: TTabSheet
-      Caption = 'Geração de boletos avulsos'
+      Caption = 'Boletos avulsos'
       ImageIndex = 7
       object Label101: TLabel
         Left = 24
         Top = 24
-        Width = 379
+        Width = 387
         Height = 29
-        Caption = 'Negocição de mensalidades.'
+        Caption = 'Geração de boletos diversos:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -24
@@ -3425,24 +3454,24 @@ object Cad_Alunos: TCad_Alunos
         Width = 145
         Height = 23
         Cursor = crHandPoint
-        Caption = 'Inserir Negociação'
+        Caption = 'Inserir'
         TabOrder = 4
         OnClick = Button4Click
       end
       object Button5: TButton
-        Left = 168
-        Top = 377
+        Left = 319
+        Top = 349
         Width = 145
         Height = 23
         Cursor = crHandPoint
-        Caption = 'Salvar negociação'
+        Caption = 'Salvar'
         Enabled = False
         TabOrder = 5
         OnClick = Button5Click
       end
       object Button6: TButton
-        Left = 168
-        Top = 405
+        Left = 472
+        Top = 349
         Width = 145
         Height = 23
         Cursor = crHandPoint
@@ -3454,15 +3483,15 @@ object Cad_Alunos: TCad_Alunos
       object DBMemo2: TDBMemo
         Left = 168
         Top = 248
-        Width = 505
+        Width = 601
         Height = 89
         DataField = 'ANOTACAO'
         DataSource = DM.DsNegociacao
         TabOrder = 8
       end
       object Button7: TButton
-        Left = 168
-        Top = 435
+        Left = 624
+        Top = 348
         Width = 145
         Height = 23
         Caption = 'Cancelar'
@@ -3744,13 +3773,13 @@ object Cad_Alunos: TCad_Alunos
   end
   object dsAluOrig: TDataSource
     DataSet = AluOrig
-    Left = 24
-    Top = 616
+    Left = 616
+    Top = 600
   end
   object AluOrig: TTable
     TableName = 'C:\sistemas\anglo\2000\scaaluno.dbf'
-    Left = 120
-    Top = 616
+    Left = 664
+    Top = 600
     object AluOrigALU_COD: TFloatField
       FieldName = 'ALU_COD'
     end
@@ -3930,8 +3959,8 @@ object Cad_Alunos: TCad_Alunos
       'select CURSINHO,PERIODO'
       'from TURMAS'
       'where SERIE = :serie and TURMA = :turma')
-    Left = 72
-    Top = 616
+    Left = 464
+    Top = 448
     ParamData = <
       item
         DataType = ftUnknown
@@ -3967,8 +3996,8 @@ object Cad_Alunos: TCad_Alunos
       'select CODIGO_SP '
       'from ALUNOS'
       'where CODIGO_SP is not null')
-    Left = 304
-    Top = 560
+    Left = 256
+    Top = 552
     object IBEtiq_SPCODIGO_SP: TIBStringField
       FieldName = 'CODIGO_SP'
       Origin = '"ALUNOS"."CODIGO_SP"'
@@ -3985,13 +4014,13 @@ object Cad_Alunos: TCad_Alunos
     Database = DM.DB_ANGLO
     ParamCheck = True
     Transaction = DM.IBTr_ANGLO
-    Left = 748
+    Left = 708
     Top = 464
   end
   object DsBuscaBoleto: TDataSource
     DataSet = QBuscaBoleto
-    Left = 764
-    Top = 336
+    Left = 724
+    Top = 344
   end
   object QBuscaBoleto: TIBQuery
     Database = DM.DB_ANGLO
@@ -4002,7 +4031,7 @@ object Cad_Alunos: TCad_Alunos
       'select *'
       'from bloquetos'
       'where aluno = :baluno and PAGAMENTO is null')
-    Left = 660
+    Left = 476
     Top = 336
     ParamData = <
       item
@@ -4149,8 +4178,8 @@ object Cad_Alunos: TCad_Alunos
   end
   object Ds_UpNegociacao: TDataSource
     DataSet = UP_Negociacao
-    Left = 524
-    Top = 240
+    Left = 492
+    Top = 200
   end
   object UP_Negociacao: TIBQuery
     Database = DM.DB_ANGLO
@@ -4163,8 +4192,8 @@ object Cad_Alunos: TCad_Alunos
       
         'where aluno = :baluno and PAGAMENTO is null and ST = '#39'N'#39' and NEG' +
         'OCIACAO is null')
-    Left = 628
-    Top = 240
+    Left = 484
+    Top = 144
     ParamData = <
       item
         DataType = ftUnknown
@@ -4186,8 +4215,8 @@ object Cad_Alunos: TCad_Alunos
       'select max(parcela) as total'
       'from bloquetos'
       'where aluno = :codigo')
-    Left = 644
-    Top = 480
+    Left = 588
+    Top = 536
     ParamData = <
       item
         DataType = ftUnknown
@@ -4200,8 +4229,8 @@ object Cad_Alunos: TCad_Alunos
   end
   object DsUltimoBoleto: TDataSource
     DataSet = UltimoBoleto
-    Left = 556
-    Top = 480
+    Left = 684
+    Top = 528
   end
   object AlunosAnt: TIBQuery
     Database = DM.DB_ANGLO
@@ -4212,8 +4241,8 @@ object Cad_Alunos: TCad_Alunos
       'select * '
       'from ALUNOS_ANT'
       'where CODIGO = :codigo')
-    Left = 347
-    Top = 504
+    Left = 35
+    Top = 536
     ParamData = <
       item
         DataType = ftUnknown
@@ -4258,12 +4287,6 @@ object Cad_Alunos: TCad_Alunos
       Origin = '"ALUNOS_ANT"."UF"'
       FixedChar = True
       Size = 2
-    end
-    object AlunosAntCEP: TIBStringField
-      FieldName = 'CEP'
-      Origin = '"ALUNOS_ANT"."CEP"'
-      FixedChar = True
-      Size = 9
     end
     object AlunosAntRG: TIBStringField
       FieldName = 'RG'
@@ -4553,9 +4576,10 @@ object Cad_Alunos: TCad_Alunos
       FieldName = 'NOME_CART_EXP'
       Origin = '"ALUNOS_ANT"."NOME_CART_EXP"'
     end
-    object AlunosAntCPF: TSmallintField
+    object AlunosAntCPF: TIBStringField
       FieldName = 'CPF'
       Origin = '"ALUNOS_ANT"."CPF"'
+      Size = 16
     end
     object AlunosAntCOR: TIntegerField
       FieldName = 'COR'
@@ -4728,6 +4752,29 @@ object Cad_Alunos: TCad_Alunos
       Origin = '"ALUNOS_ANT"."FORMATURA"'
       FixedChar = True
       Size = 1
+    end
+    object AlunosAntBOLSA_AD: TIBBCDField
+      FieldName = 'BOLSA_AD'
+      Origin = '"ALUNOS_ANT"."BOLSA_AD"'
+      Precision = 9
+      Size = 2
+    end
+    object AlunosAntAULA_AD: TIBStringField
+      FieldName = 'AULA_AD'
+      Origin = '"ALUNOS_ANT"."AULA_AD"'
+      FixedChar = True
+      Size = 1
+    end
+    object AlunosAntID: TIBStringField
+      FieldName = 'ID'
+      Origin = '"ALUNOS_ANT"."ID"'
+      Size = 12
+    end
+    object AlunosAntCEP: TIBStringField
+      FieldName = 'CEP'
+      Origin = '"ALUNOS_ANT"."CEP"'
+      FixedChar = True
+      Size = 15
     end
   end
 end

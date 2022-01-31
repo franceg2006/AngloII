@@ -42,8 +42,10 @@ type
     Ds_DeleteBoleto: TDataSource;
     parcela: TEdit;
     Label3: TLabel;
-    Label4: TLabel;
     Shape1: TShape;
+    DsCursinho: TDataSource;
+    Bcursinho: TIBQuery;
+    BcursinhoCURSINHO: TSmallintField;
     procedure BitBtn1Click(Sender: TObject);
     procedure limiteExit(Sender: TObject);
     procedure parcelaExit(Sender: TObject);
@@ -87,7 +89,7 @@ Begin
          dm.Bloquetos_DeleteMENSALIDADE_ANT.Value := fparametrosbloqueto.QBuscaBoletoMENSALIDADE_ANT.Value;
          dm.Bloquetos_DeleteVALOR_ANT.Value := fparametrosbloqueto.QBuscaBoletoVALOR_ANT.Value;
          dm.Bloquetos_DeleteBAULA_AD.Value := fparametrosbloqueto.QBuscaBoletoBAULA_AD.Value;
-         dm.Bloquetos_DeleteST.Value := fparametrosbloqueto.QBuscaBoletoST.Value;
+         dm.Bloquetos_DeleteST.Value := 'B';
          dm.Bloquetos_DeleteTP.Value := fparametrosbloqueto.QBuscaBoletoTP.Value;
          dm.Bloquetos_DeleteMOTIVO.Value  := fparametrosbloqueto.QBuscaBoletoMOTIVO.Value;
          dm.Bloquetos_DeleteDATA_LIMITE.Value := fparametrosbloqueto.QBuscaBoletoDATA_LIMITE.Value;
@@ -99,8 +101,9 @@ end;
 
 
 
-Procedure GeraBoletoMatriculaParametros;
+Procedure Reprocessa;
 var dia, mes, ano, d_dia :word;
+    v_mensalidade    :real;
    Begin
        DecodeDate(now, ano, mes, dia);
        dm.Bloquetos.Open;
@@ -151,13 +154,13 @@ var dia, mes, ano, d_dia :word;
                       dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
 
                end;
-              DM.BloquetosST.Value := 'S';  //situação do bloqueto
-              DM.BloquetosTP.Value := 1;    //tipo do bloqueto
-              DM.Bloquetos.Post;
-              DM2.iqParametros_B.Open;
-              DM2.iqParametros_B.Active := True;
-              dm.IBTr_ANGLO.CommitRetaining;
-              dm2.TSUsuario.Commit;
+                DM.BloquetosST.Value := 'G';  //situação do bloqueto
+                DM.BloquetosTP.Value := 1;    //tipo do bloqueto
+                DM.Bloquetos.Post;
+                DM2.iqParametros_B.Open;
+                DM2.iqParametros_B.Active := True;
+                dm.IBTr_ANGLO.CommitRetaining;
+                dm2.TSUsuario.Commit;
           end;
        2: begin
             if (parc = '1') then  //se for boleto de matricula
@@ -203,14 +206,14 @@ var dia, mes, ano, d_dia :word;
                   DM.BloquetosDESCONTO_ANT.Value := ((dm.ParametrosMENSALIDADE_2.Value/100)/30);
                   dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
             end;
-            DM.BloquetosST.Value := 'S';  //situação do bloqueto
+            DM.BloquetosST.Value := 'G';  //situação do bloqueto
             DM.BloquetosTP.Value := 1;    //tipo do bloqueto
             DM.Bloquetos.Post;
             dm.IBTr_ANGLO.CommitRetaining;
             dm2.TSUsuario.Commit;
           end;
        3: begin
-            if (parc = '1') then   //se for boleto de matricula
+            {if (parc = '1') then   //se for boleto de matricula
             begin
               DM.Bloquetos.Insert;
               dm2.sql_gen.Open;
@@ -229,7 +232,13 @@ var dia, mes, ano, d_dia :word;
               DM.BloquetosVENCIMENTO.Value := fparametrosbloqueto.limite.Date + 7;
               if DayOfWeek(dm.BloquetosVENCIMENTO.Value)= 1 then  DM.BloquetosVENCIMENTO.Value := (DM.BloquetosVENCIMENTO.Value + 1);
               if DayOfWeek(dm.BloquetosVENCIMENTO.Value)= 7 then  DM.BloquetosVENCIMENTO.Value := (DM.BloquetosVENCIMENTO.Value + 2);
-            end else begin
+            end else}
+            Begin
+                 //*********************Busca para ver se o aluno é do cursinho ou não*******
+                 fparametrosbloqueto.Bcursinho.Close;
+                 fparametrosbloqueto.Bcursinho.ParamByName('rgm').Value := dm.AlunosCODIGO.Value;
+                 fparametrosbloqueto.Bcursinho.Open;
+                //***************************************************************************
                  DM.Bloquetos.Insert;
                  dm2.sql_gen.Open;
                  DM.BloquetosNOSSO_NUMERO.AsInteger := DM2.sql_genCONTADOR.Value;
@@ -242,24 +251,28 @@ var dia, mes, ano, d_dia :word;
                  if DayOfWeek(dm.BloquetosDATA_LIMITE.Value)= 1 then  DM.BloquetosDATA_LIMITE.Value := (DM.BloquetosDATA_LIMITE.Value + 1);
                  if DayOfWeek(dm.BloquetosDATA_LIMITE.Value)= 7 then  DM.BloquetosDATA_LIMITE.Value := (DM.BloquetosDATA_LIMITE.Value + 2);
                  DM.BloquetosVENCIMENTO.Value := fparametrosbloqueto.limite.Date + 7;
+
+              if (fparametrosbloqueto.BcursinhoCURSINHO.Value <> 1) then
+                 v_mensalidade := dm.ParametrosMENSALIDADE_3.Value
+                 else v_mensalidade := dm.ParametrosMENSALIDADE_4.Value;
+
               if ((not (dm.AlunosBOLSA.IsNull)) and (dm.AlunosBOLSA.Value > 0)) then
-                dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_3.Value * dm.AlunosBOLSA.Value)/100)
-                else
-                  dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_3.Value * dm.ParametrosREAJUSTE_3.Value)/100);
-                  DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_3.Value;
-                  DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_3.Value;
-                  DM.BloquetosVALOR_ANT.Value := dm.ParametrosMENSALIDADE_3.value;
-                  DM.BloquetosMENSALIDADE_ANT.Value := 0;
-                  DM.BloquetosDESCONTO_ANT.Value := ((dm.ParametrosMENSALIDADE_1.Value/100)/30);
-                  dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
-            end;
-            DM.BloquetosST.Value := 'S';  //situação do bloqueto
+                   dm.BloquetosDESCONTO.Value := ((v_mensalidade * dm.AlunosBOLSA.Value)/100)
+                   else  dm.BloquetosDESCONTO.Value := ((v_mensalidade * dm.ParametrosREAJUSTE_3.Value)/100);
+                   DM.BloquetosVALOR.Value       := v_mensalidade;
+                   DM.BloquetosMENSALIDADE.Value := v_mensalidade;
+                   DM.BloquetosVALOR_ANT.Value := dm.ParametrosMENSALIDADE_3.value;
+                   DM.BloquetosMENSALIDADE_ANT.Value := 0;
+                   DM.BloquetosDESCONTO_ANT.Value := ((dm.ParametrosMENSALIDADE_1.Value/100)/30);
+                   DM.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
+              end;
+            DM.BloquetosST.Value := 'G';  //situação do bloqueto
             DM.BloquetosTP.Value := 1;    //tipo do bloqueto
             DM.Bloquetos.Post;
             dm.IBTr_ANGLO.CommitRetaining;
             dm2.TSUsuario.Commit;
-          end;
-       end; //case
+          end; //case
+     end; //case
       ShowMessage('Operação realizada com sucesso!!');
 end;
 
@@ -279,30 +292,30 @@ begin
   if MessageDlg('Reprocessar Bloqueto do Aluno ?' + #13 + dm.AlunosNome.asstring, mtConfirmation, mbOKCancel, 0) = mrOK then begin
     if (DM.AlunosBLOQUETO_1SEM.Value <> 1) then
     begin
-    DM.Alunos.Edit;
-    DM.AlunosBLOQUETO_1SEM.Value := 1;
-    DM.AlunosBLOQUETO_2SEM.Value := 1;
-    DM.Alunos.Post;
+      DM.Alunos.Edit;
+      DM.AlunosBLOQUETO_1SEM.Value := 1;
+      DM.AlunosBLOQUETO_2SEM.Value := 1;
+      DM.Alunos.Post;
     end;
-    up_st.SQL.Clear;
-    up_st.SQL.Text := w_sql1 + w_sql2 + w_sql3;
-    up_st.ExecQuery;
-    QBuscaBoleto.Close;
-    QBuscaBoleto.SQL.Strings[2] := 'where aluno = :baluno and PAGAMENTO is null and parcela = :bparc';
-    QBuscaBoleto.Params[0].Value := w_aluno;
-    QBuscaBoleto.Params[1].Value := parc;
-    QBuscaBoleto.Open;
-    CopiaBoleto;
-    Delete_Boleto.Close;
-    Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL and PARCELA = :bparc';
-    Delete_Boleto.Params[0].Value := w_aluno;
-    Delete_Boleto.Params[1].Value := parc;
-    Delete_Boleto.Open;
-    Delete_Boleto.Close;
-    dm.Alunos.edit;
-    DM.Alunosbloqueto_1sem.value := 10;
-    dm.Alunos.Post;
-    GeraBoletoMatriculaParametros;
+      up_st.SQL.Clear;
+      up_st.SQL.Text := w_sql1 + w_sql2 + w_sql3;
+      up_st.ExecQuery;
+      QBuscaBoleto.Close;
+      QBuscaBoleto.SQL.Strings[2] := 'where aluno = :baluno and PAGAMENTO is null and parcela = :bparc';
+      QBuscaBoleto.Params[0].Value := w_aluno;
+      QBuscaBoleto.Params[1].Value := parc;
+      QBuscaBoleto.Open;
+      CopiaBoleto;
+      Delete_Boleto.Close;
+      Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL and PARCELA = :bparc';
+      Delete_Boleto.Params[0].Value := w_aluno;
+      Delete_Boleto.Params[1].Value := parc;
+      Delete_Boleto.Open;
+      Delete_Boleto.Close;
+      dm.Alunos.edit;
+      DM.Alunosbloqueto_1sem.value := 10;
+      dm.Alunos.Post;
+      Reprocessa;
    end
    else
    ShowMessage('Caro usuário, você deve digitar a parcela/bloleto que deseja reprocessar.');

@@ -1,11 +1,11 @@
 object Doc_Diario: TDoc_Diario
-  Left = 465
-  Top = 234
+  Left = 116
+  Top = 220
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Diário de Classe / Colecionador de Canhotos'
-  ClientHeight = 201
-  ClientWidth = 478
+  ClientHeight = 216
+  ClientWidth = 1297
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -26,8 +26,8 @@ object Doc_Diario: TDoc_Diario
     Caption = 'Série / Turma :'
   end
   object Label3: TLabel
-    Left = 37
-    Top = 40
+    Left = 397
+    Top = 16
     Width = 63
     Height = 13
     Alignment = taRightJustify
@@ -35,31 +35,38 @@ object Doc_Diario: TDoc_Diario
   end
   object Label4: TLabel
     Left = 40
-    Top = 100
+    Top = 52
     Width = 60
     Height = 13
     Alignment = taRightJustify
     Caption = 'Bimestre :'
   end
   object Label1: TLabel
-    Left = 4
-    Top = 72
+    Left = 796
+    Top = 16
     Width = 96
     Height = 13
     Alignment = taRightJustify
     Caption = 'Aulas Previstas :'
   end
   object Label5: TLabel
-    Left = 67
-    Top = 132
+    Left = 427
+    Top = 52
     Width = 33
     Height = 13
     Alignment = taRightJustify
     Caption = 'Tipo :'
   end
+  object Label6: TLabel
+    Left = 21
+    Top = 72
+    Width = 77
+    Height = 13
+    Caption = 'Observação :'
+  end
   object Bimestre: TRadioGroup
     Left = 107
-    Top = 87
+    Top = 39
     Width = 318
     Height = 30
     Columns = 5
@@ -73,8 +80,8 @@ object Doc_Diario: TDoc_Diario
     TabOrder = 4
   end
   object Fecha: TBitBtn
-    Left = 342
-    Top = 168
+    Left = 686
+    Top = 187
     Width = 89
     Height = 25
     Caption = '&Fecha'
@@ -84,8 +91,8 @@ object Doc_Diario: TDoc_Diario
   end
   object Imprime: TBitBtn
     Tag = 2
-    Left = 240
-    Top = 168
+    Left = 584
+    Top = 187
     Width = 89
     Height = 25
     Caption = '&Imprime'
@@ -123,8 +130,8 @@ object Doc_Diario: TDoc_Diario
     OnChange = TurmaChange
   end
   object Disciplina: TRxDBLookupCombo
-    Left = 106
-    Top = 35
+    Left = 466
+    Top = 11
     Width = 320
     Height = 21
     DropDownCount = 20
@@ -138,8 +145,8 @@ object Doc_Diario: TDoc_Diario
     OnChange = TurmaChange
   end
   object AulasPrev: TCurrencyEdit
-    Left = 106
-    Top = 67
+    Left = 898
+    Top = 11
     Width = 33
     Height = 21
     AutoSize = False
@@ -149,8 +156,8 @@ object Doc_Diario: TDoc_Diario
   end
   object Visualiza: TBitBtn
     Tag = 1
-    Left = 144
-    Top = 168
+    Left = 488
+    Top = 187
     Width = 89
     Height = 25
     Caption = '&Visualiza'
@@ -173,8 +180,8 @@ object Doc_Diario: TDoc_Diario
     NumGlyphs = 2
   end
   object Tipo: TRadioGroup
-    Left = 107
-    Top = 119
+    Left = 467
+    Top = 39
     Width = 318
     Height = 30
     Columns = 2
@@ -184,6 +191,19 @@ object Doc_Diario: TDoc_Diario
       'Colec.Canhotos')
     TabOrder = 7
     OnClick = TipoClick
+  end
+  object Obs1: TMemo
+    Left = 6
+    Top = 88
+    Width = 1213
+    Height = 81
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -9
+    Font.Name = 'Verdana'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 8
   end
   object FS1: TFormStorage
     StoredValues = <>

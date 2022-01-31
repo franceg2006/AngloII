@@ -1,8 +1,8 @@
 [Designer]
 Version=1
-Left=345
-Top=109
-Width=1396
+Left=53
+Top=84
+Width=1214
 Height=763
 Splitter=276
 SelectedTab=Components
@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Turmas,DM\DB_ANGLO\IBTr_ANGLO\Autorizacao
+ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Parametros,DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\Turmas
 
 [DataDiagrams]
 Version=1

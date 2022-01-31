@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, ComCtrls, Mask, ToolEdit, ExtCtrls, RXCtrls, Placemnt,
   Db, IBCustomDataSet, IBStoredProc, IBQuery, Grids, DBGrids, RXDBCtrl,
-  Menus, TSong, RxLookup, CurrEdit, DBCtrls, IBSQLMonitor, IBSQL, RxMemDS,
+  Menus, RxLookup, CurrEdit, DBCtrls, IBSQLMonitor, IBSQL, RxMemDS,
   RxRichEd, DBRichEd, Gauges;
 
 type

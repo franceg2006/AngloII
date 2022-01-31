@@ -311,8 +311,6 @@ type
     Label94: TLabel;
     Label95: TLabel;
     DBEdit52: TDBEdit;
-    DBText15: TDBText;
-    Label20: TLabel;
     SpeedButton2: TSpeedButton;
     DBRadioGroup5: TDBRadioGroup;
     dbedtCPF: TDBEdit;
@@ -332,8 +330,6 @@ type
     RxDBLookupCombo5: TRxDBLookupCombo;
     Label30: TLabel;
     Button3: TButton;
-    Tab7: TTabSheet;
-    Label97: TLabel;
     up_st: TIBSQL;
     DsBuscaBoleto: TDataSource;
     QBuscaBoleto: TIBQuery;
@@ -393,6 +389,7 @@ type
     Label113: TLabel;
     BitBtn7: TBitBtn;
     AlunosAnt: TIBQuery;
+    Label96: TLabel;
     AlunosAntCODIGO: TIntegerField;
     AlunosAntNOME: TIBStringField;
     AlunosAntCODIGO_ESCOLA: TIntegerField;
@@ -401,7 +398,6 @@ type
     AlunosAntBAIRRO: TIBStringField;
     AlunosAntCIDADE: TIBStringField;
     AlunosAntUF: TIBStringField;
-    AlunosAntCEP: TIBStringField;
     AlunosAntRG: TIBStringField;
     AlunosAntNASC_DATA: TDateField;
     AlunosAntNASC_CIDADE: TIBStringField;
@@ -464,7 +460,7 @@ type
     AlunosAntCERTIDAO_CIVIL: TSmallintField;
     AlunosAntDATA_EMI_CERT: TDateField;
     AlunosAntNOME_CART_EXP: TIBStringField;
-    AlunosAntCPF: TSmallintField;
+    AlunosAntCPF: TIBStringField;
     AlunosAntCOR: TIntegerField;
     AlunosAntEDU_ESPECIAL: TIBStringField;
     AlunosAntTIPO_EDU_ESP: TSmallintField;
@@ -504,10 +500,19 @@ type
     AlunosAntTEL_CONTATO: TIBStringField;
     AlunosAntE_MAIL: TIBStringField;
     AlunosAntFORMATURA: TIBStringField;
-    MesFinal: TDBEdit;
-    aviso: TLabel;
-    RxDBGrid4: TRxDBGrid;
-    Label96: TLabel;
+    DBEdit20: TDBEdit;
+    Label98: TLabel;
+    DBEdit55: TDBEdit;
+    Label97: TLabel;
+    BitBtn8: TBitBtn;
+    DBEdit56: TDBEdit;
+    Label20: TLabel;
+    DBRadioGroup6: TDBRadioGroup;
+    BtermoResp: TBitBtn;
+    AlunosAntBOLSA_AD: TIBBCDField;
+    AlunosAntAULA_AD: TIBStringField;
+    AlunosAntID: TIBStringField;
+    AlunosAntCEP: TIBStringField;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
@@ -590,6 +595,8 @@ type
     procedure Button7Click(Sender: TObject);
     procedure BitBtn7Click(Sender: TObject);
     procedure RxDBGrid4Enter(Sender: TObject);
+    procedure BitBtn8Click(Sender: TObject);
+    procedure BtermoRespClick(Sender: TObject);
   private
     procedure AtualizaSitFin;
     procedure AtualizaSitFin2;
@@ -616,7 +623,7 @@ type
 var
   Cad_Alunos: TCad_Alunos;
   Cliente : TClienteSock;
-  comando, sit, parc : string;
+  comando, sit : string;
   _gPacoteResponse : String;
 //Variáveis Globais
 
@@ -628,7 +635,7 @@ uses UDM, URel_QRFicha_Ocorrencia, UDoc_ContratoQR, UDoc_RequerimentoQR,
   ULst_EstatisticaTurQR, UCad_AlunosFoto, Ucores, UDM2, Uend_cob,
   UEtiq_SPQR, Urelacaosenhapais, UDoc_ContratoSemiQR, UDoc_TermoCompromisso,
   UDoc_ContratoCursinho, Ufescola, Uprematricula, UDoc_ContratoCurso,
-  Ufparametrosbloqueto;
+  Ufparametrosbloqueto, Ufautorizacao, UTermo_Resp;
 
 {$R *.DFM}
 
@@ -745,12 +752,8 @@ var dia, mes, ano :word;
    Begin
        DecodeDate(now, ano, mes, dia);
        dm.Bloquetos.Open;
-       dm.Bloquetos.Active := True;
-       dm2.iqParametros_B.Open;
        Case dm.AlunosSerie.Value of
        1: begin
-            if sit = 'M' then
-            begin
               DM.Bloquetos.Insert;
               dm2.sql_gen.Active := True;
               dm2.sql_gen.Open;
@@ -762,38 +765,17 @@ var dia, mes, ano :word;
               DM.BloquetosANO_DV.Value  := Copy(IntToStr(ano),3,2);
               DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_1.Value;
               DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_1.Value;
-              dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_1.Value * dm.AlunosBOLSA.Value)/100);
-            end else begin
-                  DM.Bloquetos.Insert;
-                  dm2.sql_gen.Active := True;
-                  dm2.sql_gen.Open;
-                  DM.BloquetosNOSSO_NUMERO.AsInteger := dm2.sql_genCONTADOR.Value;
-                  dm2.sql_gen.Close;
-                  DM.BloquetosALUNO.AsInteger := DM.AlunosCODIGO.AsInteger;
-                  DM.BloquetosPARCELA.AsInteger := strToInt(parc);
-                  DM.BloquetosEMISSAO.Value := now;
-                  DM.BloquetosANO_DV.Value  := Copy(IntToStr(ano),3,2);
-              if ((not (dm.AlunosBOLSA.IsNull)) and (dm.AlunosBOLSA.Value > 0)) then
-                dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_1.Value * dm.AlunosBOLSA.Value)/100)
-                else
-                  dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_1.Value * dm.ParametrosREAJUSTE_3.Value)/100);
-                  DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_1.Value;
-                  DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_1.Value;
-                  DM.BloquetosMENSALIDADE_ANT.Value := ((dm.ParametrosMENSALIDADE_1.Value/100)/30);
-                  DM.BloquetosDESCONTO_ANT.Value := 0;
-                  dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
-            end;
-            DM.BloquetosVENCIMENTO.Value  := now + 20;
-            DM.BloquetosST.Value := 'S';
-            DM.BloquetosTP.Value := 10;
-            DM.BloquetosDATA_LIMITE.Value := dm.BloquetosVENCIMENTO.Value - 7;
-            DM.Bloquetos.Post;
-            dm.IBTr_ANGLO.CommitRetaining;
-            DM2.TSUsuario.Commit;
+              dm.BloquetosDESCONTO.Value := dm.ParametrosMENSALIDADE_1.Value; //((dm.ParametrosMENSALIDADE_1.Value * dm.AlunosBOLSA.Value)/100);
+              DM.BloquetosVENCIMENTO.Value  := now + 20;
+              DM.BloquetosST.Value := 'G';
+              DM.BloquetosTP.Value := 3;
+              DM.BloquetosDATA_LIMITE.Value := dm.BloquetosVENCIMENTO.Value - 7;
+              dm.Alunos.Open;
+              dm.alunos.Edit;
+              dm.AlunosBLOQUETO_1SEM.Value:= 3;
+              dm.Alunos.Post;
           end;
        2: begin
-            if sit = 'M' then
-            begin
               DM.Bloquetos.Insert;
               dm2.sql_gen.Active := True;
               dm2.sql_gen.Open;
@@ -805,37 +787,16 @@ var dia, mes, ano :word;
               DM.BloquetosANO_DV.Value  := Copy(IntToStr(ano),3,2);
               DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_2.Value;
               DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_2.Value;
-            end else begin
-                  DM.Bloquetos.Insert;
-                  dm2.sql_gen.Active := True;
-                  dm2.sql_gen.Open;
-                  DM.BloquetosNOSSO_NUMERO.AsInteger := dm2.sql_genCONTADOR.Value;
-                  dm2.sql_gen.Close;
-                  DM.BloquetosALUNO.AsInteger := DM.AlunosCODIGO.AsInteger;
-                  DM.BloquetosPARCELA.AsInteger := strToInt(parc);
-                  DM.BloquetosEMISSAO.Value := now;
-                  DM.BloquetosANO_DV.Value  := Copy(IntToStr(ano),3,2);
-              if ((not (dm.AlunosBOLSA.IsNull)) and (dm.AlunosBOLSA.Value > 0)) then
-                  dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_2.Value * dm.AlunosBOLSA.Value)/100)
-                else
-                  dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_2.Value * dm.ParametrosREAJUSTE_3.Value)/100);
-                  DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_2.Value;
-                  DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_2.Value;
-                  DM.BloquetosMENSALIDADE_ANT.Value := 0;
-                  DM.BloquetosDESCONTO_ANT.Value := ((dm.ParametrosMENSALIDADE_2.Value/100)/30);
-                  dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
+              DM.BloquetosVENCIMENTO.Value  := now + 20;
+              dm.BloquetosDATA_LIMITE.Value := dm.BloquetosVENCIMENTO.Value - 7;
+              DM.BloquetosST.Value := 'G';
+              DM.BloquetosTP.Value := 3;
+              dm.Alunos.Open;
+              dm.alunos.Edit;
+              dm.AlunosBLOQUETO_1SEM.Value:= 3;
+              dm.Alunos.Post;
             end;
-            DM.BloquetosVENCIMENTO.Value  := now + 20;
-            dm.BloquetosDATA_LIMITE.Value := dm.BloquetosVENCIMENTO.Value - 7;
-            DM.BloquetosST.Value := 'S';
-            DM.BloquetosTP.Value := 10;
-            DM.Bloquetos.Post;
-            dm.IBTr_ANGLO.CommitRetaining;
-            DM2.TSUsuario.Commit;
-          end;
        3: begin
-            if sit = 'M' then
-            begin
               DM.Bloquetos.Insert;
               dm2.sql_gen.Active := True;
               dm2.sql_gen.Open;
@@ -847,43 +808,22 @@ var dia, mes, ano :word;
               DM.BloquetosANO_DV.Value  := Copy(IntToStr(ano),3,2);
               DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_3.Value;
               DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_3.Value;
-              dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_3.Value * dm.AlunosBOLSA.Value)/100);
+              dm.BloquetosDESCONTO.Value := 0;
               dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
-            end else begin
-                 DM.Bloquetos.Insert;
-                 dm2.sql_gen.Active := True;
-                 dm2.sql_gen.Open;
-                 DM.BloquetosNOSSO_NUMERO.AsInteger := dm2.sql_genCONTADOR.Value;
-                 dm2.sql_gen.Close;
-                 DM.BloquetosALUNO.AsInteger := DM.AlunosCODIGO.AsInteger;
-                 DM.BloquetosPARCELA.AsInteger := strToInt(parc);
-                 DM.BloquetosEMISSAO.Value := now;
-                 DM.BloquetosANO_DV.Value  := Copy(IntToStr(ano),3,2);
-
-              if ((not (dm.AlunosBOLSA.IsNull)) and (dm.AlunosBOLSA.Value > 0)) then
-                dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_4.Value * dm.AlunosBOLSA.Value)/100)
-                else
-                  dm.BloquetosDESCONTO.Value := ((dm.ParametrosMENSALIDADE_4.Value * dm.ParametrosREAJUSTE_3.Value)/100);
-                  DM.BloquetosVALOR.Value       := dm.ParametrosMENSALIDADE_4.Value;
-                  DM.BloquetosMENSALIDADE.Value := dm.ParametrosMENSALIDADE_4.Value;
-                  DM.BloquetosMENSALIDADE_ANT.Value := 0;
-                  DM.BloquetosDESCONTO_ANT.Value := ((dm.ParametrosMENSALIDADE_3.Value/100)/30);
-                  dm.BloquetosVALOR_ANT.Value :=  dm.BloquetosMENSALIDADE.Value - dm.BloquetosDESCONTO.Value;
-            end;
-            DM.BloquetosVENCIMENTO.Value  := now + 20;
-            DM.BloquetosST.Value := 'S';
-            DM.BloquetosTP.Value := 1;
-            dm.BloquetosDATA_LIMITE.Value := dm.BloquetosVENCIMENTO.Value - 7;
-            DM.Bloquetos.Post;
-            DM2.iqParametros_B.Active := True;
-            DM2.iqParametros_B.Edit;
-            DM2.iqParametros_BPROXIMO_BLOQUETO_I.AsInteger := DM2.iqParametros_BPROXIMO_BLOQUETO_I.AsInteger + 1;
-            DM2.iqParametros_B.Post;
-            dm.IBTr_ANGLO.CommitRetaining;
-            DM2.TSUsuario.Commit;
+              DM.BloquetosVENCIMENTO.Value  := now + 20;
+              DM.BloquetosST.Value := 'G';
+              DM.BloquetosTP.Value := 3;
+              dm.BloquetosDATA_LIMITE.Value := dm.BloquetosVENCIMENTO.Value - 7;
+              dm.Alunos.Open;
+              dm.alunos.Edit;
+              dm.AlunosBLOQUETO_1SEM.Value:= 3;
+              dm.Alunos.Post;
           end;
        end; //case
-      ShowMessage('Operação realizada com sucesso!!');
+         DM.Bloquetos.Post;
+         dm.IBTr_ANGLO.CommitRetaining;
+         DM2.TSUsuario.Commit;
+         ShowMessage('Operação realizada com sucesso!!');
 end;
 
 Procedure CopiaBoleto;
@@ -965,15 +905,14 @@ begin
       25:begin
        DBEdit29.Enabled := True;
        DBEdit13.Enabled := True;
-    //   Tab8.TabVisible := True;
+       Tab8.TabVisible := True;
       end;
 
    end;
     dm2.IqEscola.Active := True;
     Cliente := TClienteSock.Create;
     Cliente.OnRead := Cliente.doOnRead;
-    Cliente.ClientType := ctNonBlocking;
-
+    Cliente.ClientType := ctNonBlocking; 
 end;
 
 procedure TCad_Alunos.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -1087,6 +1026,9 @@ begin
     ConsTurma.ParamByName('serie').Value := DM.AlunosSERIE.Value;
     ConsTurma.ParamByName('turma').Value := DM.AlunosTURMA.Value;
     ConsTurma.Open;
+    dm2.iqRequerimento.Close;
+    dm2.iqRequerimento.Params[0].Value := dm.AlunosCODIGO.Value;
+    dm2.iqRequerimento.Open;
     Doc_RequerimentoQR.Preview;
   Finally
     Doc_RequerimentoQR.Free;
@@ -1095,49 +1037,40 @@ end;
 
 procedure TCad_Alunos.ReciboClick(Sender: TObject);
 begin
-//Consulta se o aluno é de cursinho - 1 para cursinho 0 para não.
+//Consulta se o aluno é de cursinho >> 1 para cursinho 0 para não.
   ConsTurma.Close;
   ConsTurma.ParamByName('serie').Value := dm.AlunosSerie.Value;
   ConsTurma.ParamByName('turma').Value := DM.AlunosTURMA.Value;
   ConsTurma.Open;
-//***************************************Procura cursinho****************
-//Procura se o aluno tem um recibo gravado.
-{  dm.Recibo.Close;
-  dm.Recibo.SelectSQL.Strings[2] := 'Where cod_aluno = :buscacodigo';
-  dm.Recibo.ParamByName('buscacodigo').Value := dm.AlunosCODIGO.Value;
-  dm.Recibo.Open;}
-
-//***********************************************************************
-
-                Begin
-                   DM.Bloquetos.Active := True;
-                   QBuscaBoleto.Close;
-                   QBuscaBoleto.SQL[2] := 'where aluno = :baluno and PAGAMENTO is null and PARCELA = 1';
-                   QBuscaBoleto.ParamByName('baluno').value := DM.AlunosCODIGO.Value;
-                   QBuscaBoleto.Open;
+Begin
+   DM.Bloquetos.Active := True;
+   QBuscaBoleto.Close;
+   QBuscaBoleto.SQL[2] := 'where aluno = :baluno and PAGAMENTO is null and PARCELA = 1';
+   QBuscaBoleto.ParamByName('baluno').value := DM.AlunosCODIGO.Value;
+   QBuscaBoleto.Open;
 
 
-                   if (QBuscaBoletoNOSSO_NUMERO.IsNull) then
-                   begin
-                     sit := 'M';
-                      GeraBoletoMatricula;
-                     end
-                    else
-                   if Application.MessageBox('Deseja reprocessar o boleto','Título',MB_YESNO + MB_ICONQUESTION) = IdYes then
-                     Begin
-                       sit := 'M';
-                       QBuscaBoleto.First;
-                       CopiaBoleto;
-                       Delete_Boleto.Close;
-                       Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL and PARCELA = 1';
-                       Delete_Boleto.ParamByName('baluno').Value := QBuscaBoletoALUNO.Value;
-                       Delete_Boleto.Open;
-                       Delete_Boleto.Close;
-                       Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL';
-                       GeraBoletoMatricula;
-                       ShowMessage('Boleto gerado com sucesso.');
-                     end;
-                 End;
+   if (QBuscaBoletoNOSSO_NUMERO.IsNull) then
+   begin
+      sit := 'M';
+      GeraBoletoMatricula;
+     end
+    else
+   if Application.MessageBox('Deseja reprocessar o boleto','Título',MB_YESNO + MB_ICONQUESTION) = IdYes then
+     Begin
+       sit := 'M';
+       QBuscaBoleto.First;
+       CopiaBoleto;
+       Delete_Boleto.Close;
+       Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL and PARCELA = 1';
+       Delete_Boleto.ParamByName('baluno').Value := QBuscaBoletoALUNO.Value;
+       Delete_Boleto.Open;
+       Delete_Boleto.Close;
+       Delete_Boleto.SQL[2] := 'where Aluno = :baluno and PAGAMENTO IS NULL';
+       GeraBoletoMatricula;
+       ShowMessage('Boleto gerado com sucesso.');
+     end;
+  End;
 End;
 
 
@@ -1304,7 +1237,7 @@ var w_sql1, w_sql2, w_sql3, w_aluno :string;
 begin
 w_aluno := dm.AlunosCODIGO.AsString;
 w_sql1 := 'update bloquetos ';
-w_sql2 := 'set st = ''S'' ';
+w_sql2 := 'set st = ''R'' ';
 w_sql3 :=  'where aluno = '+ w_aluno + ' and pagamento is null';
 
   if MessageDlg('Reprocessar Bloqueto do Aluno ?' + #13 + dm.AlunosNome.asstring, mtConfirmation, mbOKCancel, 0) = mrOK then begin
@@ -2019,11 +1952,23 @@ begin
         DM.BloquetosANO_DV.Value  := Copy(IntTostr(w_ano),3,2);
         DM.BloquetosMENSALIDADE.Value := DM.NegociacaoVALOR.Value;
         DM.BloquetosVALOR.Value       := DM.NegociacaoVALOR.Value;
-        if (i=1) then DM.BloquetosVENCIMENTO.Value  := (DM.NegociacaoDATA.Value);
-        if (i=2) then DM.BloquetosVENCIMENTO.Value  := (DM.NegociacaoDATA.Value) + dm.NegociacaoDIAS.Value;
-        if (i>2) then  DM.BloquetosVENCIMENTO.Value  := (DM.NegociacaoDATA.Value + (dm.NegociacaoDIAS.Value * (i-1)));
-
-        DM.BloquetosST.Value := 'S';
+        DM.BloquetosVALOR_ANT.Value := DM.NegociacaoVALOR.Value;
+        if (i=1) then
+        Begin
+            DM.BloquetosDATA_LIMITE.Value  := (DM.NegociacaoDATA.Value);
+            DM.BloquetosVENCIMENTO.Value := (DM.NegociacaoDATA.Value + 10);
+        end;
+        if (i=2) then
+        Begin
+             DM.BloquetosDATA_LIMITE.Value  := (DM.NegociacaoDATA.Value) + dm.NegociacaoDIAS.Value;
+             DM.BloquetosVENCIMENTO.Value := (DM.NegociacaoDATA.Value) + (dm.NegociacaoDIAS.Value + 10);
+        end;
+        if (i>2) then
+        Begin
+            DM.BloquetosDATA_LIMITE.Value  := (DM.NegociacaoDATA.Value + (dm.NegociacaoDIAS.Value * (i-1)));
+            DM.BloquetosVENCIMENTO.Value := (DM.NegociacaoDATA.Value)+ ((dm.NegociacaoDIAS.Value + 10) * (i-1));
+        End;
+        DM.BloquetosST.Value := 'G';
         DM.BloquetosTP.Value := 08; //negociado
 //        DM.BloquetosDATA_LIMITE.Value := StrToDate('00.00.0000');//((DM.NegociacaoDATA.Value + (dm.NegociacaoDIAS.Value*i)) + 7);
         DM.BloquetosNEGOCIACAO.Value := dm.NegociacaoCOD_NEGOCIACAO.Value;
@@ -2093,14 +2038,14 @@ var w_sql1, w_sql2, w_sql3, w_aluno :string;
 begin
 {w_aluno := dm.AlunosCODIGO.AsString;
 w_sql1 := 'update bloquetos ';
-w_sql2 := 'set st = ''S'' ';
+w_sql2 := 'set st = ''G'' ';
 w_sql3 :=  'where aluno = '+ w_aluno + ' and pagamento is null';}
 
   if MessageDlg('Deseja Gerar Bloquetos do Aluno ?' + #13 + dm.AlunosNome.asstring, mtConfirmation, mbOKCancel, 0) = mrOK then begin
-    if ((DM.AlunosBLOQUETO_1SEM.Value = 10) or (dm.AlunosBLOQUETO_1SEM.Value = 0)) then
+    if ((DM.AlunosBLOQUETO_1SEM.Value = 10) or (dm.AlunosBLOQUETO_1SEM.Value = 0) or (dm.AlunosBLOQUETO_1SEM.Value = 3)) then
     begin
     DM.Alunos.Edit;
-    DM.AlunosBLOQUETO_1SEM.Value := 0;
+    DM.AlunosBLOQUETO_1SEM.Value := 2;
     DM.AlunosBLOQUETO_2SEM.Value := 1;
     DM.Alunos.Post;
     end;
@@ -2139,6 +2084,27 @@ end;
 procedure TCad_Alunos.RxDBGrid4Enter(Sender: TObject);
 begin
    dm.Autorizacao.Open;
+end;
+
+procedure TCad_Alunos.BitBtn8Click(Sender: TObject);
+begin
+  Try
+      Application.CreateForm(Tfautorizacao, fautorizacao);
+      fautorizacao.ShowModal;
+    Finally
+      fautorizacao.Free;
+    End;
+end;
+
+procedure TCad_Alunos.BtermoRespClick(Sender: TObject);
+begin
+  try
+    Application.CreateForm(TRel_TermoResp, Rel_TermoResp);
+    Rel_TermoResp.Rl_Termo.Preview;
+  finally
+    Rel_TermoResp.Rl_Termo.Destroy;
+  end;
+
 end;
 
 end.

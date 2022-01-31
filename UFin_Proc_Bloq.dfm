@@ -1,11 +1,11 @@
 object Fin_Proc_Bloq: TFin_Proc_Bloq
-  Left = 504
-  Top = 232
+  Left = 363
+  Top = 189
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Processa Bloquetos'
   ClientHeight = 400
-  ClientWidth = 488
+  ClientWidth = 539
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -122,7 +122,7 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
   object DBGrid1: TDBGrid
     Left = 0
     Top = 136
-    Width = 488
+    Width = 539
     Height = 264
     Align = alBottom
     DataSource = DM.dsBloquetos
@@ -244,8 +244,8 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
   end
   object dsCursinho: TDataSource
     DataSet = IqCursinho
-    Left = 368
-    Top = 104
+    Left = 280
+    Top = 360
   end
   object IqCursinho: TIBQuery
     Database = DM.DB_ANGLO
@@ -258,8 +258,8 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
         'from (alunos a join turmas t on a.turma=t.turma and a.serie = t.' +
         'serie)'
       'where a.codigo = :rgm')
-    Left = 432
-    Top = 104
+    Left = 376
+    Top = 360
     ParamData = <
       item
         DataType = ftUnknown
@@ -287,7 +287,7 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
     SQL.Strings = (
       'select max(parcela) as total'
       'from bloquetos'
-      'where aluno = :codigo')
+      'where aluno = :codigo and pagamento is not null')
     Left = 368
     Top = 192
     ParamData = <
@@ -438,7 +438,7 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
       'delete from BLOQUETOS'
       'where pagamento is null and st <> '#39'N'#39
       'and exists (select codigo from alunos'
-      '             where bloqueto_1sem = 1'
+      '             where bloqueto_1sem = 2'
       '             and bloquetos.aluno=alunos.codigo)'
       #9#9#9' ')
     Left = 376

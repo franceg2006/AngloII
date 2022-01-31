@@ -1,13 +1,13 @@
 object DM: TDM
   OldCreateOrder = False
   OnCreate = DataModuleCreate
-  Left = 345
-  Top = 109
+  Left = 53
+  Top = 84
   Height = 763
-  Width = 1396
+  Width = 1214
   object DB_ANGLO: TIBDatabase
     Connected = True
-    DatabaseName = 'anglo:/bds/Anglo/Anglo_2015II.gdb'
+    DatabaseName = 'ANGLO:/bds/Anglo/Anglo_2020II.gdb'
     Params.Strings = (
       'lc_ctype=WIN1252'
       'user_name=SYSDBA'
@@ -692,11 +692,12 @@ object DM: TDM
         '   OPCAO_ESPANHOL, CELULAR, TEL_RESIDENCIAL, TEL_CONTATO, E_MAIL' +
         ', FORMATURA, '
       
-        '   BOLSA_AD, AULA_AD, ID, PAR_FINAL, ORIUNDO_ESCOLA, JAN, FEV, M' +
-        'ARC, ABR, '
+        '   BOLSA_AD, AULA_AD, ID, PAR_FINAL, ORIUNDO_ESCOLA, MESINICIAL,' +
+        ' MESFINAL, '
       
-        '   MAI, JUN, JUL, AGO, SETE, OUT, NOV, DEZ, MESINICIAL, MESFINAL' +
-        ', VALORPARCELAMAT)'
+        '   JAN, FEV, MARC, ABR, MAI, JUN, JUL, AGO, SETE, OUT, NOV, DEZ,' +
+        ' VALORPARCELAMAT, '
+      '   OBS_TEL, INTINERARIO)'
       'values'
       
         '  (:CODIGO, :CODIGO_ESCOLA, :NOME, :TIPO_LOGADOURO, :NUMERO, :CO' +
@@ -756,9 +757,11 @@ object DM: TDM
         '   :E_MAIL, :FORMATURA, :BOLSA_AD, :AULA_AD, :ID, :PAR_FINAL, :O' +
         'RIUNDO_ESCOLA, '
       
-        '   :JAN, :FEV, :MARC, :ABR, :MAI, :JUN, :JUL, :AGO, :SETE, :OUT,' +
-        ' :NOV, '
-      '   :DEZ, :MESINICIAL, :MESFINAL, :VALORPARCELAMAT)')
+        '   :MESINICIAL, :MESFINAL, :JAN, :FEV, :MARC, :ABR, :MAI, :JUN, ' +
+        ':JUL, :AGO, '
+      
+        '   :SETE, :OUT, :NOV, :DEZ, :VALORPARCELAMAT, :OBS_TEL, :INTINER' +
+        'ARIO)')
     RefreshSQL.Strings = (
       'Select '
       '  CODIGO,'
@@ -876,6 +879,8 @@ object DM: TDM
       '  ID,'
       '  PAR_FINAL,'
       '  ORIUNDO_ESCOLA,'
+      '  MESINICIAL,'
+      '  MESFINAL,'
       '  JAN,'
       '  FEV,'
       '  MARC,'
@@ -888,9 +893,9 @@ object DM: TDM
       '  OUT,'
       '  NOV,'
       '  DEZ,'
-      '  MESINICIAL,'
-      '  MESFINAL,'
-      '  VALORPARCELAMAT'
+      '  VALORPARCELAMAT,'
+      '  OBS_TEL,'
+      '  INTINERARIO'
       'from ALUNOS '
       'where'
       '  CODIGO = :CODIGO')
@@ -1022,6 +1027,8 @@ object DM: TDM
       '  ID = :ID,'
       '  PAR_FINAL = :PAR_FINAL,'
       '  ORIUNDO_ESCOLA = :ORIUNDO_ESCOLA,'
+      '  MESINICIAL = :MESINICIAL,'
+      '  MESFINAL = :MESFINAL,'
       '  JAN = :JAN,'
       '  FEV = :FEV,'
       '  MARC = :MARC,'
@@ -1034,9 +1041,9 @@ object DM: TDM
       '  OUT = :OUT,'
       '  NOV = :NOV,'
       '  DEZ = :DEZ,'
-      '  MESINICIAL = :MESINICIAL,'
-      '  MESFINAL = :MESFINAL,'
-      '  VALORPARCELAMAT = :VALORPARCELAMAT'
+      '  VALORPARCELAMAT = :VALORPARCELAMAT,'
+      '  OBS_TEL = :OBS_TEL,'
+      '  INTINERARIO = :INTINERARIO'
       'where'
       '  CODIGO = :OLD_CODIGO')
     GeneratorField.Field = 'CODIGO'
@@ -1120,12 +1127,6 @@ object DM: TDM
       FixedChar = True
       Size = 2
     end
-    object AlunosCEP: TIBStringField
-      FieldName = 'CEP'
-      Origin = '"ALUNOS"."CEP"'
-      FixedChar = True
-      Size = 9
-    end
     object AlunosRG: TIBStringField
       FieldName = 'RG'
       Origin = '"ALUNOS"."RG"'
@@ -1180,10 +1181,6 @@ object DM: TDM
     object AlunosNOME_CART_EXP: TIBStringField
       FieldName = 'NOME_CART_EXP'
       Origin = '"ALUNOS"."NOME_CART_EXP"'
-    end
-    object AlunosCPF: TSmallintField
-      FieldName = 'CPF'
-      Origin = '"ALUNOS"."CPF"'
     end
     object AlunosSEXO: TIBStringField
       FieldName = 'SEXO'
@@ -1687,20 +1684,25 @@ object DM: TDM
       Precision = 9
       Size = 2
     end
-  end
-  object ContaAlunosQ: TIBQuery
-    Database = DB_ANGLO
-    Transaction = IBTr_ANGLO
-    BufferChunks = 1000
-    CachedUpdates = False
-    SQL.Strings = (
-      'select Count(Codigo) As TotalAlunos'
-      'from ALUNOS')
-    Left = 152
-    Top = 58
-    object ContaAlunosQTOTALALUNOS: TIntegerField
-      FieldName = 'TOTALALUNOS'
-      Required = True
+    object AlunosCPF: TIBStringField
+      FieldName = 'CPF'
+      Origin = '"ALUNOS"."CPF"'
+      Size = 16
+    end
+    object AlunosOBS_TEL: TIBStringField
+      FieldName = 'OBS_TEL'
+      Origin = '"ALUNOS"."OBS_TEL"'
+      Size = 15
+    end
+    object AlunosINTINERARIO: TIntegerField
+      FieldName = 'INTINERARIO'
+      Origin = '"ALUNOS"."INTINERARIO"'
+    end
+    object AlunosCEP: TIBStringField
+      FieldName = 'CEP'
+      Origin = '"ALUNOS"."CEP"'
+      FixedChar = True
+      Size = 15
     end
   end
   object dsBloquetos: TDataSource
@@ -9182,13 +9184,25 @@ object DM: TDM
       '  AUTORIZACAO = :OLD_AUTORIZACAO')
     InsertSQL.Strings = (
       'insert into AUTO_CARTAO'
-      '  (ALUNOS, AUTORIZACAO)'
+      
+        '  (ALUNOS, AUTORIZACAO, NOME_TITULAR, DATA_PAGAMENTO, PARCELAS, ' +
+        'FORMAP, '
+      '   VALORP, MEMOBS)'
       'values'
-      '  (:ALUNOS, :AUTORIZACAO)')
+      
+        '  (:ALUNOS, :AUTORIZACAO, :NOME_TITULAR, :DATA_PAGAMENTO, :PARCE' +
+        'LAS, :FORMAP, '
+      '   :VALORP, :MEMOBS)')
     RefreshSQL.Strings = (
       'Select '
       '  ALUNOS,'
-      '  AUTORIZACAO'
+      '  AUTORIZACAO,'
+      '  NOME_TITULAR,'
+      '  DATA_PAGAMENTO,'
+      '  PARCELAS,'
+      '  FORMAP,'
+      '  VALORP,'
+      '  MEMOBS'
       'from AUTO_CARTAO '
       'where'
       '  ALUNOS = :ALUNOS and'
@@ -9201,11 +9215,16 @@ object DM: TDM
       'update AUTO_CARTAO'
       'set'
       '  ALUNOS = :ALUNOS,'
-      '  AUTORIZACAO = :AUTORIZACAO'
+      '  AUTORIZACAO = :AUTORIZACAO,'
+      '  NOME_TITULAR = :NOME_TITULAR,'
+      '  DATA_PAGAMENTO = :DATA_PAGAMENTO,'
+      '  PARCELAS = :PARCELAS,'
+      '  FORMAP = :FORMAP,'
+      '  VALORP = :VALORP,'
+      '  MEMOBS = :MEMOBS'
       'where'
       '  ALUNOS = :OLD_ALUNOS and'
       '  AUTORIZACAO = :OLD_AUTORIZACAO')
-    Active = True
     Left = 240
     Top = 488
     object AutorizacaoALUNOS: TIntegerField
@@ -9218,6 +9237,52 @@ object DM: TDM
       Origin = '"AUTO_CARTAO"."AUTORIZACAO"'
       Required = True
       Size = 25
+    end
+    object AutorizacaoNOME_TITULAR: TIBStringField
+      FieldName = 'NOME_TITULAR'
+      Origin = '"AUTO_CARTAO"."NOME_TITULAR"'
+      Size = 50
+    end
+    object AutorizacaoPARCELAS: TIntegerField
+      Alignment = taCenter
+      FieldName = 'PARCELAS'
+      Origin = '"AUTO_CARTAO"."PARCELAS"'
+    end
+    object AutorizacaoDATA_PAGAMENTO: TDateField
+      FieldName = 'DATA_PAGAMENTO'
+      Origin = '"AUTO_CARTAO"."DATA_PAGAMENTO"'
+    end
+    object AutorizacaoFORMAP: TIBStringField
+      FieldName = 'FORMAP'
+      Origin = '"AUTO_CARTAO"."FORMAP"'
+      FixedChar = True
+      Size = 2
+    end
+    object AutorizacaoVALORP: TIBBCDField
+      FieldName = 'VALORP'
+      Origin = '"AUTO_CARTAO"."VALORP"'
+      Precision = 9
+      Size = 2
+    end
+    object AutorizacaoMEMOBS: TIBStringField
+      FieldName = 'MEMOBS'
+      Origin = '"AUTO_CARTAO"."MEMOBS"'
+      Size = 250
+    end
+  end
+  object ContaAlunosQ: TIBQuery
+    Database = DB_ANGLO
+    Transaction = IBTr_ANGLO
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select Count(Codigo) As TotalAlunos'
+      'from ALUNOS')
+    Left = 144
+    Top = 56
+    object ContaAlunosQTOTALALUNOS: TIntegerField
+      FieldName = 'TOTALALUNOS'
+      Required = True
     end
   end
 end

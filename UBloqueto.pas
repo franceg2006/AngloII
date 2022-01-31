@@ -42,7 +42,6 @@ type
     QRLabel15: TQRLabel;
     QRShape7: TQRShape;
     QRLabel6: TQRLabel;
-    QRBarcode1: TQRBarcode;
     QRShape10: TQRShape;
     QRShape23: TQRShape;
     QRShape6: TQRShape;

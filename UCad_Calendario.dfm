@@ -1,6 +1,6 @@
 object Cad_Calendario: TCad_Calendario
-  Left = 400
-  Top = 273
+  Left = 615
+  Top = 309
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'CALENDÁRIO'
@@ -77,11 +77,13 @@ object Cad_Calendario: TCad_Calendario
       item
         Expanded = False
         FieldName = 'INICIO'
+        Width = 64
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'FIM'
+        Width = 64
         Visible = True
       end>
   end
