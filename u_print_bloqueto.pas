@@ -187,7 +187,8 @@ begin
        (Principal.Ano.Caption = '2014') or (Principal.Ano.Caption = '2015') or
        (Principal.Ano.Caption = '2016') or (Principal.Ano.Caption = '2017') or
        (Principal.Ano.Caption = '2018') or (Principal.Ano.Caption = '2019') or
-       (Principal.Ano.Caption = '2020') or (Principal.Ano.Caption = '2021')))
+       (Principal.Ano.Caption = '2020') or (Principal.Ano.Caption = '2021') or
+       (Principal.Ano.Caption = '2022')))
   then
    Begin
     if (dm.AlunosVENCIMENTO.IsNull) then

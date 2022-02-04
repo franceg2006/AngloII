@@ -16,7 +16,6 @@ type
     DBGrid1: TDBGrid;
     Label2: TLabel;
     Label3: TLabel;
-    Label4: TLabel;
     FS1: TFormStorage;
     Dsserie: TDataSource;
     Qserie: TIBQuery;
@@ -58,6 +57,9 @@ type
     BuscaBoletoDATA_LIMITE: TDateField;
     DeleteBoleto: TIBQuery;
     DsDeleteBoleto: TDataSource;
+    TotalParcelas: TIBQuery;
+    DsTotalParcelas: TDataSource;
+    TotalParcelasTOTAL: TSmallintField;
     procedure BitBtn2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
@@ -198,7 +200,7 @@ begin
 end;
 
 procedure TFin_Proc_Bloq.BitBtn2Click(Sender: TObject);
-var cont_adic,cont_alt,i, diavenc, diavencfev, totparcelas, mes_mat, mes_inicial, mes_final, cont_parcela : integer;
+var cont_adic,cont_alt,i, diavenc, diavencfev, totparcelas, mes_mat, mes_inicial, total_parcelas, cont_parcela : integer;
     mensalidade, mensalidade_ant, desconto, desconto_ant :Real;
     valor_ant, desconto_pon : real;
     agoraano, agorames, agoradia, d_dia  : Word;
@@ -211,11 +213,15 @@ begin
   agorames := 0;
   agoradia := 0;
   mes_inicial := 0;
-  mes_final := 0;
+  total_parcelas := 0;
   Gauge1.Progress := 0;
+
+  DM.ContaAlunosQ.Prepare;
   DM.ContaAlunosQ.Open;
-  Gauge1.MaxValue := 100;//DM.ContaAlunosQTOTALALUNOS.AsInteger;
+  Gauge1.MaxValue := dm.ContaAlunosQTOTALALUNOS.Value;
   DM.ContaAlunosQ.Close;
+
+
   Gauge1.Show;
   cont_adic := 0;
   cont_alt := 0;
@@ -225,38 +231,36 @@ begin
 
 While not DM.Alunos.Eof Do
 Begin
-   if (DM.AlunosBOLSA.Value <> 100) then
+   if ((DM.AlunosBOLSA.Value <> 100) and (DM.AlunosSTATUS.Value = 'A') and (DM.AlunosBLOQUETO_1SEM.Value = 0)) then
    Begin
     DecodeDate(Now, agoraano, agorames, agoradia); //Decodifica a data atual
-    mes_inicial := agorames;
+    mes_inicial := agorames;  //pega o mês atual
 //    mes_final := 11 + agorames;
 
-    if ((DM.AlunosSTATUS.Value = 'A') and (((DM.AlunosBLOQUETO_1SEM.Value = 0) or (DM.AlunosBLOQUETO_1SEM.Value = 2)))) then
-    begin
-    //*********************Busca para ver se o aluno é do cursinho ou não*******
-     IqCursinho.Close;
-     IqCursinho.ParamByName('rgm').Value := dm.AlunosCODIGO.Value;
-     IqCursinho.Open;
-    //***************************************************************************
+//    if ((DM.AlunosSTATUS.Value = 'A') and (((DM.AlunosBLOQUETO_1SEM.Value = 0) or (DM.AlunosBLOQUETO_1SEM.Value = 2)))) then
+//    begin
+        //*********************Busca para ver se o aluno é do cursinho ou não*******
+         IqCursinho.Close;
+         IqCursinho.ParamByName('rgm').Value := dm.AlunosCODIGO.Value;
+         IqCursinho.Open;
+        //***************************************************************************
 
-                   if  ((DM.AlunosSTATUS.Value = 'A') and (DM.AlunosBLOQUETO_1SEM.Value = 2)) then
-                   begin
-                      UltimaParcela.Close;
-                      UltimaParcela.Params[0].Value := dm.AlunosCODIGO.Value;
-                      UltimaParcela.Open;
-
-
-                   if UltimaParcelaTOTAL.Value > 0 then
-                   Begin
-                      copiaBoleto;
-                      DeleteBoleto.Close;
-                      DeleteBoleto.Open;
-                      mes_inicial :=  UltimaParcelaTOTAL.Value + 1;
-                   end
-                   else mes_inicial := agorames;
-                      mes_final := 12;
-                   end;
-
+{       if  (DM.AlunosBLOQUETO_1SEM.Value = 2) then //Se for para reprocessar os boletos
+        begin
+           UltimaParcela.Close;
+           UltimaParcela.Params[0].Value := dm.AlunosCODIGO.Value;
+           UltimaParcela.Open;
+           if UltimaParcelaTOTAL.Value > 0 then
+           Begin
+              copiaBoleto;
+              DeleteBoleto.Close;
+              DeleteBoleto.Open;
+              mes_inicial :=  UltimaParcelaTOTAL.Value + 1;
+           end
+           else mes_inicial := agorames;
+              mes_final := 12;
+        end;}
+     total_parcelas := 12;
      case DM.AlunosSERIE.Value of
        1 : begin
                  mensalidade := DM.ParametrosMENSALIDADE_1.Value;
@@ -285,11 +289,11 @@ Begin
          desconto := ((mensalidade * DM.AlunosBOLSA.Value)/100); //Aqui calcula o valor de desconto que o aluno obteve
 
 
-     if DM.AlunosBLOQUETO_1SEM.Value = 0 then inc(cont_adic); //para contar quantos boletos foram adicionados
-     if dm.AlunosBLOQUETO_1SEM.Value = 1 then inc(cont_adic);  //para contar quantos boletos foram alterados
-     if dm.AlunosBLOQUETO_1SEM.Value = 2 then inc(cont_alt);  //para contar quantos boletos foram alterados
-
-     for i := mes_inicial to mes_final do //Pega o mês inicia que pode ser 2 ou o mês que o aluno fez a matricula, o mês fim é 12
+//     if DM.AlunosBLOQUETO_1SEM.Value = 0 then inc(cont_adic); //para contar quantos boletos foram adicionados
+//     if dm.AlunosBLOQUETO_1SEM.Value = 1 then inc(cont_adic);  //para contar quantos boletos foram alterados
+//     if dm.AlunosBLOQUETO_1SEM.Value = 2 then inc(cont_alt);  //para contar quantos boletos foram alterados
+     inc(cont_adic);
+     for i := 1 to total_parcelas do //Pega o mês inicia que pode ser 2 ou o mês que o aluno fez a matricula, o mês fim é 12
      begin
        dm2.sql_gen.Active := True;
        dm2.sql_gen.Open;
@@ -299,23 +303,16 @@ Begin
        DM.BloquetosALUNO.AsInteger := DM.AlunosCODIGO.AsInteger;
        DM.BloquetosPARCELA.AsInteger := cont_parcela;
        inc(cont_parcela);
-
-
-
-         d_dia := (DaysPerMonth(agoraano, agorames)); //Quantidade de dia que tem o mês - pega o último dia do mês
-         DM.BloquetosVENCIMENTO.Value := StrToDate(IntToStr(d_dia)+'/'+IntToStr(agorames)+'/'+IntToStr(agoraano));//Para data do vencimento último dia do mês
-
-
-
+       d_dia := (DaysPerMonth(agoraano, agorames)); //Quantidade de dia que tem o mês - pega o último dia do mês
+       DM.BloquetosVENCIMENTO.Value := StrToDate(IntToStr(d_dia)+'/'+IntToStr(agorames)+'/'+IntToStr(agoraano));//Para data do vencimento último dia do mês
        Begin  //Para o mês de Fevereiro
-         if (agorames = 3) then
+         if (agorames = 2) then
          DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,15) //Data limite para pagamento de pontualidade do mês de fevereiro
            else
            DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,10); //Data limite para pagamento de pontualidade de outros meses.
        end;
-
-       if (dm.Bloquetos.State in [dsInsert, dsEdit]) then //Se a tabela de bloqueto estiver no modo de inserção ou edição
-       begin
+//       if (dm.Bloquetos.State in [dsInsert, dsEdit]) then //Se a tabela de bloqueto estiver no modo de inserção ou edição
+//       begin
          DM.BloquetosEMISSAO.Value := now;//d_emissao;
          DM.BloquetosANO_DV.Value := Copy(IntToStr(agoraano),3,2);
          DM.BloquetosMENSALIDADE.Value := mensalidade;
@@ -324,7 +321,7 @@ Begin
          DM.BloquetosDESCONTO_ANT.Value := (mensalidade - desconto); //Corresponde ao valor que é dado de desconto, por pagamento antecipado
          DM.BloquetosVALOR.Value := mensalidade;      //Valor normal mais o material menos o desconto
          DM.BloquetosVALOR_ANT.Value := (mensalidade - desconto);  //Valor com a pontualidade mais o material
-         DM.BloquetosTP.Value := mes_final;  //Total de parcelas
+         DM.BloquetosTP.Value := 12;  //Total de parcelas
          DM.BloquetosST.Value := 'G'; //Coloca a situação ST sento G, para os bloquetos gerados
          dm.Alunos.Open;
 
@@ -335,8 +332,14 @@ Begin
          end;
          inc(agorames);
       end;    // do for - Parcelas
+
       DM.Bloquetos.Post;
+      TotalParcelas.Close;
+      TotalParcelas.Params[0].value := DM.AlunosCODIGO.Value;
+      TotalParcelas.Open;
+      totparcelas := TotalParcelasTotal.value;
       DM2.TSUsuario.CommitRetaining;
+      Gauge1.Progress := Gauge1.Progress + cont_adic;
     end;     // do if Status = 'A'
     cont_parcela := 1;
     //*******************************************************************************************************************************
@@ -345,25 +348,22 @@ Begin
         DM.Alunos.Edit;
         DM.AlunosBLOQUETO_1SEM.Value := 10;
         DM.Alunos.Post;
+        dm.Alunos.Next;
 //*****************************************************************************************
-
-  end;
+//  end;
 end;
   Label1.Caption := 'Terminado !!';
   Label3.Caption := 'Adicionados Bloquetos de '+inttostr(cont_adic)+' Alunos!';
   Label3.Show;
-  Label4.Caption := 'Alterados Bloquetos de '+inttostr(cont_alt)+' Alunos!';
-  Gauge1.Progress := 100;
-  Label4.Show;
   DBGrid1.Enabled := true;
   DBGrid1.Show;
   BitBtn2.Enabled := false;
   BitBtn1.Kind := bkClose;
   BitBtn1.Caption := '&Fecha';
-  Gauge1.Progress := Gauge1.Progress + 1;
+//  Gauge1.Progress := Gauge1.Progress + cont_adic;
   dm.Alunos.Next;
 end;
-end;
+//end;
 
 
 procedure TFin_Proc_Bloq.btnRemessaClick(Sender: TObject);

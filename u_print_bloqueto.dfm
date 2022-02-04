@@ -1,7 +1,7 @@
 object fPrintBloqueto: TfPrintBloqueto
-  Left = 207
-  Top = 129
-  Width = 1335
+  Left = 64
+  Top = 94
+  Width = 1193
   Height = 676
   Caption = 'fPrintBloqueto'
   Color = clBtnFace

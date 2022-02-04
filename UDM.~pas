@@ -1158,14 +1158,14 @@ type
     AutorizacaoNOME_TITULAR: TIBStringField;
     AutorizacaoPARCELAS: TIntegerField;
     AutorizacaoDATA_PAGAMENTO: TDateField;
-    ContaAlunosQ: TIBQuery;
-    ContaAlunosQTOTALALUNOS: TIntegerField;
     AutorizacaoFORMAP: TIBStringField;
     AutorizacaoVALORP: TIBBCDField;
     AutorizacaoMEMOBS: TIBStringField;
     AlunosOBS_TEL: TIBStringField;
     AlunosINTINERARIO: TIntegerField;
     AlunosCEP: TIBStringField;
+    ContaAlunosQ: TIBQuery;
+    ContaAlunosQTOTALALUNOS: TLargeintField;
     procedure BloquetosQCalcFields(DataSet: TDataSet);
     procedure TurmasNewRecord(DataSet: TDataSet);
     procedure GradeNewRecord(DataSet: TDataSet);
@@ -1891,7 +1891,7 @@ begin
 //home/francebd/Anglo/Anglo_2007.gdb
 //servidor
 //***********************Para conexão com o servidor****************************
-
+  {
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');
@@ -1901,19 +1901,19 @@ begin
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-
+  }
 //***************************Para conexão com o banco de dados LOCAL************
-  {
+
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');
   DB_ANGLO.Params.Add('lc_ctype=WIN1252');
   DB_ANGLO.Params.Add('password=masterkey');
-  DB_ANGLO.DatabaseName := ('C:/AngloII/Anglo_2021II.gdb');
+  DB_ANGLO.DatabaseName := ('C:/AngloII/Anglo_2022II.gdb');
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-  }
+
 end;
 
 procedure TDM.AutorizacaoNewRecord(DataSet: TDataSet);

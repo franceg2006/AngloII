@@ -492,13 +492,13 @@ type
     iqRequerimentoNUMERO: TSmallintField;
     iqRequerimentoBAIRRO: TIBStringField;
     iqRequerimentoUF: TIBStringField;
-    iqRequerimentoCEP: TIBStringField;
     iqRequerimentoFONE: TIBStringField;
     iqRequerimentoCELULAR: TIBStringField;
     iqRequerimentoTEL_RESIDENCIAL: TIBStringField;
     iqRequerimentoRG: TIBStringField;
     iqRequerimentoSERIE: TSmallintField;
     iqRequerimentoNOME_LOGADOURO: TIBStringField;
+    iqRequerimentoCEP: TIBStringField;
     procedure DBUsuarioAfterConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -532,7 +532,7 @@ end;
 procedure TDM2.DataModuleCreate(Sender: TObject);
 begin
 //***********************Para conexão com o servidor****************************
-
+  {
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
@@ -542,9 +542,9 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-  
+  }
 //***************************Para conexão com o banco de dados LOCAL************
-  {
+
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
@@ -554,6 +554,6 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-  }
+  
 end;
 end.

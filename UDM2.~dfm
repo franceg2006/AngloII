@@ -2575,12 +2575,6 @@ object DM2: TDM2
       FixedChar = True
       Size = 2
     end
-    object iqRequerimentoCEP: TIBStringField
-      FieldName = 'CEP'
-      Origin = '"ALUNOS"."CEP"'
-      FixedChar = True
-      Size = 9
-    end
     object iqRequerimentoFONE: TIBStringField
       FieldName = 'FONE'
       Origin = '"ALUNOS"."FONE"'
@@ -2608,6 +2602,12 @@ object DM2: TDM2
     object iqRequerimentoNOME_LOGADOURO: TIBStringField
       FieldName = 'NOME_LOGADOURO'
       Origin = '"LOGADOURO"."NOME_LOGADOURO"'
+    end
+    object iqRequerimentoCEP: TIBStringField
+      FieldName = 'CEP'
+      Origin = '"ALUNOS"."CEP"'
+      FixedChar = True
+      Size = 15
     end
   end
 end

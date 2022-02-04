@@ -187,7 +187,8 @@ begin
        (Principal.Ano.Caption = '2014') or (Principal.Ano.Caption = '2015') or
        (Principal.Ano.Caption = '2016') or (Principal.Ano.Caption = '2017') or
        (Principal.Ano.Caption = '2018') or (Principal.Ano.Caption = '2019') or
-       (Principal.Ano.Caption = '2020') or (Principal.Ano.Caption = '2021')))
+       (Principal.Ano.Caption = '2020') or (Principal.Ano.Caption = '2021') or
+       (Principal.Ano.Caption = '2022')))
   then
    Begin
     if (dm.AlunosVENCIMENTO.IsNull) then
@@ -206,13 +207,13 @@ begin
    if ((dm.BloquetosQBOLSA.Value = 0) or (dm.BloquetosQBOLSA.IsNull)) then
     Begin
        RLLabel24.Caption := 'Desc. 5%';
-       RLDBText27.Enabled := False;
-       porcentagem.Enabled := False;
+       RLDBText27.Visible := False;
+       porcentagem.Visible := False;
     end
        else     Begin
          RLLabel24.Caption := 'Desc.';
-         RLDBText27.Enabled := True;
-         porcentagem.Enabled := True;
+         RLDBText27.Visible := True;
+         porcentagem.Visible := True;
          end;
 
 

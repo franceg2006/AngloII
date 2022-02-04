@@ -1,10 +1,10 @@
 object Fin_Proc_Bloq: TFin_Proc_Bloq
-  Left = 369
-  Top = 120
+  Left = 363
+  Top = 189
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Processa Bloquetos'
-  ClientHeight = 400
+  ClientHeight = 421
   ClientWidth = 539
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -36,6 +36,7 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
     Top = 71
     Width = 238
     Height = 17
+    MaxValue = 0
     Progress = 0
     Visible = False
   end
@@ -61,20 +62,6 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
     Width = 247
     Height = 13
     Caption = 'Adicionados Bloquetos de 000 Alunos!'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clNavy
-    Font.Height = -11
-    Font.Name = 'Verdana'
-    Font.Style = [fsBold]
-    ParentFont = False
-    Visible = False
-  end
-  object Label4: TLabel
-    Left = 22
-    Top = 105
-    Width = 231
-    Height = 13
-    Caption = 'Alterados Bloquetos de 000 Alunos!'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clNavy
     Font.Height = -11
@@ -121,9 +108,9 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
   end
   object DBGrid1: TDBGrid
     Left = 0
-    Top = 136
+    Top = 144
     Width = 539
-    Height = 264
+    Height = 277
     Align = alBottom
     DataSource = DM.dsBloquetos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
@@ -272,7 +259,7 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
   end
   object dlgSave1: TSaveDialog
     Left = 320
-    Top = 32
+    Top = 8
   end
   object DsUltimaParcela: TDataSource
     DataSet = UltimaParcela
@@ -448,5 +435,31 @@ object Fin_Proc_Bloq: TFin_Proc_Bloq
     DataSet = DeleteBoleto
     Left = 280
     Top = 304
+  end
+  object TotalParcelas: TIBQuery
+    Database = DM.DB_ANGLO
+    Transaction = DM.IBTr_ANGLO
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'select max(parcela) as total'
+      'from bloquetos'
+      'where aluno = :tbloqueto')
+    Left = 144
+    Top = 216
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'tbloqueto'
+        ParamType = ptUnknown
+      end>
+    object TotalParcelasTOTAL: TSmallintField
+      FieldName = 'TOTAL'
+    end
+  end
+  object DsTotalParcelas: TDataSource
+    DataSet = TotalParcelas
+    Left = 56
+    Top = 216
   end
 end

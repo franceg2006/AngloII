@@ -6,12 +6,11 @@ object DM: TDM
   Height = 763
   Width = 1214
   object DB_ANGLO: TIBDatabase
-    Connected = True
-    DatabaseName = 'ANGLO:/bds/Anglo/Anglo_2020II.gdb'
+    DatabaseName = 'C:/AngloII/Anglo_2022II.gdb'
     Params.Strings = (
       'lc_ctype=WIN1252'
       'user_name=SYSDBA'
-      'password=plkh%321')
+      'password=masterkey')
     LoginPrompt = False
     DefaultTransaction = IBTr_ANGLO
     IdleTimer = 0
@@ -22,7 +21,7 @@ object DM: TDM
     Top = 1
   end
   object IBTr_ANGLO: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DB_ANGLO
     DefaultAction = TACommitRetaining
     Params.Strings = (
@@ -9276,11 +9275,13 @@ object DM: TDM
     BufferChunks = 1000
     CachedUpdates = False
     SQL.Strings = (
-      'select Count(Codigo) As TotalAlunos'
-      'from ALUNOS')
-    Left = 144
+      'select Count(Codigo) as TotalAlunos'
+      'from ALUNOS'
+      'where status = '#39'A'#39
+      '')
+    Left = 160
     Top = 56
-    object ContaAlunosQTOTALALUNOS: TIntegerField
+    object ContaAlunosQTOTALALUNOS: TLargeintField
       FieldName = 'TOTALALUNOS'
       Required = True
     end

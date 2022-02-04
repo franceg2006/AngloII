@@ -29,7 +29,7 @@ object Cad_Alunos: TCad_Alunos
     Top = 0
     Width = 970
     Height = 657
-    ActivePage = Tab2
+    ActivePage = Tab4
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
     TabOrder = 1
@@ -2251,16 +2251,6 @@ object Cad_Alunos: TCad_Alunos
             Visible = False
           end>
       end
-      object BitBtn3: TBitBtn
-        Left = 525
-        Top = 503
-        Width = 217
-        Height = 19
-        Cursor = crHandPoint
-        Caption = 'Reprocessar Bloquetos'
-        TabOrder = 2
-        OnClick = BitBtn3Click
-      end
       object BitBtn4: TBitBtn
         Left = 517
         Top = 572
@@ -2268,7 +2258,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 19
         Caption = 'Gerar boletos(coletivo)'
         Enabled = False
-        TabOrder = 3
+        TabOrder = 2
         Visible = False
         OnClick = BitBtn4Click
       end
@@ -2330,7 +2320,7 @@ object Cad_Alunos: TCad_Alunos
         Width = 116
         Height = 19
         Caption = 'Imprime Etiq SP'
-        TabOrder = 4
+        TabOrder = 3
         Glyph.Data = {
           76030000424D7603000000000000360000002800000011000000100000000100
           18000000000040030000C30E0000C30E00000000000000000000BFBFBFBFBFBF
@@ -2368,7 +2358,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 20
         Cursor = crHandPoint
         Caption = 'Gera Arquivo para INEP'
-        TabOrder = 5
+        TabOrder = 4
         Visible = False
         OnClick = BitBtn2Click
         Glyph.Data = {
@@ -2381,23 +2371,15 @@ object Cad_Alunos: TCad_Alunos
           BFB00F0000000F0000000FFFFF0A0FFFFF0A0F777F0D0F777F0D0FFFFF0A0FFF
           FF0A0F777F0D0F777F0D0FFFFF0A0FFFFF0A0000000D0000000D}
       end
-      object BitBtn6: TBitBtn
-        Left = 528
-        Top = 537
-        Width = 217
-        Height = 20
-        Caption = 'Gerar Bloquetos do aluno'
-        TabOrder = 6
-        OnClick = BitBtn6Click
-      end
       object BitBtn7: TBitBtn
         Left = 528
-        Top = 523
+        Top = 517
         Width = 213
         Height = 17
         Cursor = crHandPoint
         Caption = 'Reprocessa Bloqueto(Parcela)'
-        TabOrder = 7
+        TabOrder = 5
+        Visible = False
         OnClick = BitBtn7Click
       end
     end
@@ -2490,6 +2472,7 @@ object Cad_Alunos: TCad_Alunos
         Top = 88
         Width = 857
         Height = 401
+        Cursor = crHandPoint
         DataSource = DM.dsBloquetosQ
         Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
         TabOrder = 0
@@ -2498,6 +2481,7 @@ object Cad_Alunos: TCad_Alunos
         TitleFont.Height = -11
         TitleFont.Name = 'Verdana'
         TitleFont.Style = []
+        OnDrawColumnCell = RxDBGrid1DrawColumnCell
         OnDblClick = RxDBGrid1DblClick
         Columns = <
           item
@@ -2597,6 +2581,16 @@ object Cad_Alunos: TCad_Alunos
         LookupSource = DM.dsAlunos
         TabOrder = 1
         OnChange = PesqAluno2Change
+      end
+      object Reprocessa: TBitBtn
+        Left = 776
+        Top = 496
+        Width = 131
+        Height = 27
+        Cursor = crHandPoint
+        Caption = 'Reprocessa Boletos'
+        TabOrder = 2
+        OnClick = ReprocessaClick
       end
     end
     object Tab5: TTabSheet
@@ -3525,7 +3519,7 @@ object Cad_Alunos: TCad_Alunos
     OnClick = DBNavigator1Click
   end
   object BitBtn1: TBitBtn
-    Left = 766
+    Left = 790
     Top = 597
     Width = 129
     Height = 25
@@ -3761,7 +3755,7 @@ object Cad_Alunos: TCad_Alunos
     OnClick = OrdemClick
   end
   object BitBtn5: TBitBtn
-    Left = 767
+    Left = 791
     Top = 622
     Width = 128
     Height = 24
@@ -4014,8 +4008,8 @@ object Cad_Alunos: TCad_Alunos
     Database = DM.DB_ANGLO
     ParamCheck = True
     Transaction = DM.IBTr_ANGLO
-    Left = 708
-    Top = 464
+    Left = 692
+    Top = 432
   end
   object DsBuscaBoleto: TDataSource
     DataSet = QBuscaBoleto
@@ -4215,8 +4209,8 @@ object Cad_Alunos: TCad_Alunos
       'select max(parcela) as total'
       'from bloquetos'
       'where aluno = :codigo')
-    Left = 588
-    Top = 536
+    Left = 780
+    Top = 400
     ParamData = <
       item
         DataType = ftUnknown
@@ -4229,8 +4223,8 @@ object Cad_Alunos: TCad_Alunos
   end
   object DsUltimoBoleto: TDataSource
     DataSet = UltimoBoleto
-    Left = 684
-    Top = 528
+    Left = 876
+    Top = 400
   end
   object AlunosAnt: TIBQuery
     Database = DM.DB_ANGLO
