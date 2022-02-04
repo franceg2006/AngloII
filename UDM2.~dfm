@@ -2463,7 +2463,6 @@ object DM2: TDM2
     end
   end
   object DBUsuario: TIBDatabase
-    DatabaseName = 'Anglo:'
     Params.Strings = (
       'lc_ctype=WIN1252')
     LoginPrompt = False

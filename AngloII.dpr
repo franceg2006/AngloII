@@ -146,7 +146,8 @@ uses
   Ufparametrosbloqueto in 'Ufparametrosbloqueto.pas' {fparametrosbloqueto},
   Ufautorizacao in 'Ufautorizacao.pas' {fautorizacao},
   URel_Autoriza in 'URel_Autoriza.pas' {Rel_autoriza},
-  UTermo_Resp in 'UTermo_Resp.pas' {Rel_TermoResp};
+  UTermo_Resp in 'UTermo_Resp.pas' {Rel_TermoResp},
+  UProcedimentos in 'UProcedimentos.pas';
 
 {$R *.RES}
 

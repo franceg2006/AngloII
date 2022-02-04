@@ -1,11 +1,11 @@
 object fparametrosbloqueto: Tfparametrosbloqueto
-  Left = 736
-  Top = 336
+  Left = 393
+  Top = 309
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Parametros o boleto'
-  ClientHeight = 170
-  ClientWidth = 155
+  ClientHeight = 226
+  ClientWidth = 518
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -73,7 +73,7 @@ object fparametrosbloqueto: Tfparametrosbloqueto
     Database = DM.DB_ANGLO
     ParamCheck = True
     Transaction = DM.IBTr_ANGLO
-    Left = 392
+    Left = 416
     Top = 56
   end
   object QBuscaBoleto: TIBQuery

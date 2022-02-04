@@ -4013,7 +4013,7 @@ object Cad_Alunos: TCad_Alunos
   end
   object DsBuscaBoleto: TDataSource
     DataSet = QBuscaBoleto
-    Left = 724
+    Left = 708
     Top = 344
   end
   object QBuscaBoleto: TIBQuery
@@ -4025,7 +4025,7 @@ object Cad_Alunos: TCad_Alunos
       'select *'
       'from bloquetos'
       'where aluno = :baluno and PAGAMENTO is null')
-    Left = 476
+    Left = 612
     Top = 336
     ParamData = <
       item
@@ -4167,8 +4167,8 @@ object Cad_Alunos: TCad_Alunos
   end
   object Ds_Delete_Boleto: TDataSource
     DataSet = Delete_Boleto
-    Left = 684
-    Top = 160
+    Left = 652
+    Top = 192
   end
   object Ds_UpNegociacao: TDataSource
     DataSet = UP_Negociacao

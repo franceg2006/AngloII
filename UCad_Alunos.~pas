@@ -635,7 +635,7 @@ uses UDM, URel_QRFicha_Ocorrencia, UDoc_ContratoQR, UDoc_RequerimentoQR,
   ULst_EstatisticaTurQR, UCad_AlunosFoto, Ucores, UDM2, Uend_cob,
   UEtiq_SPQR, Urelacaosenhapais, UDoc_ContratoSemiQR, UDoc_TermoCompromisso,
   UDoc_ContratoCursinho, Ufescola, Uprematricula, UDoc_ContratoCurso,
-  Ufparametrosbloqueto, Ufautorizacao, UTermo_Resp;
+  Ufparametrosbloqueto, Ufautorizacao, UTermo_Resp, UProcedimentos;
 
 {$R *.DFM}
 
@@ -2080,10 +2080,8 @@ end;
 
 procedure TCad_Alunos.ReprocessaClick(Sender: TObject);
 begin
-  if dm.BloquetosST.Value = 'R' Then
-   Begin
-
-   End;
+      BCopia;
+      Reprocessa;
 end;
 
 end.

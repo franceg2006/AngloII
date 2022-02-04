@@ -145,7 +145,8 @@ uses
   UDoc_ContratoCurso in 'UDoc_ContratoCurso.pas' {Doc_ContratoCurso: TQuickRep},
   Ufparametrosbloqueto in 'Ufparametrosbloqueto.pas' {fparametrosbloqueto},
   Ufautorizacao in 'Ufautorizacao.pas' {fautorizacao},
-  URel_Autoriza in 'URel_Autoriza.pas' {Rel_autoriza};
+  URel_Autoriza in 'URel_Autoriza.pas' {Rel_autoriza},
+  UTermo_Resp in 'UTermo_Resp.pas' {Rel_TermoResp};
 
 {$R *.RES}
 
