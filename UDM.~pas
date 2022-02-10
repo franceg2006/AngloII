@@ -1165,6 +1165,7 @@ type
     AlunosINTINERARIO: TIntegerField;
     AlunosCEP: TIBStringField;
     ContaAlunosQ: TIBQuery;
+    BloquetosTDIAS: TIntegerField;
     ContaAlunosQTOTALALUNOS: TLargeintField;
     procedure BloquetosQCalcFields(DataSet: TDataSet);
     procedure TurmasNewRecord(DataSet: TDataSet);
@@ -1913,7 +1914,7 @@ begin
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-
+  
 end;
 
 procedure TDM.AutorizacaoNewRecord(DataSet: TDataSet);

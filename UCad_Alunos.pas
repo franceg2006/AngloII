@@ -512,6 +512,7 @@ type
     AlunosAntID: TIBStringField;
     AlunosAntCEP: TIBStringField;
     Reprocessa: TBitBtn;
+    DBRadioGroup7: TDBRadioGroup;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
@@ -597,6 +598,7 @@ type
     procedure RxDBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure ReprocessaClick(Sender: TObject);
+    procedure DBRadioGroup7Exit(Sender: TObject);
   private
     procedure AtualizaSitFin;
     procedure AtualizaSitFin2;
@@ -928,11 +930,17 @@ begin
   DM.BloquetosQ.Close;
   DM.AlunosT.Close;
   DM.Cores.Close;
+  DM.Alunos.Close;
+  with DM.Alunos.SelectSQL do
+  begin
+       Clear;
+       add('select * ');
+       add('from ALUNOS');
+       add('where Codigo > 0');
+       add('order by Codigo');
+  end;
+//  DM.Alunos.Open;
   DM.IBTr_Anglo.CommitRetaining;
-  DM.Alunos.SelectSQL.Strings[0] := 'select *';
-  DM.Alunos.SelectSQL.Strings[1] := 'from ALUNOS';
-  DM.Alunos.SelectSQL.Strings[2] := 'where Codigo > 0';
-  DM.Alunos.SelectSQL.Strings[3] := 'order by Codigo';
 end;
 
 procedure TCad_Alunos.AtualizaFoto;
@@ -1982,13 +1990,13 @@ if Application.MessageBox('Deseja marcar o boleto para reprocesso','Título',MB_Y
    dm.Bloquetos.Post;
    dm.BloquetosQ.close;
    dm.BloquetosQ.Open;
-   dm.Bloquetos.Close;
+{   dm.Bloquetos.Close;
    dm.Bloquetos.SelectSQL.Clear;
    dm.Bloquetos.SelectSQL.Add  ('select *');
    dm.Bloquetos.SelectSQL.Add  ('from BLOQUETOS');
    dm.Bloquetos.SelectSQL.Add  ('where NOSSO_NUMERO > 0');
    dm.Bloquetos.SelectSQL.Add  ('order by NOSSO_NUMERO');
-   dm.Bloquetos.Open;
+   dm.Bloquetos.Open;}
  end else
    Begin
    dm.Bloquetos.Close;
@@ -2003,13 +2011,13 @@ if Application.MessageBox('Deseja marcar o boleto para reprocesso','Título',MB_Y
    dm.Bloquetos.Post;
    dm.BloquetosQ.close;
    dm.BloquetosQ.Open;
-   dm.Bloquetos.Close;
+{   dm.Bloquetos.Close;
    dm.Bloquetos.SelectSQL.Clear;
    dm.Bloquetos.SelectSQL.Add  ('select *');
    dm.Bloquetos.SelectSQL.Add  ('from BLOQUETOS');
    dm.Bloquetos.SelectSQL.Add  ('where NOSSO_NUMERO > 0');
    dm.Bloquetos.SelectSQL.Add  ('order by NOSSO_NUMERO');
-   dm.Bloquetos.Open;
+   dm.Bloquetos.Open;}
   end;
 end;
 
@@ -2080,8 +2088,21 @@ end;
 
 procedure TCad_Alunos.ReprocessaClick(Sender: TObject);
 begin
-      BCopia;
-      RBoletos;
+    RBoletos;
+    BCopia;
+    AtualizaSitFin2;
+end;
+
+procedure TCad_Alunos.DBRadioGroup7Exit(Sender: TObject);
+begin
+   dm.Bloquetos.Post;
+   dm.Bloquetos.Close;
+   dm.Bloquetos.SelectSQL.Clear;
+   dm.Bloquetos.SelectSQL.Add  ('select *');
+   dm.Bloquetos.SelectSQL.Add  ('from BLOQUETOS');
+   dm.Bloquetos.SelectSQL.Add  ('where NOSSO_NUMERO > 0');
+   dm.Bloquetos.SelectSQL.Add  ('order by NOSSO_NUMERO');
+   dm.Bloquetos.Open;
 end;
 
 end.

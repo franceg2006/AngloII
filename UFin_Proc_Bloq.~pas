@@ -215,13 +215,10 @@ begin
   mes_inicial := 0;
   total_parcelas := 0;
   Gauge1.Progress := 0;
-
   DM.ContaAlunosQ.Prepare;
   DM.ContaAlunosQ.Open;
   Gauge1.MaxValue := dm.ContaAlunosQTOTALALUNOS.Value;
   DM.ContaAlunosQ.Close;
-
-
   Gauge1.Show;
   cont_adic := 0;
   cont_alt := 0;
@@ -235,31 +232,13 @@ Begin
    Begin
     DecodeDate(Now, agoraano, agorames, agoradia); //Decodifica a data atual
     mes_inicial := agorames;  //pega o mês atual
-//    mes_final := 11 + agorames;
 
-//    if ((DM.AlunosSTATUS.Value = 'A') and (((DM.AlunosBLOQUETO_1SEM.Value = 0) or (DM.AlunosBLOQUETO_1SEM.Value = 2)))) then
-//    begin
         //*********************Busca para ver se o aluno é do cursinho ou não*******
          IqCursinho.Close;
          IqCursinho.ParamByName('rgm').Value := dm.AlunosCODIGO.Value;
          IqCursinho.Open;
         //***************************************************************************
 
-{       if  (DM.AlunosBLOQUETO_1SEM.Value = 2) then //Se for para reprocessar os boletos
-        begin
-           UltimaParcela.Close;
-           UltimaParcela.Params[0].Value := dm.AlunosCODIGO.Value;
-           UltimaParcela.Open;
-           if UltimaParcelaTOTAL.Value > 0 then
-           Begin
-              copiaBoleto;
-              DeleteBoleto.Close;
-              DeleteBoleto.Open;
-              mes_inicial :=  UltimaParcelaTOTAL.Value + 1;
-           end
-           else mes_inicial := agorames;
-              mes_final := 12;
-        end;}
      total_parcelas := 12;
      case DM.AlunosSERIE.Value of
        1 : begin
@@ -289,9 +268,6 @@ Begin
          desconto := ((mensalidade * DM.AlunosBOLSA.Value)/100); //Aqui calcula o valor de desconto que o aluno obteve
 
 
-//     if DM.AlunosBLOQUETO_1SEM.Value = 0 then inc(cont_adic); //para contar quantos boletos foram adicionados
-//     if dm.AlunosBLOQUETO_1SEM.Value = 1 then inc(cont_adic);  //para contar quantos boletos foram alterados
-//     if dm.AlunosBLOQUETO_1SEM.Value = 2 then inc(cont_alt);  //para contar quantos boletos foram alterados
      inc(cont_adic);
      for i := 1 to total_parcelas do //Pega o mês inicia que pode ser 2 ou o mês que o aluno fez a matricula, o mês fim é 12
      begin
@@ -350,7 +326,7 @@ Begin
         DM.Alunos.Post;
         dm.Alunos.Next;
 //*****************************************************************************************
-//  end;
+
 end;
   Label1.Caption := 'Terminado !!';
   Label3.Caption := 'Adicionados Bloquetos de '+inttostr(cont_adic)+' Alunos!';
@@ -360,10 +336,9 @@ end;
   BitBtn2.Enabled := false;
   BitBtn1.Kind := bkClose;
   BitBtn1.Caption := '&Fecha';
-//  Gauge1.Progress := Gauge1.Progress + cont_adic;
   dm.Alunos.Next;
 end;
-//end;
+
 
 
 procedure TFin_Proc_Bloq.btnRemessaClick(Sender: TObject);

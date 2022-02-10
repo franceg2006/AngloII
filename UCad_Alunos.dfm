@@ -1,6 +1,6 @@
 object Cad_Alunos: TCad_Alunos
-  Left = 246
-  Top = 133
+  Left = 239
+  Top = 86
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'ALUNOS'
@@ -2471,10 +2471,15 @@ object Cad_Alunos: TCad_Alunos
         Left = 48
         Top = 88
         Width = 857
-        Height = 401
+        Height = 393
         Cursor = crHandPoint
+        Hint = 
+          'Para selecionar o boleto a ser reprocessado, use o <<Duplo Click' +
+          '>>'
         DataSource = DM.dsBloquetosQ
         Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+        ParentShowHint = False
+        ShowHint = True
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -2541,7 +2546,7 @@ object Cad_Alunos: TCad_Alunos
             FieldName = 'VALOR_ANT'
             Title.Alignment = taCenter
             Title.Caption = 'Valor-Desc.'
-            Width = 67
+            Width = 77
             Visible = True
           end
           item
@@ -2584,13 +2589,34 @@ object Cad_Alunos: TCad_Alunos
       end
       object Reprocessa: TBitBtn
         Left = 776
-        Top = 496
+        Top = 488
         Width = 131
         Height = 27
         Cursor = crHandPoint
         Caption = 'Reprocessa Boletos'
         TabOrder = 2
         OnClick = ReprocessaClick
+      end
+      object DBRadioGroup7: TDBRadioGroup
+        Left = 49
+        Top = 483
+        Width = 297
+        Height = 31
+        Cursor = crHandPoint
+        Caption = 'Limite de dias em que se pode pagar sem juros.'
+        Columns = 3
+        DataField = 'TDIAS'
+        DataSource = DM.dsBloquetos
+        Items.Strings = (
+          '5'
+          '10'
+          '15')
+        TabOrder = 3
+        Values.Strings = (
+          '5'
+          '10'
+          '15')
+        OnExit = DBRadioGroup7Exit
       end
     end
     object Tab5: TTabSheet
@@ -3330,7 +3356,7 @@ object Cad_Alunos: TCad_Alunos
       end
     end
     object Tab8: TTabSheet
-      Caption = 'Boletos avulsos'
+      Caption = 'Negociação'
       ImageIndex = 7
       object Label101: TLabel
         Left = 24

@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM2
+ExpandedItems=DM2\QBoletosReprocesso,DM2\iqRequerimento
 
 [DataDiagrams]
 Version=1

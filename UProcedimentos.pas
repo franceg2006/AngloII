@@ -5,7 +5,7 @@ interface
 
 
 uses
-  SysUtils, DB, UDM, UDM2;
+  SysUtils, DB, UDM, UDM2, UCad_Alunos, DateUtil;
 
 
 Procedure BCopia;
@@ -54,7 +54,7 @@ Begin
 End;
 
 
-function buscaaluno(bcodigo: Integer): integer;
+function buscaaluno(bcodigo: string): string;
 var sql1, sql2, sql3, sql :string;
 begin
    sql := dm.Alunos.SelectSQL.Text;
@@ -66,14 +66,28 @@ begin
    dm.Alunos.SelectSQL.Text := sql1 + sql2 +sql3;
    dm.Alunos.Params[0].value := bcodigo;
    dm.Alunos.Open;
-   result := dm.AlunosBOLSA.AsInteger;
+   result := dm.AlunosBOLSA.AsString;
 end;
+
+
+function valorReal(mensalidade, desconto: Real): Real;
+Begin
+ result := (mensalidade - desconto);
+End;
+
+
+function desc(mensalidade, bolsa :real): real;
+begin
+ result := ((mensalidade*bolsa)/100);
+end;
+
+
 
 
 
 Procedure RBoletos;
 var sql1, sql2, sql3, sql :string;
-    bolsa :integer;
+    bolsa :String;
 Begin
    sql := DM.Bloquetos.SelectSQL.Text;
    DM.Bloquetos.SelectSQL.Clear;
@@ -81,6 +95,7 @@ Begin
    sql2 := 'From bloquetos ';
    sql3 := 'Where ST = ''R'' and aluno = :baluno and parcela = :bparcela ';
    DM.Bloquetos.SelectSQL.Text := sql1 + sql2 + sql3;
+   DM2.QBoletosReprocesso.Open;
    DM2.QBoletosReprocesso.First;
    while not DM2.QBoletosReprocesso.Eof do
    Begin
@@ -96,11 +111,28 @@ Begin
               DM.BloquetosNOSSO_NUMERO.AsInteger := DM2.sql_genCONTADOR.Value;
               dm2.sql_gen.Close;
               dm.BloquetosST.Value := 'G';
-              bolsa := buscaaluno(DM.AlunosCODIGO.Value);
+              bolsa := buscaaluno(DM.AlunosCODIGO.AsString);
+              DM.BloquetosDESCONTO_ANT.AsString := CurrToStr(valorReal(dm.BloquetosMENSALIDADE.AsCurrency, StrToCurr(bolsa)));
+              DM.BloquetosDESCONTO.AsCurrency := desc(dm.BloquetosMENSALIDADE.AsCurrency, StrToCurr(bolsa));
+              DM.BloquetosVALOR_ANT.AsCurrency :=  valorReal(dm.BloquetosMENSALIDADE.AsCurrency, DM.BloquetosDESCONTO.AsCurrency);
+              if not dm.BloquetosTDIAS.IsNull Then
+              Begin
+                DM.BloquetosDATA_LIMITE.Value := now + dm.BloquetosTDIAS.Value;
+                if DayOfWeek(dm.BloquetosDATA_LIMITE.Value)= 1 then  DM.BloquetosDATA_LIMITE.Value := (DM.BloquetosDATA_LIMITE.Value + 1);
+                if DayOfWeek(dm.BloquetosDATA_LIMITE.Value)= 7 then  DM.BloquetosDATA_LIMITE.Value := (DM.BloquetosDATA_LIMITE.Value + 2);
+                DM.BloquetosVENCIMENTO.Value := dm.BloquetosDATA_LIMITE.Value + 7;
+                if DayOfWeek(dm.BloquetosVENCIMENTO.Value)= 1 then  DM.BloquetosVENCIMENTO.Value := (DM.BloquetosVENCIMENTO.Value + 1);
+                if DayOfWeek(dm.BloquetosVENCIMENTO.Value)= 7 then  DM.BloquetosVENCIMENTO.Value := (DM.BloquetosVENCIMENTO.Value + 2);
+              End;
+              dm.BloquetosEMISSAO.Value := now;
               dm.Bloquetos.Post;
           End;
-   DM2.QBoletosReprocesso.Next;
+    DM2.QBoletosReprocesso.Next;
    end;
+   dm.Bloquetos.Close;
+   dm.Bloquetos.SelectSQL.Clear;
+   dm.Bloquetos.SelectSQL.Text := sql;
+   dm.Bloquetos.Open;
 End;
 
 

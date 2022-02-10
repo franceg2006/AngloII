@@ -1165,6 +1165,7 @@ type
     AlunosINTINERARIO: TIntegerField;
     AlunosCEP: TIBStringField;
     ContaAlunosQ: TIBQuery;
+    BloquetosTDIAS: TIntegerField;
     ContaAlunosQTOTALALUNOS: TLargeintField;
     procedure BloquetosQCalcFields(DataSet: TDataSet);
     procedure TurmasNewRecord(DataSet: TDataSet);
@@ -1891,7 +1892,7 @@ begin
 //home/francebd/Anglo/Anglo_2007.gdb
 //servidor
 //***********************Para conexão com o servidor****************************
-  {
+  
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');
@@ -1901,9 +1902,9 @@ begin
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-  }
-//***************************Para conexão com o banco de dados LOCAL************
 
+//***************************Para conexão com o banco de dados LOCAL************
+  {
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');
@@ -1913,7 +1914,7 @@ begin
   DB_ANGLO.Open;
   DB_ANGLO.Connected := True;
   IBTr_ANGLO.Active := True;
-
+  }
 end;
 
 procedure TDM.AutorizacaoNewRecord(DataSet: TDataSet);

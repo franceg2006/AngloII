@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Parametros,DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\Turmas
+ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Parametros,DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\BloquetosQ,DM\DB_ANGLO\IBTr_ANGLO\Turmas
 
 [DataDiagrams]
 Version=1

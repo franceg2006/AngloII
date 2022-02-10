@@ -6,11 +6,8 @@ object DM: TDM
   Height = 763
   Width = 1214
   object DB_ANGLO: TIBDatabase
-    DatabaseName = 'C:/AngloII/Anglo_2022II.gdb'
     Params.Strings = (
-      'lc_ctype=WIN1252'
-      'user_name=SYSDBA'
-      'password=masterkey')
+      'lc_ctype=WIN1252')
     LoginPrompt = False
     DefaultTransaction = IBTr_ANGLO
     IdleTimer = 0
@@ -1729,7 +1726,8 @@ object DM: TDM
         ' DESCONTO_ANT, '
       
         '   MENSALIDADE_ANT, VALOR_ANT, BAULA_AD, ST, TP, MOTIVO, DATA_LI' +
-        'MITE, NEGOCIACAO)'
+        'MITE, NEGOCIACAO, '
+      '   TDIAS)'
       'values'
       
         '  (:NOSSO_NUMERO, :ALUNO, :PARCELA, :EMISSAO, :VENCIMENTO, :VALO' +
@@ -1740,7 +1738,7 @@ object DM: TDM
       
         '   :DESCONTO_ANT, :MENSALIDADE_ANT, :VALOR_ANT, :BAULA_AD, :ST, ' +
         ':TP, :MOTIVO, '
-      '   :DATA_LIMITE, :NEGOCIACAO)')
+      '   :DATA_LIMITE, :NEGOCIACAO, :TDIAS)')
     RefreshSQL.Strings = (
       'Select '
       '  NOSSO_NUMERO,'
@@ -1764,7 +1762,8 @@ object DM: TDM
       '  TP,'
       '  MOTIVO,'
       '  DATA_LIMITE,'
-      '  NEGOCIACAO'
+      '  NEGOCIACAO,'
+      '  TDIAS'
       'from BLOQUETOS '
       'where'
       '  NOSSO_NUMERO = :NOSSO_NUMERO')
@@ -1797,7 +1796,8 @@ object DM: TDM
       '  TP = :TP,'
       '  MOTIVO = :MOTIVO,'
       '  DATA_LIMITE = :DATA_LIMITE,'
-      '  NEGOCIACAO = :NEGOCIACAO'
+      '  NEGOCIACAO = :NEGOCIACAO,'
+      '  TDIAS = :TDIAS'
       'where'
       '  NOSSO_NUMERO = :OLD_NOSSO_NUMERO')
     GeneratorField.ApplyEvent = gamOnPost
@@ -1912,6 +1912,10 @@ object DM: TDM
     object BloquetosNEGOCIACAO: TIntegerField
       FieldName = 'NEGOCIACAO'
       Origin = '"BLOQUETOS"."NEGOCIACAO"'
+    end
+    object BloquetosTDIAS: TIntegerField
+      FieldName = 'TDIAS'
+      Origin = '"BLOQUETOS"."TDIAS"'
     end
   end
   object Backup: TIBBackupService
@@ -2199,10 +2203,11 @@ object DM: TDM
       Size = 15
     end
     object BloquetosQCEP: TIBStringField
+      DisplayWidth = 15
       FieldName = 'CEP'
       Origin = '"ALUNOS"."CEP"'
       FixedChar = True
-      Size = 9
+      Size = 15
     end
     object BloquetosQSACADO: TIBStringField
       FieldName = 'SACADO'
@@ -9282,8 +9287,10 @@ object DM: TDM
     Left = 160
     Top = 56
     object ContaAlunosQTOTALALUNOS: TLargeintField
+      FieldKind = fkCalculated
       FieldName = 'TOTALALUNOS'
       Required = True
+      Calculated = True
     end
   end
 end
