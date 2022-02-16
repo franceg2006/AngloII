@@ -4,7 +4,7 @@ Left=53
 Top=84
 Width=1214
 Height=763
-Splitter=276
+Splitter=194
 SelectedTab=Components
 
 [Components]
@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Parametros,DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\BloquetosQ,DM\DB_ANGLO\IBTr_ANGLO\Turmas
+ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\Bloquetos_Delete,DM\DB_ANGLO\IBTr_ANGLO\Negociacao
 
 [DataDiagrams]
 Version=1

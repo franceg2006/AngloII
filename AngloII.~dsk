@@ -1,50 +1,38 @@
 [Closed Files]
-File_0=SourceModule,'C:\AngloII\UFin_Proc_Bloq.pas',0,1,193,1,208,1,0
-File_1=SourceModule,'C:\AngloII\UcadParametros.pas',0,1,1,1,1,1,0
+File_0=SourceModule,'C:\AngloII\u_print_bloqueto.pas',0,1,175,42,191,1,0
+File_1=SourceModule,'C:\AngloII\UFin_Imp_Bloq.pas',0,1,95,1,94,1,0
 File_2=SourceModule,'C:\AngloII\URel_Autoriza.pas',0,1,1,1,1,1,0
 File_3=SourceModule,'C:\AngloII\Ufautorizacao.pas',0,1,33,43,150,1,0
-File_4=SourceModule,'C:\AngloII\UTermo_Resp.pas',0,1,28,1,1,1,0
-File_5=SourceModule,'C:\AngloII\UDoc_ContratoCurso.pas',0,1,1,79,8,1,0
-File_6=SourceModule,'C:\AngloII\UDoc_ContratoQR.pas',0,1,1,1,1,1,0
-File_7=SourceModule,'C:\AngloII\UCad_Alunos_Ant.pas',0,1,105,64,99,1,0
-File_8=SourceModule,'C:\AngloII\UDoc_RequerimentoQR.pas',0,1,91,8,134,1,0
-File_9=SourceModule,'C:\AngloII\UDoc_TermoCompromisso.pas',0,1,38,6,46,1,0
+File_4=SourceModule,'C:\AngloII\UDoc_ContratoCurso.pas',0,1,1,79,8,1,0
+File_5=SourceModule,'C:\AngloII\UDoc_ContratoQR.pas',0,1,1,1,1,1,0
+File_6=SourceModule,'C:\AngloII\UCad_Alunos_Ant.pas',0,1,105,64,99,1,0
 
 [Modules]
-Module0=C:\AngloII\UDM2.pas
-Module1=C:\AngloII\UDM.pas
-Module2=C:\AngloII\UMenu.pas
-Module3=C:\AngloII\Ufremessa.pas
-Module4=C:\AngloII\UFin_Imp_Bloq.pas
-Module5=C:\AngloII\Ufparametrosbloqueto.pas
-Module6=C:\AngloII\u_print_bloqueto.pas
-Module7=C:\AngloII\UCad_Alunos.pas
-Module8=C:\AngloII\AngloII.dpr
-Module9=C:\AngloII\UProcedimentos.pas
-Count=10
+Module0=C:\AngloII\UDM.pas
+Module1=C:\AngloII\UCad_Alunos.pas
+Module2=C:\AngloII\UDM2.pas
+Module3=C:\AngloII\Ufparametrosbloqueto.pas
+Module4=C:\AngloII\UProcedimentos.pas
+Module5=C:\AngloII\UTermo_Resp.pas
+Module6=C:\AngloII\Ufremessa.pas
+Module7=C:\AngloII\UFin_Proc_Bloq.pas
+Module8=C:\AngloII\UMenu.pas
+Module9=C:\AngloII\UcadParametros.pas
+Module10=C:\AngloII\AngloII.dpr
+Count=11
 EditWindowCount=1
-
-[C:\AngloII\UDM2.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
 
 [C:\AngloII\UDM.pas]
 ModuleType=SourceModule
 FormState=1
-FormOnTop=0
+FormOnTop=1
 
-[C:\AngloII\UMenu.pas]
+[C:\AngloII\UCad_Alunos.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[C:\AngloII\Ufremessa.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
-
-[C:\AngloII\UFin_Imp_Bloq.pas]
+[C:\AngloII\UDM2.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
@@ -54,22 +42,37 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[C:\AngloII\u_print_bloqueto.pas]
+[C:\AngloII\UProcedimentos.pas]
+ModuleType=SourceModule
+FormState=0
+FormOnTop=0
+
+[C:\AngloII\UTermo_Resp.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[C:\AngloII\UCad_Alunos.pas]
+[C:\AngloII\Ufremessa.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\AngloII\UFin_Proc_Bloq.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\AngloII\UMenu.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[C:\AngloII\UcadParametros.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
 [C:\AngloII\AngloII.dpr]
-ModuleType=SourceModule
-FormState=0
-FormOnTop=0
-
-[C:\AngloII\UProcedimentos.pas]
 ModuleType=SourceModule
 FormState=0
 FormOnTop=0
@@ -83,8 +86,8 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=10
-CurrentView=9
+ViewCount=11
+CurrentView=7
 View0=0
 View1=1
 View2=2
@@ -95,6 +98,7 @@ View6=6
 View7=7
 View8=8
 View9=9
+View10=10
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
@@ -112,9 +116,9 @@ LeftPanelSize=140
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=000004000000000000000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=52
+BottomPanelSize=0
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=000004000000000000000000000000000000000000000000000100000000000000000B0000004D65737361676556696577FFFFFFFF
+BottomPanelData=00000400010000000B0000004D657373616765566965770000000000000000000000000000000000FFFFFFFF
 
 [View0]
 Module=C:\AngloII\AngloII.dpr
@@ -126,62 +130,69 @@ LeftCol=1
 [View1]
 Module=C:\AngloII\UMenu.pas
 CursorX=1
-CursorY=353
-TopLine=336
+CursorY=281
+TopLine=264
 LeftCol=1
 
 [View2]
 Module=C:\AngloII\Ufremessa.pas
-CursorX=28
-CursorY=193
-TopLine=184
+CursorX=79
+CursorY=594
+TopLine=590
 LeftCol=1
 
 [View3]
-Module=C:\AngloII\UFin_Imp_Bloq.pas
-CursorX=1
-CursorY=94
-TopLine=95
+Module=C:\AngloII\UTermo_Resp.pas
+CursorX=41
+CursorY=45
+TopLine=41
 LeftCol=1
 
 [View4]
-Module=C:\AngloII\u_print_bloqueto.pas
-CursorX=42
-CursorY=191
-TopLine=175
+Module=C:\AngloII\UCad_Alunos.pas
+CursorX=1
+CursorY=1895
+TopLine=1892
 LeftCol=1
 
 [View5]
-Module=C:\AngloII\UCad_Alunos.pas
-CursorX=1
-CursorY=2095
-TopLine=2089
+Module=C:\AngloII\UProcedimentos.pas
+CursorX=34
+CursorY=118
+TopLine=1
 LeftCol=1
 
 [View6]
-Module=C:\AngloII\UProcedimentos.pas
-CursorX=48
-CursorY=127
-TopLine=110
-LeftCol=1
-
-[View7]
 Module=C:\AngloII\Ufparametrosbloqueto.pas
 CursorX=1
 CursorY=133
-TopLine=113
+TopLine=125
 LeftCol=1
 
-[View8]
+[View7]
 Module=C:\AngloII\UDM.pas
-CursorX=3
-CursorY=1895
+CursorX=41
+CursorY=1900
 TopLine=1890
 LeftCol=1
 
+[View8]
+Module=C:\AngloII\UFin_Proc_Bloq.pas
+CursorX=75
+CursorY=291
+TopLine=271
+LeftCol=1
+
 [View9]
+Module=C:\AngloII\UcadParametros.pas
+CursorX=1
+CursorY=1
+TopLine=1
+LeftCol=1
+
+[View10]
 Module=C:\AngloII\UDM2.pas
-CursorX=4
+CursorX=3
 CursorY=581
 TopLine=556
 LeftCol=1
@@ -191,9 +202,10 @@ Count=1
 Watch0='v_Men',256,0,18,1,0
 
 [Breakpoints]
-Count=2
+Count=3
 Breakpoint0='C:\Anglo\UMenu.pas',647,'',0,1,'',1,0,0,'',1,'','',''
 Breakpoint1='C:\Anglo\Ufremessa.pas',195,'',0,1,'',1,0,0,'',1,'','',''
+Breakpoint2='C:\AngloII\UCad_Alunos.pas',1894,'',0,1,'',1,0,0,'',1,'','',''
 
 [AddressBreakpoints]
 Count=0
@@ -439,18 +451,18 @@ State=0
 Left=0
 Top=12
 Width=140
-Height=531
+Height=586
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=140
-ClientHeight=531
+ClientHeight=586
 TBDockHeight=305
 LRDockWidth=140
 Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=1
+Visible=0
 State=0
 Left=12
 Top=0

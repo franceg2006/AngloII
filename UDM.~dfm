@@ -6,8 +6,12 @@ object DM: TDM
   Height = 763
   Width = 1214
   object DB_ANGLO: TIBDatabase
+    Connected = True
+    DatabaseName = 'anglo:/bds/Anglo/Anglo_2020II.gdb'
     Params.Strings = (
-      'lc_ctype=WIN1252')
+      'lc_ctype=WIN1252'
+      'password=plkh%321'
+      'user_name=sysdba')
     LoginPrompt = False
     DefaultTransaction = IBTr_ANGLO
     IdleTimer = 0
@@ -18,7 +22,7 @@ object DM: TDM
     Top = 1
   end
   object IBTr_ANGLO: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DB_ANGLO
     DefaultAction = TACommitRetaining
     Params.Strings = (
@@ -9076,98 +9080,9 @@ object DM: TDM
       Origin = '"BLOQUETOS_DELETE"."DATA_LIMITE"'
     end
   end
-  object Negociacao: TIBDataSet
-    Database = DB_ANGLO
-    Transaction = IBTr_ANGLO
-    BufferChunks = 1000
-    CachedUpdates = False
-    DeleteSQL.Strings = (
-      'delete from NEGOCIACAO'
-      'where'
-      '  COD_NEGOCIACAO = :OLD_COD_NEGOCIACAO')
-    InsertSQL.Strings = (
-      'insert into NEGOCIACAO'
-      
-        '  (COD_NEGOCIACAO, DATA, QUANT, DIAS, ALUNO, VALOR, ANOTACAO, DA' +
-        'TA_NEGOCIACA)'
-      'values'
-      
-        '  (:COD_NEGOCIACAO, :DATA, :QUANT, :DIAS, :ALUNO, :VALOR, :ANOTA' +
-        'CAO, :DATA_NEGOCIACA)')
-    RefreshSQL.Strings = (
-      'Select '
-      '  COD_NEGOCIACAO,'
-      '  DATA,'
-      '  QUANT,'
-      '  DIAS,'
-      '  ALUNO,'
-      '  VALOR,'
-      '  ANOTACAO,'
-      '  DATA_NEGOCIACA'
-      'from NEGOCIACAO '
-      'where'
-      '  COD_NEGOCIACAO = :COD_NEGOCIACAO')
-    SelectSQL.Strings = (
-      'select * '
-      'from NEGOCIACAO')
-    ModifySQL.Strings = (
-      'update NEGOCIACAO'
-      'set'
-      '  COD_NEGOCIACAO = :COD_NEGOCIACAO,'
-      '  DATA = :DATA,'
-      '  QUANT = :QUANT,'
-      '  DIAS = :DIAS,'
-      '  ALUNO = :ALUNO,'
-      '  VALOR = :VALOR,'
-      '  ANOTACAO = :ANOTACAO,'
-      '  DATA_NEGOCIACA = :DATA_NEGOCIACA'
-      'where'
-      '  COD_NEGOCIACAO = :OLD_COD_NEGOCIACAO')
-    GeneratorField.Field = 'COD_NEGOCIACAO'
-    GeneratorField.Generator = 'GEN_NEGOCIACAO_ID'
-    Left = 752
-    Top = 600
-    object NegociacaoCOD_NEGOCIACAO: TIntegerField
-      FieldName = 'COD_NEGOCIACAO'
-      Origin = '"NEGOCIACAO"."COD_NEGOCIACAO"'
-      Required = True
-    end
-    object NegociacaoDATA: TDateField
-      FieldName = 'DATA'
-      Origin = '"NEGOCIACAO"."DATA"'
-    end
-    object NegociacaoQUANT: TIntegerField
-      FieldName = 'QUANT'
-      Origin = '"NEGOCIACAO"."QUANT"'
-    end
-    object NegociacaoDIAS: TIntegerField
-      FieldName = 'DIAS'
-      Origin = '"NEGOCIACAO"."DIAS"'
-    end
-    object NegociacaoALUNO: TIntegerField
-      FieldName = 'ALUNO'
-      Origin = '"NEGOCIACAO"."ALUNO"'
-    end
-    object NegociacaoVALOR: TIBBCDField
-      FieldName = 'VALOR'
-      Origin = '"NEGOCIACAO"."VALOR"'
-      currency = True
-      Precision = 9
-      Size = 2
-    end
-    object NegociacaoANOTACAO: TIBStringField
-      FieldName = 'ANOTACAO'
-      Origin = '"NEGOCIACAO"."ANOTACAO"'
-      Size = 1000
-    end
-    object NegociacaoDATA_NEGOCIACA: TDateField
-      FieldName = 'DATA_NEGOCIACA'
-      Origin = '"NEGOCIACAO"."DATA_NEGOCIACA"'
-    end
-  end
   object DsNegociacao: TDataSource
     DataSet = Negociacao
-    Left = 648
+    Left = 688
     Top = 600
   end
   object DsAutorizacao: TDataSource
@@ -9291,6 +9206,92 @@ object DM: TDM
       FieldName = 'TOTALALUNOS'
       Required = True
       Calculated = True
+    end
+  end
+  object Negociacao: TIBDataSet
+    Database = DB_ANGLO
+    Transaction = IBTr_ANGLO
+    BufferChunks = 1000
+    CachedUpdates = False
+    DeleteSQL.Strings = (
+      'delete from NEGOCIACAO'
+      'where'
+      '  COD_NEGOCIACAO = :OLD_COD_NEGOCIACAO')
+    InsertSQL.Strings = (
+      'insert into NEGOCIACAO'
+      
+        '  (COD_NEGOCIACAO, DATA, QUANT, DIAS, ALUNO, VALOR, ANOTACAO, DA' +
+        'TA_NEGOCIACA)'
+      'values'
+      
+        '  (:COD_NEGOCIACAO, :DATA, :QUANT, :DIAS, :ALUNO, :VALOR, :ANOTA' +
+        'CAO, :DATA_NEGOCIACA)')
+    RefreshSQL.Strings = (
+      'Select '
+      '  COD_NEGOCIACAO,'
+      '  DATA,'
+      '  QUANT,'
+      '  DIAS,'
+      '  ALUNO,'
+      '  VALOR,'
+      '  ANOTACAO,'
+      '  DATA_NEGOCIACA'
+      'from NEGOCIACAO '
+      'where'
+      '  COD_NEGOCIACAO = :COD_NEGOCIACAO')
+    SelectSQL.Strings = (
+      'select * '
+      'from NEGOCIACAO')
+    ModifySQL.Strings = (
+      'update NEGOCIACAO'
+      'set'
+      '  COD_NEGOCIACAO = :COD_NEGOCIACAO,'
+      '  DATA = :DATA,'
+      '  QUANT = :QUANT,'
+      '  DIAS = :DIAS,'
+      '  ALUNO = :ALUNO,'
+      '  VALOR = :VALOR,'
+      '  ANOTACAO = :ANOTACAO,'
+      '  DATA_NEGOCIACA = :DATA_NEGOCIACA'
+      'where'
+      '  COD_NEGOCIACAO = :OLD_COD_NEGOCIACAO')
+    Left = 768
+    Top = 608
+    object NegociacaoCOD_NEGOCIACAO: TIntegerField
+      FieldName = 'COD_NEGOCIACAO'
+      Origin = '"NEGOCIACAO"."COD_NEGOCIACAO"'
+      Required = True
+    end
+    object NegociacaoDATA: TDateField
+      FieldName = 'DATA'
+      Origin = '"NEGOCIACAO"."DATA"'
+    end
+    object NegociacaoQUANT: TIntegerField
+      FieldName = 'QUANT'
+      Origin = '"NEGOCIACAO"."QUANT"'
+    end
+    object NegociacaoDIAS: TIntegerField
+      FieldName = 'DIAS'
+      Origin = '"NEGOCIACAO"."DIAS"'
+    end
+    object NegociacaoALUNO: TIntegerField
+      FieldName = 'ALUNO'
+      Origin = '"NEGOCIACAO"."ALUNO"'
+    end
+    object NegociacaoVALOR: TIBBCDField
+      FieldName = 'VALOR'
+      Origin = '"NEGOCIACAO"."VALOR"'
+      Precision = 9
+      Size = 2
+    end
+    object NegociacaoANOTACAO: TIBStringField
+      FieldName = 'ANOTACAO'
+      Origin = '"NEGOCIACAO"."ANOTACAO"'
+      Size = 1000
+    end
+    object NegociacaoDATA_NEGOCIACA: TDateField
+      FieldName = 'DATA_NEGOCIACA'
+      Origin = '"NEGOCIACAO"."DATA_NEGOCIACA"'
     end
   end
 end

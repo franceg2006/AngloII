@@ -1009,17 +1009,8 @@ type
     Bloquetos_DeleteTP: TIntegerField;
     Bloquetos_DeleteMOTIVO: TIBStringField;
     Bloquetos_DeleteDATA_LIMITE: TDateField;
-    Negociacao: TIBDataSet;
     DsNegociacao: TDataSource;
-    NegociacaoCOD_NEGOCIACAO: TIntegerField;
-    NegociacaoDATA: TDateField;
-    NegociacaoQUANT: TIntegerField;
-    NegociacaoDIAS: TIntegerField;
-    NegociacaoALUNO: TIntegerField;
-    NegociacaoVALOR: TIBBCDField;
     BloquetosNEGOCIACAO: TIntegerField;
-    NegociacaoANOTACAO: TIBStringField;
-    NegociacaoDATA_NEGOCIACA: TDateField;
     BloquetosQDATA_LIMITE: TDateField;
     BloquetosQNEGOCIACAO: TIntegerField;
     AlunosCODIGO: TIntegerField;
@@ -1167,6 +1158,15 @@ type
     ContaAlunosQ: TIBQuery;
     BloquetosTDIAS: TIntegerField;
     ContaAlunosQTOTALALUNOS: TLargeintField;
+    Negociacao: TIBDataSet;
+    NegociacaoCOD_NEGOCIACAO: TIntegerField;
+    NegociacaoDATA: TDateField;
+    NegociacaoQUANT: TIntegerField;
+    NegociacaoDIAS: TIntegerField;
+    NegociacaoALUNO: TIntegerField;
+    NegociacaoVALOR: TIBBCDField;
+    NegociacaoANOTACAO: TIBStringField;
+    NegociacaoDATA_NEGOCIACA: TDateField;
     procedure BloquetosQCalcFields(DataSet: TDataSet);
     procedure TurmasNewRecord(DataSet: TDataSet);
     procedure GradeNewRecord(DataSet: TDataSet);
@@ -1892,7 +1892,7 @@ begin
 //home/francebd/Anglo/Anglo_2007.gdb
 //servidor
 //***********************Para conexão com o servidor****************************
-  
+
   DB_ANGLO.Close;
   DB_ANGLO.Params.Clear;
   DB_ANGLO.Params.Add('user_name=SYSDBA');

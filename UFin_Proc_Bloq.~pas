@@ -225,13 +225,18 @@ begin
   mensalidade := 0;  //Inicia as variáveis
   cont_parcela := 1;
 
-
 While not DM.Alunos.Eof Do
 Begin
    if ((DM.AlunosBOLSA.Value <> 100) and (DM.AlunosSTATUS.Value = 'A') and (DM.AlunosBLOQUETO_1SEM.Value = 0)) then
    Begin
     DecodeDate(Now, agoraano, agorames, agoradia); //Decodifica a data atual
-    mes_inicial := agorames;  //pega o mês atual
+    if (dm.AlunosMESINICIAL.IsNull) then
+     mes_inicial := agorames
+     else
+     begin
+      mes_inicial := dm.AlunosMESINICIAL.Value;
+      agorames := dm.AlunosMESINICIAL.Value;
+     end;
 
         //*********************Busca para ver se o aluno é do cursinho ou não*******
          IqCursinho.Close;

@@ -1,8 +1,9 @@
 object Rel_TermoResp: TRel_TermoResp
   Left = 262
   Top = 174
-  Width = 1088
+  Width = 857
   Height = 563
+  VertScrollBar.Position = 431
   Caption = 'Termo de Responsabilidade'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +16,7 @@ object Rel_TermoResp: TRel_TermoResp
   TextHeight = 13
   object Rl_Termo: TRLReport
     Left = 0
-    Top = 2
+    Top = -429
     Width = 794
     Height = 1123
     Font.Charset = DEFAULT_CHARSET

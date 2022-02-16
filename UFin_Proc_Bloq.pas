@@ -225,13 +225,18 @@ begin
   mensalidade := 0;  //Inicia as variáveis
   cont_parcela := 1;
 
-
 While not DM.Alunos.Eof Do
 Begin
    if ((DM.AlunosBOLSA.Value <> 100) and (DM.AlunosSTATUS.Value = 'A') and (DM.AlunosBLOQUETO_1SEM.Value = 0)) then
    Begin
     DecodeDate(Now, agoraano, agorames, agoradia); //Decodifica a data atual
-    mes_inicial := agorames;  //pega o mês atual
+    if (dm.AlunosMESINICIAL.IsNull) then
+     mes_inicial := agorames
+     else
+     begin
+      mes_inicial := dm.AlunosMESINICIAL.Value;
+      agorames := dm.AlunosMESINICIAL.Value;
+     end;
 
         //*********************Busca para ver se o aluno é do cursinho ou não*******
          IqCursinho.Close;
@@ -283,7 +288,7 @@ Begin
        DM.BloquetosVENCIMENTO.Value := StrToDate(IntToStr(d_dia)+'/'+IntToStr(agorames)+'/'+IntToStr(agoraano));//Para data do vencimento último dia do mês
        Begin  //Para o mês de Fevereiro
          if (agorames = 2) then
-         DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,15) //Data limite para pagamento de pontualidade do mês de fevereiro
+         DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,22) //Data limite para pagamento de pontualidade do mês de fevereiro
            else
            DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,10); //Data limite para pagamento de pontualidade de outros meses.
        end;

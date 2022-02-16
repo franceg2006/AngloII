@@ -2088,14 +2088,9 @@ end;
 
 procedure TCad_Alunos.ReprocessaClick(Sender: TObject);
 begin
-     if ((dm.BloquetosTDIAS.Value = 0) or (dm.BloquetosTDIAS.IsNull))  then
-      ShowMessage ('Por favor selecione a quantidade de dias para o prazo.')
-      Else
-      Begin
-        RBoletos;
-        BCopia;
-        AtualizaSitFin2;
-      end;
+    RBoletos;
+    BCopia;
+    AtualizaSitFin2;
 end;
 
 procedure TCad_Alunos.DBRadioGroup7Exit(Sender: TObject);

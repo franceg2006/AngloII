@@ -29,7 +29,7 @@ object Cad_Alunos: TCad_Alunos
     Top = 0
     Width = 970
     Height = 657
-    ActivePage = Tab4
+    ActivePage = Tab1
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
     TabOrder = 1
@@ -1399,9 +1399,9 @@ object Cad_Alunos: TCad_Alunos
       object lbl1: TLabel
         Left = 207
         Top = 361
-        Width = 112
+        Width = 154
         Height = 13
-        Caption = 'Quant. de parcelas.'
+        Caption = 'Mês de inicio das parcelas:'
       end
       object Label30: TLabel
         Left = 51
@@ -2084,11 +2084,11 @@ object Cad_Alunos: TCad_Alunos
         TabOrder = 14
       end
       object dbedtPAR_FINAL: TDBEdit
-        Left = 320
+        Left = 368
         Top = 354
         Width = 31
         Height = 21
-        DataField = 'PAR_FINAL'
+        DataField = 'MESINICIAL'
         DataSource = DM.dsAlunos
         TabOrder = 20
       end
@@ -3979,8 +3979,8 @@ object Cad_Alunos: TCad_Alunos
       'select CURSINHO,PERIODO'
       'from TURMAS'
       'where SERIE = :serie and TURMA = :turma')
-    Left = 464
-    Top = 448
+    Left = 616
+    Top = 408
     ParamData = <
       item
         DataType = ftUnknown
@@ -4016,8 +4016,8 @@ object Cad_Alunos: TCad_Alunos
       'select CODIGO_SP '
       'from ALUNOS'
       'where CODIGO_SP is not null')
-    Left = 256
-    Top = 552
+    Left = 264
+    Top = 520
     object IBEtiq_SPCODIGO_SP: TIBStringField
       FieldName = 'CODIGO_SP'
       Origin = '"ALUNOS"."CODIGO_SP"'
@@ -4027,20 +4027,20 @@ object Cad_Alunos: TCad_Alunos
   end
   object DsIBEtiq_SP: TDataSource
     DataSet = IBEtiq_SP
-    Left = 352
-    Top = 560
+    Left = 344
+    Top = 520
   end
   object up_st: TIBSQL
     Database = DM.DB_ANGLO
     ParamCheck = True
     Transaction = DM.IBTr_ANGLO
-    Left = 692
-    Top = 432
+    Left = 700
+    Top = 408
   end
   object DsBuscaBoleto: TDataSource
     DataSet = QBuscaBoleto
-    Left = 708
-    Top = 344
+    Left = 732
+    Top = 72
   end
   object QBuscaBoleto: TIBQuery
     Database = DM.DB_ANGLO
@@ -4051,8 +4051,8 @@ object Cad_Alunos: TCad_Alunos
       'select *'
       'from bloquetos'
       'where aluno = :baluno and PAGAMENTO is null')
-    Left = 612
-    Top = 336
+    Left = 644
+    Top = 72
     ParamData = <
       item
         DataType = ftUnknown
@@ -4177,8 +4177,8 @@ object Cad_Alunos: TCad_Alunos
       'delete'
       'from Bloquetos'
       'where Aluno = :baluno and PAGAMENTO IS NULL and ST = :bst')
-    Left = 748
-    Top = 192
+    Left = 740
+    Top = 136
     ParamData = <
       item
         DataType = ftUnknown
@@ -4193,13 +4193,13 @@ object Cad_Alunos: TCad_Alunos
   end
   object Ds_Delete_Boleto: TDataSource
     DataSet = Delete_Boleto
-    Left = 652
-    Top = 192
+    Left = 644
+    Top = 136
   end
   object Ds_UpNegociacao: TDataSource
     DataSet = UP_Negociacao
-    Left = 492
-    Top = 200
+    Left = 380
+    Top = 144
   end
   object UP_Negociacao: TIBQuery
     Database = DM.DB_ANGLO
@@ -4249,7 +4249,7 @@ object Cad_Alunos: TCad_Alunos
   end
   object DsUltimoBoleto: TDataSource
     DataSet = UltimoBoleto
-    Left = 876
+    Left = 852
     Top = 400
   end
   object AlunosAnt: TIBQuery
@@ -4261,8 +4261,8 @@ object Cad_Alunos: TCad_Alunos
       'select * '
       'from ALUNOS_ANT'
       'where CODIGO = :codigo')
-    Left = 35
-    Top = 536
+    Left = 179
+    Top = 512
     ParamData = <
       item
         DataType = ftUnknown

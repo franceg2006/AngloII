@@ -568,7 +568,7 @@ begin
   TSUsuario.Active := True;
 
 //***************************Para conexão com o banco de dados LOCAL************
-  {
+ {
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
@@ -578,6 +578,6 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-  }
+ } 
 end;
 end.
