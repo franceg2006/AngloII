@@ -2467,6 +2467,13 @@ object Cad_Alunos: TCad_Alunos
         Alignment = taRightJustify
         Caption = 'Pesquisa :'
       end
+      object Label99: TLabel
+        Left = 349
+        Top = 489
+        Width = 266
+        Height = 13
+        Caption = 'Somente para reprocessar boletos individuais.'
+      end
       object RxDBGrid1: TRxDBGrid
         Left = 48
         Top = 88
@@ -2525,12 +2532,14 @@ object Cad_Alunos: TCad_Alunos
             FieldName = 'DESCONTO'
             Title.Alignment = taCenter
             Title.Caption = 'Desconto'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DATA_LIMITE'
             Title.Caption = 'Dt. Limite'
+            Width = 64
             Visible = True
           end
           item
@@ -2569,6 +2578,7 @@ object Cad_Alunos: TCad_Alunos
             FieldName = 'ST'
             Title.Alignment = taCenter
             Title.Caption = 'Situação'
+            Width = 64
             Visible = True
           end>
       end
@@ -2616,7 +2626,6 @@ object Cad_Alunos: TCad_Alunos
           '5'
           '10'
           '15')
-        OnExit = DBRadioGroup7Exit
       end
     end
     object Tab5: TTabSheet

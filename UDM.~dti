@@ -20,7 +20,7 @@ PrintToFile=0
 PrintBorders=1
 PrintSelected=0
 PrintVisible=0
-ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Negociacao,DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\Bloquetos_Delete
+ExpandedItems=DM\DB_ANGLO\IBTr_ANGLO\Alunos,DM\DB_ANGLO\IBTr_ANGLO\Bloquetos_Delete,DM\DB_ANGLO\IBTr_ANGLO\Negociacao
 
 [DataDiagrams]
 Version=1

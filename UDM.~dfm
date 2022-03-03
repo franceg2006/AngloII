@@ -9255,6 +9255,8 @@ object DM: TDM
       '  DATA_NEGOCIACA = :DATA_NEGOCIACA'
       'where'
       '  COD_NEGOCIACAO = :OLD_COD_NEGOCIACAO')
+    GeneratorField.Field = 'COD_NEGOCIACAO'
+    GeneratorField.Generator = 'GEN_NEGOCIACAO_ID'
     Left = 768
     Top = 608
     object NegociacaoCOD_NEGOCIACAO: TIntegerField

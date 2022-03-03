@@ -513,6 +513,7 @@ type
     AlunosAntCEP: TIBStringField;
     Reprocessa: TBitBtn;
     DBRadioGroup7: TDBRadioGroup;
+    Label99: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
@@ -598,7 +599,6 @@ type
     procedure RxDBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure ReprocessaClick(Sender: TObject);
-    procedure DBRadioGroup7Exit(Sender: TObject);
   private
     procedure AtualizaSitFin;
     procedure AtualizaSitFin2;
@@ -1990,7 +1990,11 @@ if Application.MessageBox('Deseja marcar o boleto para reprocesso','Título',MB_Y
    dm.Bloquetos.Post;
    dm.BloquetosQ.close;
    dm.BloquetosQ.Open;
-{   dm.Bloquetos.Close;
+   dm.Bloquetos.Edit;
+
+{
+   dm.BloquetosQ.Open;
+   dm.Bloquetos.Close;
    dm.Bloquetos.SelectSQL.Clear;
    dm.Bloquetos.SelectSQL.Add  ('select *');
    dm.Bloquetos.SelectSQL.Add  ('from BLOQUETOS');
@@ -2008,10 +2012,15 @@ if Application.MessageBox('Deseja marcar o boleto para reprocesso','Título',MB_Y
    dm.Bloquetos.Open;
    dm.Bloquetos.Edit;
    dm.BloquetosST.Value := dm.BloquetosBAULA_AD.Value;
-   dm.Bloquetos.Post;
    dm.BloquetosQ.close;
    dm.BloquetosQ.Open;
-{   dm.Bloquetos.Close;
+   dm.Bloquetos.Post;
+   dm.Bloquetos.Edit;
+   
+{   dm.Bloquetos.Post;
+   dm.BloquetosQ.close;
+   dm.BloquetosQ.Open;
+   dm.Bloquetos.Close;
    dm.Bloquetos.SelectSQL.Clear;
    dm.Bloquetos.SelectSQL.Add  ('select *');
    dm.Bloquetos.SelectSQL.Add  ('from BLOQUETOS');
@@ -2088,21 +2097,10 @@ end;
 
 procedure TCad_Alunos.ReprocessaClick(Sender: TObject);
 begin
+    dm.Bloquetos.Post;
     RBoletos;
     BCopia;
     AtualizaSitFin2;
-end;
-
-procedure TCad_Alunos.DBRadioGroup7Exit(Sender: TObject);
-begin
-   dm.Bloquetos.Post;
-   dm.Bloquetos.Close;
-   dm.Bloquetos.SelectSQL.Clear;
-   dm.Bloquetos.SelectSQL.Add  ('select *');
-   dm.Bloquetos.SelectSQL.Add  ('from BLOQUETOS');
-   dm.Bloquetos.SelectSQL.Add  ('where NOSSO_NUMERO > 0');
-   dm.Bloquetos.SelectSQL.Add  ('order by NOSSO_NUMERO');
-   dm.Bloquetos.Open;
 end;
 
 end.
