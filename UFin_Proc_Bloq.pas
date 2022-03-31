@@ -244,7 +244,11 @@ Begin
          IqCursinho.Open;
         //***************************************************************************
 
-     total_parcelas := 12;
+     if dm.AlunosPAR_FINAL.IsNull then
+         total_parcelas := 12
+         else
+         total_parcelas := dm.AlunosPAR_FINAL.Value;
+         
      case DM.AlunosSERIE.Value of
        1 : begin
                  mensalidade := DM.ParametrosMENSALIDADE_1.Value;

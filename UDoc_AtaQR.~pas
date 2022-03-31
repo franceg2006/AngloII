@@ -165,7 +165,7 @@ type
     F17: TQRLabel;
     F18: TQRLabel;
     QRLabel2: TQRLabel;
-    Observacao: TQRLabel;
+    Observacao: TQRMemo;
     procedure TitleBand1BeforePrint(Sender: TQRCustomBand;
       var PrintBand: Boolean);
     procedure DetNotaBeforePrint(Sender: TQRCustomBand;

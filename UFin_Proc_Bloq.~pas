@@ -244,7 +244,10 @@ Begin
          IqCursinho.Open;
         //***************************************************************************
 
-     total_parcelas := 12;
+     if dm.AlunosPAR_FINAL.IsNull then
+         total_parcelas := 12
+         else
+         total_parcelas := dm.AlunosPAR_FINAL.Value;
      case DM.AlunosSERIE.Value of
        1 : begin
                  mensalidade := DM.ParametrosMENSALIDADE_1.Value;
@@ -288,7 +291,7 @@ Begin
        DM.BloquetosVENCIMENTO.Value := StrToDate(IntToStr(d_dia)+'/'+IntToStr(agorames)+'/'+IntToStr(agoraano));//Para data do vencimento último dia do mês
        Begin  //Para o mês de Fevereiro
          if (agorames = 2) then
-         DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,15) //Data limite para pagamento de pontualidade do mês de fevereiro
+         DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,22) //Data limite para pagamento de pontualidade do mês de fevereiro
            else
            DM.BloquetosDATA_LIMITE.Value := EncodeDate(agoraano, agorames,10); //Data limite para pagamento de pontualidade de outros meses.
        end;

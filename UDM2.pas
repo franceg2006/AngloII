@@ -556,7 +556,7 @@ end;
 procedure TDM2.DataModuleCreate(Sender: TObject);
 begin
 //***********************Para conexão com o servidor****************************
-  {
+
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
@@ -566,9 +566,9 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-  }
-//***************************Para conexão com o banco de dados LOCAL************
 
+//***************************Para conexão com o banco de dados LOCAL************
+  {
   DBUsuario.Close;
   DBUsuario.Params.Clear;
   DBUsuario.Params.Add('user_name=SYSDBA');
@@ -578,6 +578,6 @@ begin
   DBUsuario.Open;
   DBUsuario.Connected := True;
   TSUsuario.Active := True;
-  
+  }
 end;
 end.

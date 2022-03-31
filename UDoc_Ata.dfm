@@ -4,7 +4,7 @@ object Doc_Ata: TDoc_Ata
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Ata de Resultados Finais'
-  ClientHeight = 164
+  ClientHeight = 255
   ClientWidth = 431
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,7 +12,6 @@ object Doc_Ata: TDoc_Ata
   Font.Height = -11
   Font.Name = 'Verdana'
   Font.Style = []
-  KeyPreview = True
   OldCreateOrder = False
   OnClose = FormClose
   OnShow = FormShow
@@ -57,8 +56,8 @@ object Doc_Ata: TDoc_Ata
     Caption = 'Data Doc :'
   end
   object Fecha: TBitBtn
-    Left = 296
-    Top = 130
+    Left = 328
+    Top = 226
     Width = 89
     Height = 25
     Cursor = crHandPoint
@@ -68,8 +67,8 @@ object Doc_Ata: TDoc_Ata
     Layout = blGlyphRight
   end
   object Imprime: TBitBtn
-    Left = 197
-    Top = 130
+    Left = 189
+    Top = 226
     Width = 89
     Height = 25
     Cursor = crHandPoint
@@ -123,19 +122,21 @@ object Doc_Ata: TDoc_Ata
     Height = 21
     TabOrder = 3
   end
-  object EdObs: TEdit
-    Left = 102
-    Top = 88
-    Width = 283
-    Height = 21
-    TabOrder = 5
-  end
   object DateDoc: TDateEdit
     Left = 267
     Top = 35
     Width = 117
     Height = 21
     NumGlyphs = 2
+    TabOrder = 5
+  end
+  object EdObs: TMemo
+    Left = 100
+    Top = 89
+    Width = 284
+    Height = 129
+    Lines.Strings = (
+      'EdObs')
     TabOrder = 6
   end
   object FS1: TFormStorage

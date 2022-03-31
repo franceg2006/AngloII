@@ -1387,8 +1387,8 @@ object Cad_Alunos: TCad_Alunos
         Caption = 'Alteração de senhas:'
       end
       object lbl5: TLabel
-        Left = 514
-        Top = 362
+        Left = 538
+        Top = 394
         Width = 157
         Height = 39
         Caption = 
@@ -1417,6 +1417,13 @@ object Cad_Alunos: TCad_Alunos
         Height = 13
         Caption = 'Número da autorização:'
       end
+      object Label100: TLabel
+        Left = 405
+        Top = 360
+        Width = 102
+        Height = 13
+        Caption = 'Total de parcelas:'
+      end
       object DBRadioGroup1: TDBRadioGroup
         Left = 159
         Top = 227
@@ -1428,7 +1435,7 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Sim'
           'Não')
-        TabOrder = 21
+        TabOrder = 22
         Values.Strings = (
           '1'
           '0')
@@ -1572,7 +1579,7 @@ object Cad_Alunos: TCad_Alunos
         Width = 139
         Height = 466
         Caption = 'Documentos'
-        TabOrder = 29
+        TabOrder = 30
         object Label23: TLabel
           Left = 21
           Top = 416
@@ -1897,7 +1904,7 @@ object Cad_Alunos: TCad_Alunos
         Top = 82
         Width = 34
         Height = 19
-        TabOrder = 30
+        TabOrder = 31
         OnClick = BcoresClick
         Glyph.Data = {
           E6000000424DE60000000000000076000000280000000F0000000E0000000100
@@ -1946,7 +1953,7 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Nascimento'
           'Casamento')
-        TabOrder = 22
+        TabOrder = 23
         Values.Strings = (
           '1'
           '2')
@@ -1958,7 +1965,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 21
         DataField = 'NUMERO_TERMO'
         DataSource = DM.dsAlunos
-        TabOrder = 23
+        TabOrder = 24
       end
       object DBEdit47: TDBEdit
         Left = 563
@@ -1967,7 +1974,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 21
         DataField = 'FOLHA'
         DataSource = DM.dsAlunos
-        TabOrder = 24
+        TabOrder = 25
       end
       object DBEdit48: TDBEdit
         Left = 563
@@ -1976,7 +1983,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 21
         DataField = 'LIVRO'
         DataSource = DM.dsAlunos
-        TabOrder = 25
+        TabOrder = 26
       end
       object DBDateEdit3: TDBDateEdit
         Left = 562
@@ -1986,7 +1993,7 @@ object Cad_Alunos: TCad_Alunos
         DataField = 'DATA_EMI_CERT'
         DataSource = DM.dsAlunos
         NumGlyphs = 2
-        TabOrder = 26
+        TabOrder = 27
       end
       object DBEdit49: TDBEdit
         Left = 564
@@ -1995,7 +2002,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 21
         DataField = 'NOME_CART_EXP'
         DataSource = DM.dsAlunos
-        TabOrder = 28
+        TabOrder = 29
       end
       object UFCartorio: TRxDBLookupCombo
         Left = 562
@@ -2009,7 +2016,7 @@ object Cad_Alunos: TCad_Alunos
         LookupField = 'COD_MUNICIPIO'
         LookupDisplay = 'UF'
         LookupSource = DM.dsMunicipio
-        TabOrder = 27
+        TabOrder = 28
       end
       object Button2: TButton
         Left = 758
@@ -2024,7 +2031,7 @@ object Cad_Alunos: TCad_Alunos
         Font.Name = 'Verdana'
         Font.Style = []
         ParentFont = False
-        TabOrder = 31
+        TabOrder = 32
         OnClick = Button2Click
       end
       object tiposanguineo: TRxDBLookupCombo
@@ -2052,14 +2059,14 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Transferido'
           'Normal')
-        TabOrder = 32
+        TabOrder = 33
         Values.Strings = (
           'B'
           'A')
       end
       object DBRadioGroup4: TDBRadioGroup
-        Left = 519
-        Top = 402
+        Left = 543
+        Top = 434
         Width = 159
         Height = 32
         Columns = 2
@@ -2068,7 +2075,7 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Sim'
           'Não')
-        TabOrder = 33
+        TabOrder = 34
         Values.Strings = (
           'S'
           'N')
@@ -2104,16 +2111,16 @@ object Cad_Alunos: TCad_Alunos
         LookupField = 'ID_ESCOLA'
         LookupDisplay = 'ESCOLA'
         LookupSource = DM2.DsEscola
-        TabOrder = 34
+        TabOrder = 35
       end
       object Button3: TButton
-        Left = 544
-        Top = 460
+        Left = 552
+        Top = 484
         Width = 75
         Height = 25
         Cursor = crHandPoint
         Caption = 'Escola'
-        TabOrder = 35
+        TabOrder = 36
         OnClick = Button3Click
       end
       object BitBtn8: TBitBtn
@@ -2123,7 +2130,7 @@ object Cad_Alunos: TCad_Alunos
         Height = 25
         Cursor = crHandPoint
         Caption = 'Dados do cartão'
-        TabOrder = 36
+        TabOrder = 37
         OnClick = BitBtn8Click
       end
       object DBRadioGroup6: TDBRadioGroup
@@ -2137,10 +2144,19 @@ object Cad_Alunos: TCad_Alunos
         Items.Strings = (
           'Núcleo 1'
           'Núcleo 2')
-        TabOrder = 37
+        TabOrder = 38
         Values.Strings = (
           '1'
           '2')
+      end
+      object Tparcelas: TDBEdit
+        Left = 512
+        Top = 354
+        Width = 32
+        Height = 21
+        DataField = 'PAR_FINAL'
+        DataSource = DM.dsAlunos
+        TabOrder = 21
       end
     end
     object Tab3: TTabSheet

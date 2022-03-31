@@ -514,6 +514,8 @@ type
     Reprocessa: TBitBtn;
     DBRadioGroup7: TDBRadioGroup;
     Label99: TLabel;
+    Label100: TLabel;
+    Tparcelas: TDBEdit;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBNavigator1Click(Sender: TObject; Button: TNavigateBtn);
