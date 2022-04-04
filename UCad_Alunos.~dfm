@@ -29,7 +29,7 @@ object Cad_Alunos: TCad_Alunos
     Top = 0
     Width = 970
     Height = 657
-    ActivePage = Tab2
+    ActivePage = Tab1
     BiDiMode = bdLeftToRight
     ParentBiDiMode = False
     TabOrder = 1
@@ -2548,12 +2548,14 @@ object Cad_Alunos: TCad_Alunos
             FieldName = 'DESCONTO'
             Title.Alignment = taCenter
             Title.Caption = 'Desconto'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DATA_LIMITE'
             Title.Caption = 'Dt. Limite'
+            Width = 64
             Visible = True
           end
           item
@@ -2592,6 +2594,7 @@ object Cad_Alunos: TCad_Alunos
             FieldName = 'ST'
             Title.Alignment = taCenter
             Title.Caption = 'Situação'
+            Width = 64
             Visible = True
           end>
       end
